@@ -19,7 +19,7 @@ export class EquipmentInput {
 // ------- Optional -------
 
     @Field({ nullable: true })
-    cost: number
+    cost?: number
     
     @Field({ nullable: true })
     powerDraw?: number
@@ -38,6 +38,9 @@ export class EquipmentInput {
 
     @Field({ nullable: true })
     publicNotes?: string
+
+    @Field({ nullable: true})
+    searchModel: string
 }
 
 @ObjectType()
@@ -47,6 +50,9 @@ export class EquipmentResponse {
 
     @Field(() => Equipment, { nullable: true })
     equipment?: Equipment
+
+    @Field(() => [Equipment], { nullable: true })
+    equipmentItems?: [Equipment]
 }
 
 @ObjectType()
@@ -71,7 +77,7 @@ export class EquipmentResolver {
         const equipmentTemplate = { 
             category: inputOptions.category,
             model: inputOptions.model,
-            manufacturer: inputOptions.model,
+            manufacturer: inputOptions.manufacturer,
             cost: inputOptions.cost,
             publicNotes: inputOptions.publicNotes,
             powerDraw: inputOptions.powerDraw,
@@ -79,12 +85,14 @@ export class EquipmentResolver {
             rackUnit: inputOptions.rackUnit,
             frequencyRange: inputOptions.frequencyRange,
             depth: inputOptions.depth,
+            searchableModel: inputOptions.model
         }
 
         const equipment = em.create(Equipment, equipmentTemplate)
         try {
             await em.persistAndFlush(equipment)
         } catch (error) {
+            console.error(error)
             if (error.code === "23505") {
                 return {
                     errors: [
@@ -98,7 +106,7 @@ export class EquipmentResolver {
 
 //------------------- READ -----------------------
 
-    @Query(() => Equipment)
+    @Query(() => Equipment, {nullable: true})
     getEquipment(
         @Arg("id", () => Int) id: number,
         @Ctx() { em }: MyContext
@@ -106,11 +114,19 @@ export class EquipmentResolver {
         return em.findOne(Equipment, { id })
     }
 
-    @Query(() => [Equipment])
+    @Query(() => [Equipment], { nullable: true })
     getAllEquipment(
         @Ctx() { em }: MyContext
-    ): Promise<Equipment[]> {
+    ): Promise<Equipment[] | null> {
         return em.find(Equipment, {})
+    }
+
+    @Query(() => [Equipment])
+    search(
+        @Arg("searchModel", () => String) searchModel: string,
+        @Ctx() { em }: MyContext
+    ){
+        return em.find(Equipment, { model: {$fulltext: searchModel }})
     }
 
 //------------------- UPDATE -----------------------    
