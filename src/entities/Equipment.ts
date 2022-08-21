@@ -4,6 +4,9 @@ import { Field, Int, ObjectType } from "type-graphql";
 @ObjectType()
 @Entity()
 export class Equipment {
+
+  // -------------------- REQUIRED ------------------
+
   @Field(() => Int)
   @PrimaryKey()
   id!: number;
@@ -17,43 +20,48 @@ export class Equipment {
   updatedAt? = new Date();
 
   @Field(() => String)
-  @Property({ type: "text", unique: true })
+  @Property({ type: "text" })
   category!: string
 
   @Field(() => String)
-  @Property({ type: "text", unique: true })
+  @Property({ type: "text"})
+  manufacturer: string;
+  
+  @Field(() => String)
+  @Property({ type: "text", unique: true})
   model: string;
 
-  @Field(() => String)
-  @Property({ type: "text" })
-  publicNotes: string;
+  // -------------------- OPTIONAL ------------------
 
-  @Field(() => Number)
-  @Property({ type: "double" })
-  cost: number;
-
-  @Field(() => Number)
-  @Property({ type: "double" })
-  powerDraw: number;
+  
 
   @Field(() => String)
-  @Property({ type: "text" })
-  manufacturer: string;
+  @Property({ type: "text", nullable: true })
+  publicNotes?: string;
 
   @Field(() => Number)
-  @Property({ type: "double" })
-  weight: number;
+  @Property({ type: "double", nullable: true })
+  cost?: number;
 
   @Field(() => Number)
-  @Property({ type: "double" })
-  depth: number;
+  @Property({ type: "double", nullable: true }) 
+  powerDraw?: number;
+
+
+  @Field(() => Number)
+  @Property({ type: "double", nullable: true })
+  weight?: number;
+
+  @Field(() => Number)
+  @Property({ type: "double", nullable: true })
+  depth?: number;
 
   @Field(() => Int)
-  @Property({ type: "int" })
-  RU: number;
+  @Property({ type: "int", nullable: true })
+  rackUnit?: number;
 
   @Field(() => String)
-  @Property({ type: "text" })
-  frequencyRange: string;
+  @Property({ type: "text", nullable: true })
+  frequencyRange?: string;
 
 }
