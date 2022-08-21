@@ -1,6 +1,6 @@
 import { MyContext } from "../@types/resolverTypes";
 import { Equipment } from "../entities/Equipment";
-import { Arg, Ctx, Field, InputType, Int, Mutation, Query, Resolver } from "type-graphql";
+import { Arg, Ctx, Field, InputType, Int, Mutation, ObjectType, Query, Resolver } from "type-graphql";
 
 @InputType()
 export class EquipmentInput {
@@ -14,7 +14,7 @@ export class EquipmentInput {
     model: string
 
     @Field()
-    manufactuer: string
+    manufacturer: string
 
 // ------- Optional -------
 
@@ -39,16 +39,35 @@ export class EquipmentInput {
     @Field({ nullable: true })
     publicNotes?: string
 }
+
+@ObjectType()
+export class EquipmentResponse {
+    @Field(() => [FieldError], { nullable: true })
+    errors?: [FieldError]
+
+    @Field(() => Equipment, { nullable: true })
+    equipment?: Equipment
+}
+
+@ObjectType()
+export class FieldError {
+    @Field()
+    field: string
+
+    @Field()
+    message: string
+}
+
 @Resolver()
 export class EquipmentResolver {
     
    
 //------------------- CREATE -----------------------
-    @Mutation(() => Equipment, { nullable: true})
+    @Mutation(() => EquipmentResponse, { nullable: true})
     async createEquipment(
         @Arg('inputOptions') inputOptions: EquipmentInput,
         @Ctx() { em }: MyContext
-    ): Promise<Equipment | null> {
+    ): Promise<EquipmentResponse> {
         const equipmentTemplate = { 
             category: inputOptions.category,
             model: inputOptions.model,
@@ -63,8 +82,18 @@ export class EquipmentResolver {
         }
 
         const equipment = em.create(Equipment, equipmentTemplate)
-        await em.persistAndFlush(equipment)
-        return em.findOne(Equipment, equipmentTemplate)
+        try {
+            await em.persistAndFlush(equipment)
+        } catch (error) {
+            if (error.code === "23505") {
+                return {
+                    errors: [
+                        { field: "Equipment Model", message: "Duplicate model found" }
+                    ]
+                }            
+            }
+        }
+        return { equipment }
     }
 
 //------------------- READ -----------------------
@@ -85,20 +114,37 @@ export class EquipmentResolver {
     }
 
 //------------------- UPDATE -----------------------    
-    @Mutation(() => Equipment, {nullable: true})
+    @Mutation(() => EquipmentResponse, {nullable: true})
     async updateEquipment(
-        @Arg("id", () => String, { nullable: true }) oldModel: string,
-        @Arg("model", () => String) model: string,
+        @Arg("id", () => Int) id: number,
+        @Arg("updateOptions", () => EquipmentInput) updateOptions: EquipmentInput,
+        // @Arg("model", () => String) model: string,
+        // @Arg("manufactuer", () => String, { nullable: true }) manufacturer: string,
         @Ctx() { em }: MyContext
-    ): Promise<Equipment | null>{
-        const equipment = await em.findOne(Equipment, { model: oldModel })
+    ): Promise<EquipmentResponse | null>{
+        const equipment = await em.findOne(Equipment, { id })
         if (!equipment) return null;
-        if (typeof model !== "undefined"){
-            equipment.model = model
+        try {
+            if (typeof updateOptions.model !== "undefined" || 
+                typeof updateOptions.manufacturer !== "undefined" ||
+                typeof updateOptions.category !== "undefined"){
+                equipment.model = updateOptions.model
+                equipment.manufacturer = updateOptions.manufacturer
+                equipment.category = updateOptions.category
+            }
             await em.persistAndFlush(equipment)
+        } catch (error) {
+            if (error.code === "23505"){
+                return {
+                    errors: [
+                        { field: "Equipment Model", message: "Duplicate Model Found" }
+                    ]
+                }
+            }
         }
-        return equipment
+        return { equipment }
     }
+
 //------------------- DELETE -----------------------
     @Mutation(() => Boolean)
     async deleteEquipment(

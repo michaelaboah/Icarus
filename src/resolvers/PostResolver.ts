@@ -22,8 +22,34 @@ export class PostResolver {
             @Arg("title", () => String) title: string, 
             @Ctx() { em }: MyContext
         ): Promise<Post | null> {
-        const post = em.create(Post, { title })
+        const post = em.create(Post, { title, searchableTitle: title })
         await em.persistAndFlush(post)
         return em.findOne(Post, { title })
+    }
+
+    @Mutation(() => Boolean)
+    async deletePost(
+        @Arg("id", () => Int) id: number,
+        @Ctx() { em }: MyContext
+    ){
+        await em.nativeDelete(Post, { id })
+        return true
+    }
+
+    @Mutation(() => Boolean)
+    async deletePosts(
+        @Arg("ids", () => [Int]) ids: number[],
+        @Ctx() { em }: MyContext
+    ): Promise<boolean> {
+        ids.forEach((id) => em.nativeDelete(Post, { id }))
+        return true
+    }
+
+    @Query(() => [Post])
+    search(
+        @Arg("searchTitle", () => String) searchTitle: string,
+        @Ctx() { em }: MyContext
+    ){
+        return em.find(Post, { title: {$fulltext: searchTitle}})
     }
 }
