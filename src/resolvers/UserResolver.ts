@@ -1,5 +1,5 @@
 import { User } from "../entities/User";
-import { Arg, Ctx, Field, InputType, Mutation, ObjectType, Resolver } from "type-graphql";
+import { Arg, Ctx, Field, InputType, Mutation, ObjectType, Query, Resolver } from "type-graphql";
 import { FieldError } from "./EquipmentResolver";
 import { MyContext } from "src/@types/resolverTypes";
 import argon2 from "argon2";
@@ -66,7 +66,7 @@ export class UserResolver {
     @Mutation(() => UserResponse)
     async loginUser(
         @Arg("inputOptions", () => UserInput) inputOptions: UserInput,
-        @Ctx() { em }: MyContext
+        @Ctx() { em, req }: MyContext
         ): Promise<UserResponse> {
             const user = await em.findOne(User, { username: inputOptions.username});
             if (!user) {
@@ -87,14 +87,24 @@ export class UserResolver {
                 }
             }
                 
-            
-                // req.session!.userId = user.id
-                // req.sessionID = "5"
+            req.session.userId = user.id
+            console.log(req.session)
             return { user }
         }    
 
     //------------------- READ -----------------------
 
+    @Query(() => User, {nullable: true}) 
+    async activeSession (
+        @Ctx() { em, req }: MyContext
+    ) {
+        if (!req.session.userId) {
+            console.log(req.session)
+            return null
+        }
+        const user = await em.findOne(User, { id: req.session.userId })
+        return user;
+    }
 
     //------------------- UPDATE -----------------------
 
