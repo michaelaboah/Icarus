@@ -7,6 +7,7 @@ export type MyContext = {
     session: Session & Partial<SessionData> & { userId?: number };
   };
   res: Response
+  payload?: { userId: string}
 }
 
 declare module "express-session" {

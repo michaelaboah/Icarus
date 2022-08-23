@@ -1,8 +1,10 @@
 import { User } from "../entities/User";
-import { Arg, Ctx, Field, InputType, Mutation, ObjectType, Query, Resolver } from "type-graphql";
+import { Arg, Ctx, Field, InputType, Mutation, ObjectType, Query, Resolver, UseMiddleware } from "type-graphql";
 import { FieldError } from "./EquipmentResolver";
 import { MyContext } from "src/@types/resolverTypes";
 import argon2 from "argon2";
+import { createAccessToken, createRefreshToken, __sessionSecret__ } from "../constants";
+import { isAuth } from "../utils/isAuth";
 
 @InputType()
 export class UserInput {
@@ -21,6 +23,9 @@ class UserResponse {
 
     @Field(() => User, { nullable: true })
     user?: User
+
+    @Field(() => String)
+    accessToken?: string
 }
 
 @Resolver()
@@ -66,7 +71,7 @@ export class UserResolver {
     @Mutation(() => UserResponse)
     async loginUser(
         @Arg("inputOptions", () => UserInput) inputOptions: UserInput,
-        @Ctx() { em, req }: MyContext
+        @Ctx() { em, res }: MyContext
         ): Promise<UserResponse> {
             const user = await em.findOne(User, { username: inputOptions.username});
             if (!user) {
@@ -86,28 +91,43 @@ export class UserResolver {
                     }]
                 }
             }
-                
-            req.session.userId = user.id
-            console.log(req.session)
-            return { user }
-        }    
+
+            res.cookie(
+                "PLEX", 
+                createRefreshToken(user),
+                {
+                    httpOnly: true,
+                }
+            )
+        
+            return { 
+                user,
+                accessToken: createAccessToken(user)
+             }
+        }
 
     //------------------- READ -----------------------
 
-    @Query(() => User, {nullable: true}) 
-    async activeSession (
-        @Ctx() { em, req }: MyContext
-    ) {
-        if (!req.session.userId) {
-            console.log(req.session)
-            return null
-        }
-        const user = await em.findOne(User, { id: req.session.userId })
-        return user;
+    @Query(() => [User]) 
+    users(
+        @Ctx() { em }: MyContext
+    ){
+        return em.find(User, {})
     }
+    
 
     //------------------- UPDATE -----------------------
 
 
     //------------------- DELETE -----------------------
+
+
+    @Query(() => String)
+    @UseMiddleware(isAuth)
+    bye(
+        @Ctx() { payload }: MyContext
+    ) {
+        return `your user id is: ${payload!.userId}`
+
+    }
 }

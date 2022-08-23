@@ -7,41 +7,15 @@ import { PostResolver } from "./resolvers/PostResolver";
 import express from "express";
 import { EquipmentResolver } from "./resolvers/EquipmentResolver";
 import { UserResolver } from "./resolvers/UserResolver";
-import * as redis from 'redis'
-import session from 'express-session'
-import connectRedis from 'connect-redis'
+import 'dotenv/config'
 import { MyContext } from "./@types/resolverTypes";
+
 
 const main = async () => {
   const orm = await MikroORM.init(mikroOrmConfig);
   orm.getMigrator().up()
 
-  const app = express();
-
-  const RedisStore = connectRedis(session)
-  const redisClient = redis.createClient({
-    legacyMode: true
-  })
-  await redisClient.connect()
-    
-  app.use(
-    session({
-        name: 'PLEX',
-        store: new RedisStore({
-            client: redisClient,
-            disableTouch: true,     
-        }),
-        cookie: {
-            maxAge: 1000 * 60 * 60 * 24 * 365 * 10,
-            httpOnly: true,
-            sameSite: "lax",  //csrf
-            // secure: false, // cookie only workes in https
-        },
-        saveUninitialized: true,
-        secret: __sessionSecret__,
-        resave: false,
-      })
-  )
+  const app = express();  
     
   app.get('/', (_req, res) => {
     res.send("hello")
