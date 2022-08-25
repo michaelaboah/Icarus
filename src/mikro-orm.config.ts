@@ -11,8 +11,8 @@ export default {
     glob: "!(*.d).{js,ts}",
   },
   allowGlobalContext: true,
-  entities: [Post,  Equipment, User],
-    dbName: "athens",
-    type: 'postgresql',
-    debug: !__prod__
+  entities: [Post, Equipment, User],
+  dbName: "athens",
+  type: "postgresql",
+  debug: !__prod__,
 } as Parameters<typeof MikroORM.init>[0];

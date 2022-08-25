@@ -1,6 +1,4 @@
-import { Entity, 
-    Index, 
-    PrimaryKey, Property } from "@mikro-orm/core";
+import { Entity, Index, PrimaryKey, Property } from "@mikro-orm/core";
 import { FullTextType } from "@mikro-orm/postgresql";
 import { Field, Int, ObjectType } from "type-graphql";
 

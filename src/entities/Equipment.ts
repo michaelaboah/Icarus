@@ -1,13 +1,10 @@
-import { Entity, 
-Index, 
-  PrimaryKey, Property } from "@mikro-orm/core";
+import { Entity, Index, PrimaryKey, Property } from "@mikro-orm/core";
 import { FullTextType } from "@mikro-orm/postgresql";
 import { Field, Int, ObjectType } from "type-graphql";
 
 @ObjectType()
 @Entity()
 export class Equipment {
-
   // -------------------- REQUIRED ------------------
 
   @Field(() => Int)
@@ -24,19 +21,17 @@ export class Equipment {
 
   @Field(() => String)
   @Property({ type: "text" })
-  category!: string
+  category!: string;
 
   @Field(() => String)
-  @Property({ type: "text"})
+  @Property({ type: "text" })
   manufacturer: string;
-  
+
   @Field(() => String)
-  @Property({ type: "text", unique: true})
+  @Property({ type: "text", unique: true })
   model!: string;
 
   // -------------------- OPTIONAL ------------------
-
-  
 
   @Field(() => String, { nullable: true })
   @Property({ type: "text", nullable: true })
@@ -47,7 +42,7 @@ export class Equipment {
   cost?: number;
 
   @Field(() => Number, { nullable: true })
-  @Property({ type: "double", nullable: true }) 
+  @Property({ type: "double", nullable: true })
   powerDraw?: number;
 
   @Field(() => Number, { nullable: true })
@@ -66,7 +61,10 @@ export class Equipment {
   @Property({ type: "text", nullable: true })
   frequencyRange?: string;
 
-  @Index({ type: 'fulltext' })
-  @Property({ type: FullTextType, onUpdate: (equipment: Equipment) => equipment.model })
-  searchableModel?: string
+  @Index({ type: "fulltext" })
+  @Property({
+    type: FullTextType,
+    onUpdate: (equipment: Equipment) => equipment.model,
+  })
+  searchableModel?: string;
 }
