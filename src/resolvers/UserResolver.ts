@@ -24,7 +24,7 @@ import {
 @InputType()
 export class UserInput {
   @Field()
-  username: string;
+  email: string;
 
   @Field()
   password: string;
@@ -50,7 +50,7 @@ export class UserResolver {
     @Arg("inputOptions", () => UserInput) inputOptions: UserInput,
     @Ctx() { em }: MyContext
   ): Promise<UserResponse> {
-    if (inputOptions.username.length < 5) {
+    if (inputOptions.email.length < 5) {
       return {
         errors: [
           {
@@ -72,7 +72,7 @@ export class UserResolver {
     }
     const hashedPassword = await argon2.hash(inputOptions.password);
     const user = em.create(User, {
-      username: inputOptions.username,
+      email: inputOptions.email,
       password: hashedPassword,
       tokenVersion: 0,
     });
@@ -94,7 +94,7 @@ export class UserResolver {
     @Arg("inputOptions", () => UserInput) inputOptions: UserInput,
     @Ctx() { em, res }: MyContext
   ): Promise<UserResponse> {
-    const user = await em.findOne(User, { username: inputOptions.username });
+    const user = await em.findOne(User, { email: inputOptions.email });
     if (!user) {
       return {
         errors: [

@@ -146,15 +146,13 @@ export class EquipmentResolver {
     const equipment = await em.findOne(Equipment, { id });
     if (!equipment) return null;
     try {
-      if (
-        typeof updateOptions.model !== "undefined" ||
-        typeof updateOptions.manufacturer !== "undefined" ||
-        typeof updateOptions.category !== "undefined"
-      ) {
-        equipment.model = updateOptions.model;
-        equipment.manufacturer = updateOptions.manufacturer;
-        equipment.category = updateOptions.category;
-      }
+      Object.keys(updateOptions).forEach((key) => {
+        //@ts-expect-error
+        if (updateOptions[key] !== "undefined") {
+          //@ts-expect-error
+          equipment[key] = updateOptions[key];
+        }
+      });
       await em.persistAndFlush(equipment);
     } catch (error) {
       if (error.code === "23505") {
