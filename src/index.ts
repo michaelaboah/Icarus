@@ -44,7 +44,7 @@ const main = async () => {
     try {
       payload = verify(token, process.env.REFRESH_TOKEN_SECRET!);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       return res.send({ ok: false, accessToken: "" });
     }
     // valid token send back access token
