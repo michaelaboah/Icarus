@@ -127,11 +127,11 @@ export class EquipmentResolver {
   }
 
   @Query(() => [Equipment])
-  search(
-    @Arg("searchModel", () => String) searchModel: string,
+  fullTextSearch(
+    @Arg("fullSearch", () => String) fullSearch: string, // this might break
     @Ctx() { em }: MyContext
   ) {
-    return em.find(Equipment, { model: { $fulltext: searchModel } });
+    return em.find(Equipment, { model: { $fulltext: fullSearch } });
   }
 
   @Query(() => [Equipment])
