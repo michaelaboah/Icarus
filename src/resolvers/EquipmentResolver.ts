@@ -11,6 +11,7 @@ import {
   Query,
   Resolver,
 } from "type-graphql";
+// import { Console } from "src/entities/Console";
 
 @InputType()
 export class EquipmentInput {
@@ -115,10 +116,10 @@ export class EquipmentResolver {
 
   @Query(() => Equipment, { nullable: true })
   getEquipment(
-    @Arg("id", () => Int) id: number,
+    @Arg("model", () => String) model: string,
     @Ctx() { em }: MyContext
   ): Promise<Equipment | null> {
-    return em.findOne(Equipment, { id });
+    return em.findOne(Equipment, { model });
   }
 
   @Query(() => [Equipment], { nullable: true })
@@ -126,12 +127,21 @@ export class EquipmentResolver {
     return em.find(Equipment, {});
   }
 
+  // Full Text Search
   @Query(() => [Equipment])
-  search(
-    @Arg("searchModel", () => String) searchModel: string,
+  fullTextSearch(
+    @Arg("fullSearch", () => String) fullSearch: string, // this might break
     @Ctx() { em }: MyContext
   ) {
-    return em.find(Equipment, { model: { $fulltext: searchModel } });
+    return em.find(Equipment, { model: { $fulltext: fullSearch } });
+  }
+
+  @Query(() => [Equipment])
+  async fuzzyTextSearch(
+    @Arg("fuzzySearch", () => String) fuzzySearch: string,
+    @Ctx() { em }: MyContext
+  ) {
+    return em.find(Equipment, { model: { $like: `%${fuzzySearch}%` } });
   }
 
   //------------------- UPDATE -----------------------

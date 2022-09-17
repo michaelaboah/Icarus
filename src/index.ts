@@ -9,7 +9,7 @@ import cors from "cors";
 import { EquipmentResolver } from "./resolvers/EquipmentResolver";
 import { UserResolver } from "./resolvers/UserResolver";
 import "dotenv/config";
-import { MyContext } from "./@types/resolverTypes";
+// import { MyContext } from "./@types/resolverTypes";
 import cookieParser from "cookie-parser";
 import { verify } from "jsonwebtoken";
 import { User } from "./entities/User";
@@ -26,7 +26,11 @@ const main = async () => {
   const app = express();
   app.use(
     cors({
-      origin: "http://localhost:3000",
+      origin: [
+        "http://localhost:3000",
+        "https://studio.apollographql.com",
+        "http://localhost:5000",
+      ],
       credentials: true,
     })
   );
@@ -74,7 +78,7 @@ const main = async () => {
       resolvers: [PostResolver, EquipmentResolver, UserResolver],
       validate: false,
     }),
-    context: ({ req, res }): MyContext => ({ em: orm.em, req, res }),
+    context: ({ req, res }) => ({ em: orm.em, req, res }),
   });
 
   await apolloServer.start();
