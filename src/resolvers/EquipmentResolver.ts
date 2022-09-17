@@ -134,6 +134,14 @@ export class EquipmentResolver {
     return em.find(Equipment, { model: { $fulltext: searchModel } });
   }
 
+  @Query(() => [Equipment])
+  async fuzzyTextSearch(
+    @Arg("fuzzySearch", () => String) fuzzySearch: string,
+    @Ctx() { em }: MyContext
+  ) {
+    return em.find(Equipment, { model: { $like: `%${fuzzySearch}%` } });
+  }
+
   //------------------- UPDATE -----------------------
   @Mutation(() => EquipmentResponse, { nullable: true })
   async updateEquipment(
