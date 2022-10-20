@@ -1,7 +1,8 @@
 import { Entity, Index, PrimaryKey, Property } from "@mikro-orm/core";
 import { FullTextType } from "@mikro-orm/postgresql";
 import { Field, Int, ObjectType } from "type-graphql";
-import { Console } from "./Console";
+// import { IGeneric } from "./IGeneric";
+// import { Console } from "./Console";
 
 @ObjectType()
 @Entity()
@@ -20,7 +21,7 @@ export class Equipment {
   @Property({ type: "date", onUpdate: () => new Date() })
   updatedAt? = new Date();
 
-  @Field(() => Console)
+  @Field(() => String)
   @Property()
   category!: string;
 

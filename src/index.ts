@@ -6,8 +6,6 @@ import mikroOrmConfig from "./mikro-orm.config";
 import { PostResolver } from "./resolvers/PostResolver";
 import express from "express";
 import cors from "cors";
-import { EquipmentResolver } from "./resolvers/EquipmentResolver";
-import { UserResolver } from "./resolvers/UserResolver";
 import "dotenv/config";
 // import { MyContext } from "./@types/resolverTypes";
 import cookieParser from "cookie-parser";
@@ -18,6 +16,11 @@ import {
   createAccessToken,
   sendRefreshToken,
 } from "./utils/isAuth";
+import { EquipmentResolver } from "./resolvers/EquipmentResolver";
+import { UserResolver } from "./resolvers/UserResolver";
+import { ConsoleResolver } from "./resolvers/ConsoleResolver";
+import { CategoryResolver } from "./resolvers/CategoryResolver";
+import { ItemResolver } from "./resolvers/ItemResolver";
 
 const main = async () => {
   const orm = await MikroORM.init(mikroOrmConfig);
@@ -75,7 +78,14 @@ const main = async () => {
 
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
-      resolvers: [PostResolver, EquipmentResolver, UserResolver],
+      resolvers: [
+        PostResolver,
+        EquipmentResolver,
+        UserResolver,
+        ConsoleResolver,
+        CategoryResolver,
+        ItemResolver,
+      ],
       validate: false,
     }),
     context: ({ req, res }) => ({ em: orm.em, req, res }),

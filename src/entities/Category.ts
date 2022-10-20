@@ -3,12 +3,16 @@ import { Field, Int, ObjectType } from "type-graphql";
 
 @ObjectType()
 @Entity()
-export class Console {
+export class Category {
   @Field(() => Int)
   @PrimaryKey()
-  consoleId!: number;
+  categoryId: number;
 
   @Field(() => String)
-  @Property({ type: "text", unique: true })
-  manufacturer: string;
+  @Property({ unique: true })
+  categoryName: string;
+
+  // @Field()
+  // @Property({ unique: true })
+  // categoryType: CategoryType;
 }

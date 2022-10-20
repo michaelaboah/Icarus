@@ -1,10 +1,14 @@
 import { MikroORM } from "@mikro-orm/core";
 import path from "path";
 import { __prod__ } from "./constants";
-import { Console } from "./entities/Console";
+import { Category } from "./entities/Category";
+import { Item } from "./entities/Item";
 import { Equipment } from "./entities/Equipment";
+import { IEquipment } from "./entities/IEquipment";
+import { IGeneric } from "./entities/IGeneric";
 import { Post } from "./entities/Post";
 import { User } from "./entities/User";
+import { ConsoleItem } from "./entities/IConsole";
 
 export default {
   migrations: {
@@ -12,7 +16,16 @@ export default {
     glob: "!(*.d).{js,ts}",
   },
   allowGlobalContext: true,
-  entities: [Post, Equipment, User, Console],
+  entities: [
+    Post,
+    Equipment,
+    User,
+    Item,
+    Category,
+    IGeneric,
+    IEquipment,
+    ConsoleItem,
+  ],
   dbName: "athens-dev",
   type: "postgresql",
   debug: !__prod__,

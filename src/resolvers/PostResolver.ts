@@ -7,9 +7,9 @@ import {
   Mutation,
   Query,
   Resolver,
-  UseMiddleware,
+  // UseMiddleware,
 } from "type-graphql";
-import { isAuth } from "../utils/isAuth";
+// import { isAuth } from "../utils/isAuth";
 
 @Resolver()
 export class PostResolver {
@@ -27,14 +27,14 @@ export class PostResolver {
   }
 
   @Mutation(() => Post)
-  @UseMiddleware(isAuth)
+  // @UseMiddleware(isAuth)
   async createPost(
     @Arg("title", () => String) title: string,
-    @Ctx() { em, payload }: MyContext
+    @Ctx() { em }: MyContext
   ): Promise<Post | null> {
-    if (!payload) {
-      return null;
-    }
+    // if (!payload) {
+    //   return null;
+    // }
     const post = em.create(Post, { title, searchableTitle: title });
     await em.persistAndFlush(post);
     return em.findOne(Post, { title });
