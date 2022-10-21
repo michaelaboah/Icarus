@@ -1,8 +1,6 @@
 import { Entity, Enum, Property } from "@mikro-orm/core";
-// import { FullTextType } from "@mikro-orm/postgresql";
 import { Field, InputType, Int, ObjectType } from "type-graphql";
 import { MidiType, Protocol, SampleRate } from "./Enums";
-// import { IEquipment } from "./IEquipment";
 import { IGeneric } from "./IGeneric";
 
 @ObjectType()
@@ -56,7 +54,7 @@ export class ConsoleItem extends IGeneric {
 
   @Property({ nullable: true })
   @Field(() => Int)
-  netInputs: number;
+  protocolInputs: number;
 
   @Enum(() => Protocol)
   @Field(() => Protocol)
@@ -71,8 +69,8 @@ export class ConsoleItem extends IGeneric {
   max_sample_rate: SampleRate;
 
   @Property({ nullable: true })
-  @Field(() => String)
-  notes: string;
+  @Field(() => [String])
+  notes: string[];
 
   @Field(() => String)
   @Property({ type: "text", unique: true })

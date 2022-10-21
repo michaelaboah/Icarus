@@ -1,11 +1,10 @@
 import { Entity, Index, OneToOne, Property } from "@mikro-orm/core";
 import { FullTextType } from "@mikro-orm/postgresql";
-
 import { Field, ObjectType } from "type-graphql";
-import { ItemResult } from "./Enums";
-import { ConsoleItem } from "./IConsole";
-// import { ConsoleItem } from "./IConsole";
+
+import { ConsoleItem } from "./ConsoleItem";
 import { IGeneric } from "./IGeneric";
+import { ProcessingItem } from "./ProcessingItem";
 
 @ObjectType({ implements: [IGeneric] })
 @Entity()
@@ -14,9 +13,13 @@ export class Item extends IGeneric {
   @Property({ type: "text", unique: true })
   model!: string;
 
-  @Field(() => ItemResult)
-  @OneToOne()
-  details: typeof ItemResult;
+  @Field(() => ConsoleItem, { nullable: true })
+  @OneToOne({ nullable: true })
+  console?: ConsoleItem;
+
+  @Field(() => ProcessingItem, { nullable: true })
+  @OneToOne({ nullable: true })
+  processor?: ProcessingItem;
 
   @Index({ type: "fulltext" })
   @Property({

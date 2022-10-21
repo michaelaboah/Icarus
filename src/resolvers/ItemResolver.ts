@@ -10,8 +10,9 @@ import {
   Query,
 } from "type-graphql";
 import { FieldError } from "./EquipmentResolver";
-import { ConsoleItem } from "../entities/IConsole";
-import { ItemResult } from "../entities/Enums";
+import { ConsoleItem } from "../entities/ConsoleItem";
+import { ProcessingItem } from "../entities/ProcessingItem";
+
 // import { Equipment } from "../entities/Equipment";
 
 // @ObjectType({ implements: [ConsoleItem, IEquipment, IGeneric] })
@@ -29,8 +30,11 @@ export class ItemInput {
   @Field({ nullable: true })
   searchModel?: string;
 
-  @Field()
-  details: ConsoleItem;
+  @Field(() => ConsoleItem, { nullable: true })
+  console?: ConsoleItem;
+
+  @Field(() => ProcessingItem, { nullable: true })
+  processor?: ProcessingItem;
 }
 
 @ObjectType()
@@ -38,7 +42,7 @@ class ItemResponse {
   @Field(() => [FieldError], { nullable: true })
   errors?: FieldError[];
 
-  @Field(() => Item)
+  @Field(() => Item, { nullable: true })
   item?: Item;
 }
 
@@ -51,11 +55,18 @@ export class ItemResolver {
     // equipmentInput: IEquipmentInput,
     @Ctx() { em }: MyContext
   ): Promise<ItemResponse> {
-    // const equip = em.create(IEquipment, { ...equipmentInput });
-    // console.log(equip);
-    const consoleItem = em.create(Item, input);
-    await em.persistAndFlush(consoleItem);
-    return { item: consoleItem };
+    if (input.processor) {
+      const item = em.create(Item, { ...input });
+      await em.persistAndFlush(item);
+
+      return { item };
+    } else if (input.console) {
+      const item = em.create(Item, { ...input });
+      await em.persistAndFlush(item);
+      return { item };
+    }
+
+    return { ...input } as ItemResponse;
   }
   // Read
   @Query(() => ItemResponse)
@@ -79,13 +90,9 @@ export class ItemResolver {
     return { item };
   }
 
-  @Query(() => [ItemResult])
-  async findAll(@Ctx() { em }: MyContext): Promise<Array<typeof ItemResult>> {
-    const item = await em.find(Item, {});
-    console.log(item);
-    // const equip = await em.find(Equipment, {})
-
-    return [];
+  @Query(() => [ItemResponse])
+  findAllItems(@Ctx() { em }: MyContext) {
+    return em.find(Item, {});
   }
   // Update
   // Destroy

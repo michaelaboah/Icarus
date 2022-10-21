@@ -1,6 +1,6 @@
 import { createUnionType, registerEnumType } from "type-graphql";
 import { Equipment } from "./Equipment";
-import { ConsoleItem } from "./IConsole";
+import { ConsoleItem } from "./ConsoleItem";
 
 export enum SampleRate {
   SD = "44.1 kHz",

@@ -21,6 +21,7 @@ import { UserResolver } from "./resolvers/UserResolver";
 import { ConsoleResolver } from "./resolvers/ConsoleResolver";
 import { CategoryResolver } from "./resolvers/CategoryResolver";
 import { ItemResolver } from "./resolvers/ItemResolver";
+import { ProcessingResolver } from "./resolvers/ProcessingResolver";
 
 const main = async () => {
   const orm = await MikroORM.init(mikroOrmConfig);
@@ -85,6 +86,7 @@ const main = async () => {
         ConsoleResolver,
         CategoryResolver,
         ItemResolver,
+        ProcessingResolver,
       ],
       validate: false,
     }),

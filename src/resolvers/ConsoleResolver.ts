@@ -11,9 +11,8 @@ import {
 } from "type-graphql";
 import { FieldError } from "./EquipmentResolver";
 import { MidiType, Protocol, SampleRate } from "../entities/Enums";
-import { ConsoleItem } from "../entities/IConsole";
+import { ConsoleItem } from "../entities/ConsoleItem";
 
-// @ObjectType({ implements: [ConsoleItem, IEquipment, IGeneric] })
 @InputType()
 export class ConsoleInput {
   @Field(() => Int)
@@ -50,7 +49,7 @@ export class ConsoleInput {
   midi: MidiType;
 
   @Field(() => Int)
-  netInputs: number;
+  protocolInputs: number;
 
   @Field(() => Protocol)
   signalProtocol: Protocol;
@@ -61,8 +60,8 @@ export class ConsoleInput {
   @Field(() => SampleRate)
   max_sample_rate: SampleRate;
 
-  @Field(() => String)
-  notes: string;
+  @Field(() => [String])
+  notes: string[];
 
   @Field(() => String)
   model!: string;

@@ -1,5 +1,6 @@
-import { Field, ID, InputType, InterfaceType } from "type-graphql";
+import { Field, ID, InputType, InterfaceType, ObjectType } from "type-graphql";
 import { PrimaryKey, Property } from "@mikro-orm/core";
+import { Protocol } from "./Enums";
 
 @InterfaceType()
 export abstract class IGeneric {
@@ -26,4 +27,14 @@ export abstract class GenericInput {
 
   @Field()
   manufacturer: string;
+}
+
+@InputType("NetworkConnectivty")
+@ObjectType()
+export class NetworkPort {
+  @Field(() => Protocol)
+  protocol: Protocol;
+
+  @Field(() => Boolean)
+  redundant: boolean;
 }

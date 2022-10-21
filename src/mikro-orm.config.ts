@@ -8,7 +8,8 @@ import { IEquipment } from "./entities/IEquipment";
 import { IGeneric } from "./entities/IGeneric";
 import { Post } from "./entities/Post";
 import { User } from "./entities/User";
-import { ConsoleItem } from "./entities/IConsole";
+import { ConsoleItem } from "./entities/ConsoleItem";
+import { ProcessingItem } from "./entities/ProcessingItem";
 
 export default {
   migrations: {
@@ -25,6 +26,7 @@ export default {
     IGeneric,
     IEquipment,
     ConsoleItem,
+    ProcessingItem,
   ],
   dbName: "athens-dev",
   type: "postgresql",
