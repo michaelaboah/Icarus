@@ -1,6 +1,4 @@
-import { createUnionType, registerEnumType } from "type-graphql";
-import { Equipment } from "./Equipment";
-import { ConsoleItem } from "./ConsoleItem";
+import { registerEnumType } from "type-graphql";
 
 export enum SampleRate {
   SD = "44.1 kHz",
@@ -11,6 +9,20 @@ export enum SampleRate {
 registerEnumType(SampleRate, {
   name: "SampleRate",
   description: "Standard sampling rates found within the recording industry",
+  valuesConfig: {
+    SD: {
+      description:
+        "Standard-Definition or 44.1kHz Sample Rate. Used for predominately for consumer distrubution. Note: Commonly found in regular CDs.",
+    },
+    HD: {
+      description:
+        "High-Definition or 48.0kHz Sample Rate. Used for predominately for professional recording, high quality distrubution and live events. Note: Commonly found in regular Blu-Rays.",
+    },
+    UHD: {
+      description:
+        "Ultra-High-Definition or 96.0kHz Sample Rate. Used for predominately for professional recording, high quality distrubution and archival purposes. Note: Commonly found in high-end audio equipment.",
+    },
+  },
 });
 
 export enum MidiType {
@@ -21,6 +33,16 @@ export enum MidiType {
 registerEnumType(MidiType, {
   name: "MidiType",
   description: "Common types of Midi connection interfaces",
+  valuesConfig: {
+    USB: {
+      description:
+        "Connection type found in most newer equipment. *Note: Signal may not be as robust as serial.",
+    },
+    SERIAL: {
+      description:
+        "Connection type found in most older / analog equipment. *Note: Conversion is likely necessary for newer equipment.",
+    },
+  },
 });
 
 export enum Analog {
@@ -33,7 +55,30 @@ export enum Analog {
 
 registerEnumType(Analog, {
   name: "Analog",
-  description: "Common types of Analog or Copper based connections.",
+  description:
+    "Common types of Analog or Copper based connections. *Note: Generally more robust than digital counterparts, but lacks flexibility.",
+  valuesConfig: {
+    XLR_ANALOG: {
+      description:
+        "3 pin XLR connection. Most common single direction analog connection.",
+    },
+    XLR_DIGITAL: {
+      description:
+        "3 pin XLR connection. A digital connection that uses AES-3 for carrying 2 complete signals. *Note: Lower ohm rating, may not be compatible with XLR_ANALOG.",
+    },
+    TS: {
+      description:
+        "Tip-Sleeve Connection. Commonly used for musical instruments. *Note: No ground.",
+    },
+    TRS: {
+      description:
+        "Tip-Ring-Sleeve Connection. Commonly used for stereo equipment. *Note: Sleeve is ground.",
+    },
+    TRRS: {
+      description:
+        "Tip-Ring-Ring-Sleeve Connection. Commonly used for mobile audio connections. *Note: Sleeve is ground.",
+    },
+  },
 });
 
 export enum RJ45 {
@@ -51,20 +96,40 @@ export enum Protocol {
   AVB_MILAN,
   OPTOCORE,
   ULTRANET,
+  IP,
 }
 
 registerEnumType(Protocol, {
   name: "Protocol",
-  description: "Network based audio protocols.",
-});
-
-export const ItemResult = createUnionType({
-  name: "ItemResult",
-  types: () => [ConsoleItem, Equipment] as const,
-  resolveType: (value) => {
-    if (typeof value === typeof ConsoleItem) {
-      return ConsoleItem;
-    }
-    return undefined;
+  description: "Network based audio protocols and computer connections.",
+  valuesConfig: {
+    DANTE: {
+      description:
+        "Most common Audio over IP (AoI) & Audio of Ethernet (AoE) protocol. Packatizes and distributes audio signals across connected devices with low latency. Compatible with any network switch. *Note: Proprietary by Audinate",
+    },
+    AES_67: {
+      description:
+        "Technical standard of audio over IP protocol. Packatizes and distributes audio signals across connected devices with low latency. Compatible with any network switch & DANTE devices.",
+    },
+    AVB: {
+      description:
+        "Audio-Video-Bridging. Streams audio & video signals across connected devices with low latency. Compatible with selected network switchs. *Note: Open-Source",
+    },
+    AVB_MILAN: {
+      description:
+        "AVB Standardized. Streams audio & video signals across connected devices with low latency. Compatible with selected network switchs. *Note: Managed by AVNU Aliance.",
+    },
+    OPTOCORE: {
+      description:
+        "Audio over Fiber, networked & P2P systems. Streams audio signals across connected devices with low latency. Compatible with selected Optocore gear. *Note: Proprietary by Optocore.",
+    },
+    ULTRANET: {
+      description:
+        "Audio over Ethernet. Streams 16 audio signals across connected devices with low latency. Compatible with selected gear from Music Tribe child companies. *Note: Proprietary by Music Tribe.",
+    },
+    IP: {
+      description:
+        "Standard IP connection, for LAN or WAN connections. IPv4 is most commonly used for local networks and is the basis for other IP basesd protocols.",
+    },
   },
 });

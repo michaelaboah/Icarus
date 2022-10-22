@@ -28,4 +28,4 @@ export class Item extends IGeneric {
     nullable: true,
   })
   searchableModel?: string;
-}
+} 

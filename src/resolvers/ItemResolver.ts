@@ -13,9 +13,6 @@ import { FieldError } from "./EquipmentResolver";
 import { ConsoleItem } from "../entities/ConsoleItem";
 import { ProcessingItem } from "../entities/ProcessingItem";
 
-// import { Equipment } from "../entities/Equipment";
-
-// @ObjectType({ implements: [ConsoleItem, IEquipment, IGeneric] })
 @InputType()
 export class ItemInput {
   @Field()
@@ -26,6 +23,15 @@ export class ItemInput {
 
   @Field()
   manufacturer: string;
+
+  @Field(() => String)
+  publicNotes: string;
+
+  @Field(() => Number)
+  cost: number;
+
+  @Field({ nullable: true })
+  weight: number;
 
   @Field({ nullable: true })
   searchModel?: string;
@@ -51,8 +57,6 @@ export class ItemResolver {
   @Mutation(() => ItemResponse, { nullable: true })
   async createItem(
     @Arg("itemInput", () => ItemInput) input: ItemInput,
-    // @Arg("equipmentInput", () => IEquipmentInput)
-    // equipmentInput: IEquipmentInput,
     @Ctx() { em }: MyContext
   ): Promise<ItemResponse | undefined> {
     if (input.processor) {
@@ -66,7 +70,14 @@ export class ItemResolver {
       return { item };
     }
 
-    return ({ ...input } as ItemResponse) || null;
+    return {
+      errors: [
+        {
+          field: "Console Error",
+          message: `Could not find entered: ${JSON.stringify(input)} Item`,
+        },
+      ],
+    };
   }
   // Read
   @Query(() => ItemResponse)
@@ -81,7 +92,7 @@ export class ItemResolver {
         errors: [
           {
             field: "Console Error",
-            message: `Could not find entered: ${model} console`,
+            message: `Could not find entered: ${model} Item`,
           },
         ],
       };
@@ -93,6 +104,21 @@ export class ItemResolver {
   @Query(() => [ItemResponse])
   findAllItems(@Ctx() { em }: MyContext) {
     return em.find(Item, {});
+  }
+
+  @Query(() => [Item])
+  async fuzzyItemSearch(
+    @Arg("model", () => String) model: string,
+    @Ctx()
+    { em }: MyContext
+  ) {
+    const items = await em.find(
+      Item,
+      { model: { $like: `%${model}%` } },
+      { populate: true }
+    );
+
+    return items;
   }
   // Update
   // Destroy
