@@ -48,13 +48,13 @@ class ItemResponse {
 
 export class ItemResolver {
   // Create
-  @Mutation(() => ItemResponse)
+  @Mutation(() => ItemResponse, { nullable: true })
   async createItem(
     @Arg("itemInput", () => ItemInput) input: ItemInput,
     // @Arg("equipmentInput", () => IEquipmentInput)
     // equipmentInput: IEquipmentInput,
     @Ctx() { em }: MyContext
-  ): Promise<ItemResponse> {
+  ): Promise<ItemResponse | undefined> {
     if (input.processor) {
       const item = em.create(Item, { ...input });
       await em.persistAndFlush(item);
@@ -66,7 +66,7 @@ export class ItemResolver {
       return { item };
     }
 
-    return { ...input } as ItemResponse;
+    return ({ ...input } as ItemResponse) || null;
   }
   // Read
   @Query(() => ItemResponse)
@@ -74,7 +74,7 @@ export class ItemResolver {
     @Arg("model", () => String) model: string,
     @Ctx() { em }: MyContext
   ): Promise<ItemResponse> {
-    const item = await em.findOne(Item, { model });
+    const item = await em.findOne(Item, { model }, { populate: true });
 
     if (!item) {
       return {
