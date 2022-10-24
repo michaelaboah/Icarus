@@ -3,7 +3,7 @@ import { FullTextType } from "@mikro-orm/postgresql";
 import { Field, ObjectType } from "type-graphql";
 
 import { ConsoleItem } from "./ConsoleItem";
-import { IGeneric } from "./IGeneric";
+import { IGeneric } from "../EntityInterfaces/IGeneric";
 import { ProcessingItem } from "./ProcessingItem";
 
 @ObjectType({ implements: [IGeneric] })
@@ -28,4 +28,4 @@ export class Item extends IGeneric {
     nullable: true,
   })
   searchableModel?: string;
-} 
+}

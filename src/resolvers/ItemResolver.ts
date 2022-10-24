@@ -1,47 +1,8 @@
 import { MyContext } from "../@types/resolverTypes";
 import { Item } from "../entities/Item";
-import {
-  Arg,
-  Ctx,
-  Field,
-  InputType,
-  Mutation,
-  ObjectType,
-  Query,
-} from "type-graphql";
+import { Arg, Ctx, Field, Mutation, ObjectType, Query } from "type-graphql";
 import { FieldError } from "./EquipmentResolver";
-import { ConsoleItem } from "../entities/ConsoleItem";
-import { ProcessingItem } from "../entities/ProcessingItem";
-
-@InputType()
-export class ItemInput {
-  @Field()
-  category: string;
-
-  @Field()
-  model: string;
-
-  @Field()
-  manufacturer: string;
-
-  @Field(() => String)
-  publicNotes: string;
-
-  @Field(() => Number)
-  cost: number;
-
-  @Field({ nullable: true })
-  weight: number;
-
-  @Field({ nullable: true })
-  searchModel?: string;
-
-  @Field(() => ConsoleItem, { nullable: true })
-  console?: ConsoleItem;
-
-  @Field(() => ProcessingItem, { nullable: true })
-  processor?: ProcessingItem;
-}
+import { ItemInput } from "../EntityInputs/ItemInput";
 
 @ObjectType()
 class ItemResponse {

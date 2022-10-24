@@ -1,7 +1,7 @@
 import { Entity, Index, Property } from "@mikro-orm/core";
 import { FullTextType } from "@mikro-orm/postgresql";
 import { Field, ObjectType } from "type-graphql";
-import { IGeneric } from "./IGeneric";
+import { IGeneric } from "../EntityInterfaces/IGeneric";
 
 @Entity()
 @ObjectType({ implements: IGeneric })

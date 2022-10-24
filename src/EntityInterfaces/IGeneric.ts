@@ -1,13 +1,7 @@
-import {
-  Field,
-  Float,
-  ID,
-  InputType,
-  InterfaceType,
-  ObjectType,
-} from "type-graphql";
+import { Field, ID, InputType, InterfaceType, ObjectType } from "type-graphql";
 import { JsonType, PrimaryKey, Property } from "@mikro-orm/core";
-import { Protocol } from "./Enums";
+import { Protocol } from "../EntityAbstractions/Enums";
+import { Dimension } from "../EntityAbstractions/FieldObjects";
 
 @InputType()
 export abstract class GenericInput {
@@ -35,25 +29,6 @@ export class NetworkPort {
 
   @Field(() => Boolean)
   power_over_ethernet?: boolean;
-}
-
-@InputType("Dimensions", {
-  description:
-    "Inputs for Length (equivalent to Depth), Width, and height. All values are required.",
-})
-@ObjectType({
-  description:
-    "Dimensions: Used for storing physical dimentions of items for display or calculations.\n Ex: Calculating volume for bulk item storage",
-})
-export class Dimension {
-  @Field(() => Float)
-  width: number;
-
-  @Field(() => Float)
-  length: number;
-
-  @Field(() => Float)
-  height: number;
 }
 
 @InterfaceType()
@@ -84,5 +59,5 @@ export abstract class IGeneric {
 
   @Field(() => Dimension, { nullable: true })
   @Property({ type: JsonType, nullable: true })
-  dimenstions?: Dimension;
+  dimensions?: Dimension;
 }
