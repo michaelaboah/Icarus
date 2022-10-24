@@ -1,11 +1,4 @@
-import { JsonType, Property } from "@mikro-orm/core";
-import {
-  Field,
-  Float,
-  InputType,
-  InterfaceType,
-  ObjectType,
-} from "type-graphql";
+import { Field, Float, InputType, ObjectType } from "type-graphql";
 
 @InputType("Dimensions", {
   description:
@@ -24,18 +17,4 @@ export class Dimension {
 
   @Field(() => Float)
   height: number;
-}
-
-@ObjectType({ description: "An object to represent electrical capabilies" })
-export class Power {
-  // @Field(() => )
-}
-
-@InterfaceType({
-  description: "A type for implementing qualities of an electrical item.",
-})
-export abstract class IElectrical {
-  @Field(() => [])
-  @Property({ type: JsonType })
-  power_capabilites: Power;
 }

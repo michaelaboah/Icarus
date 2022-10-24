@@ -1,10 +1,10 @@
 import { Property } from "@mikro-orm/core";
-import { InterfaceType, Field, Int } from "type-graphql";
+import { Field, Int, ObjectType } from "type-graphql";
 
-@InterfaceType({
+@ObjectType({
   description: "A type for implementing qualities of a rackable item.",
 })
-export abstract class IRackable {
+export class IRackable {
   @Field(() => Int, {
     nullable: true,
     description:

@@ -1,4 +1,5 @@
 import { Entity, Enum, Property } from "@mikro-orm/core";
+import { IElectrical } from "../EntityInterfaces/IElectrical";
 import { Field, Int, ObjectType } from "type-graphql";
 import { MidiType, Protocol, SampleRate } from "../EntityAbstractions/Enums";
 import { IGeneric } from "../EntityInterfaces/IGeneric";
@@ -74,10 +75,7 @@ export class ConsoleItem extends IGeneric {
   @Property({ type: "text", unique: true })
   model!: string;
 
-  // @Index({ type: "fulltext" })
-  // @Property({
-  //   type: FullTextType,
-  //   onUpdate: (equipment: IEquipment) => equipment.model,
-  // })
-  // searchableModel?: string;
+  @Property({ nullable: true })
+  @Field(() => IElectrical)
+  power: IElectrical;
 }

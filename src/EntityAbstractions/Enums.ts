@@ -81,13 +81,71 @@ registerEnumType(Analog, {
   },
 });
 
-export enum RJ45 {
-  DANTE,
-  AVB,
-  AVB_MILAN,
-  AES67,
-  ULTRANET,
+// Add 4 wire later
+export enum PowerConnector {
+  IEC,
+  EDISON,
+  EDISON_20A,
+  POWERCON_20A,
+  POWERCON_32A,
+  POWERCON_TRUE1,
+  POWERCON_TRUE1_TOP,
+  L6_20,
+  L6_30,
+  L6_50,
+  L6_60,
 }
+
+registerEnumType(PowerConnector, {
+  name: "PowerConnector",
+  description: "Common connector types for power input/output.",
+  valuesConfig: {
+    IEC: {
+      description:
+        "Most common general purpose connector for connecting electrical equipment to a powersource. Max voltage: 250V. Max amperage: 16A",
+    },
+    EDISON: {
+      description:
+        "Most common general purpose connector to draw electricity from a powersource. Max voltage: 120. Max amperage: 15A",
+    },
+    EDISON_20A: {
+      description:
+        "Similar to an EDISON plug, but with a higher max amperage. Max voltage: 120. Max amperage: 20A",
+    },
+    POWERCON_20A: {
+      description:
+        "Most common general purpose connector for live electrical connections. Designed for rugged applications. Max voltage: 250V. Max amperage: 20A. *Note: CANNOT be disconnected under live load.",
+    },
+    POWERCON_32A: {
+      description:
+        "An extremely robust and reliable locking single phase AC appliance cable connector for high current capacity. Max voltage: 250V. Max amperage: 32A. *Note: CANNOT be disconnected under live load.",
+    },
+    POWERCON_TRUE1: {
+      description:
+        "Locking connector for outdoor live electrical connections. Designed for rugged applications. Max voltage: 250V. Max amperage: 20A. *Note: CAN be disconnected under live load.",
+    },
+    POWERCON_TRUE1_TOP: {
+      description:
+        "Successor to POWERCON_TRUE1. Designed for rugged, outdoor, live, applications. Max voltage: 250V. Max amperage: 20A. *Note: CAN be disconnected under live load.",
+    },
+    L6_20: {
+      description:
+        "High voltage locking connector, the 20 stands for 20 Amps. Max voltage: 250V. *Note: Also known as 3-Wire",
+    },
+    L6_30: {
+      description:
+        "High voltage locking connector, the 30 stands for 30 Amps. Max voltage: 250V. *Note: Also known as 3-Wire",
+    },
+    L6_50: {
+      description:
+        "High voltage locking connector, the 50 stands for 50 Amps. Max voltage: 250V. *Note: Also known as 3-Wire",
+    },
+    L6_60: {
+      description:
+        "High voltage locking connector, the 60 stands for 60 Amps. Max voltage: 250V. *Note: Also known as 3-Wire",
+    },
+  },
+});
 
 export enum Protocol {
   DANTE,

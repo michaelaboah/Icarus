@@ -1,10 +1,10 @@
 import { Entity, Enum, JsonType, Property } from "@mikro-orm/core";
-import { Field, InputType, Int, ObjectType } from "type-graphql";
+import { IElectrical } from "../EntityInterfaces/IElectrical";
+import { Field, Int, ObjectType } from "type-graphql";
 import { MidiType, Protocol, SampleRate } from "../EntityAbstractions/Enums";
 import { IGeneric, NetworkPort } from "../EntityInterfaces/IGeneric";
 
 @ObjectType()
-@InputType("ProcessingInputTest")
 @Entity()
 export class ProcessingItem extends IGeneric {
   @Field(() => Int)
@@ -42,4 +42,8 @@ export class ProcessingItem extends IGeneric {
   @Property({ type: JsonType, nullable: true })
   @Field(() => [NetworkPort])
   network_connectivity: NetworkPort[];
+
+  @Field(() => IElectrical)
+  @Property({ type: JsonType, nullable: true })
+  power: IElectrical;
 }

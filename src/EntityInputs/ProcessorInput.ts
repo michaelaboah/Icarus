@@ -2,6 +2,7 @@ import { Property, Enum } from "@mikro-orm/core";
 import { MidiType, Protocol, SampleRate } from "../EntityAbstractions/Enums";
 import { NetworkPort } from "../EntityInterfaces/IGeneric";
 import { InputType, Field, Int } from "type-graphql";
+import { IElectrical } from "../EntityInterfaces/IElectrical";
 
 @InputType()
 export class ProcessorInput {
@@ -40,4 +41,8 @@ export class ProcessorInput {
   @Property({ nullable: true })
   @Field(() => [NetworkPort])
   network_connectivity: NetworkPort[];
+
+  @Property({ nullable: true })
+  @Field(() => IElectrical)
+  power: IElectrical;
 }
