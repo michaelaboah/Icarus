@@ -4,6 +4,7 @@ import { Arg, Ctx, Field, Mutation, ObjectType, Query } from "type-graphql";
 import { FieldError } from "./EquipmentResolver";
 import { ItemInput } from "../EntityInputs/ItemInput";
 import { wrap } from "@mikro-orm/core";
+import { SubItems } from "../EntityAbstractions/Enums";
 
 @ObjectType()
 class ItemResponse {
@@ -90,8 +91,18 @@ export class ItemResolver {
     @Arg("edits", () => ItemInput) edits: ItemInput,
     @Ctx() { em }: MyContext
   ) {
-    const item = await em.findOneOrFail(Item, { model });
-    wrap(item).assign({ ...edits });
+    const item = await em.findOneOrFail(Item, { model }, { populate: true });
+
+    const sub_items = Object.keys(SubItems).map((x) => x.toLowerCase());
+    Object.entries(item).forEach(([key, val]) => {
+      if (sub_items.includes(key) && val !== null) {
+        wrap(item).assign(
+          { id: 1, ...edits, [key]: { ...val } },
+          { updateByPrimaryKey: false }
+        );
+      }
+    });
+
     await em.flush();
     return { item };
   }

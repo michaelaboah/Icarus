@@ -1,5 +1,18 @@
 import { registerEnumType } from "type-graphql";
 
+export enum SubItems {
+  CONSOLE,
+  PROCESSOR,
+  MONITORING,
+  SPEAKER,
+  AMPLIFIER,
+  COMPUTER,
+  NETWORK,
+  RADIO,
+  MICROPHONES,
+  SPK_HARDWARE,
+}
+
 export enum SampleRate {
   SD = "44.1 kHz",
   HD = "48 kHz",
