@@ -1,6 +1,5 @@
 import { MidiType, Protocol, SampleRate } from "../EntityAbstractions/Enums";
 import { InputType, Field, Int } from "type-graphql";
-import { Property } from "@mikro-orm/core";
 import { IElectrical } from "../EntityInterfaces/IElectrical";
 
 @InputType()
@@ -59,7 +58,6 @@ export class ConsoleInput {
   @Field({ nullable: true })
   searchModel: string;
 
-  @Property({ nullable: true })
   @Field(() => IElectrical)
   power: IElectrical;
 }

@@ -1,10 +1,9 @@
-import { Property } from "@mikro-orm/core";
 import { PowerConnector } from "../EntityAbstractions/Enums";
 import {
   Field,
   Float,
   InputType,
-  InterfaceType,
+  //   InterfaceType,
   ObjectType,
 } from "type-graphql";
 
@@ -12,8 +11,11 @@ import {
   description:
     "Interface for items with potential electrical capabilies. Stored as JSONType.",
 })
-@InputType("ElectricalInput")
-@InterfaceType()
+@InputType("ElectricalInput", {
+  description:
+    "Input for the electrical properties of an Item, only available in select Item type. Ex: ProcessorItem or ConsoleItem",
+})
+// @InterfaceType()
 export class IElectrical {
   @Field(() => Float, {
     description:
@@ -27,11 +29,6 @@ export class IElectrical {
   })
   upper_voltage?: number;
 
-  @Field(() => String, {
-    description:
-      "Electrical equipment tend to support the typical frequencies found in power mains. 50hz for most of the world and 60hz for the USA.",
-  })
-  @Property({ nullable: true, default: "50-60" })
   @Field(() => Float, {
     description:
       "Electrical equipment must have a wattage. Ex: 15A. *Note: Please convert Volt-Amperes (VA) to wattage (A).",

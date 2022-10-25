@@ -3,6 +3,7 @@ import { Item } from "../entities/Item";
 import { Arg, Ctx, Field, Mutation, ObjectType, Query } from "type-graphql";
 import { FieldError } from "./EquipmentResolver";
 import { ItemInput } from "../EntityInputs/ItemInput";
+import { wrap } from "@mikro-orm/core";
 
 @ObjectType()
 class ItemResponse {
@@ -82,5 +83,17 @@ export class ItemResolver {
     return items;
   }
   // Update
+
+  @Mutation(() => ItemResponse)
+  async updateItem(
+    @Arg("model", () => String) model: string,
+    @Arg("edits", () => ItemInput) edits: ItemInput,
+    @Ctx() { em }: MyContext
+  ) {
+    const item = await em.findOneOrFail(Item, { model });
+    wrap(item).assign({ ...edits });
+    await em.flush();
+    return { item };
+  }
   // Destroy
 }
