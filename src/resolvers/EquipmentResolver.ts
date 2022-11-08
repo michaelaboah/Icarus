@@ -128,6 +128,14 @@ export class EquipmentResolver {
   }
 
   // Full Text Search
+  // @Query(() => [Equipment])
+  // fullTextSearch(
+  //   @Arg("fullSearch", () => String) fullSearch: string, // this might break
+  //   @Ctx() { em }: MyContext
+  // ) {
+  //   return em.find(Equipment, { model: { $fulltext: fullSearch } });
+  // }
+
   @Query(() => [Equipment])
   fullTextSearch(
     @Arg("fullSearch", () => String) fullSearch: string, // this might break
