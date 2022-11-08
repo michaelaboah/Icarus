@@ -34,6 +34,7 @@ const main = async () => {
         "http://localhost:3000",
         "https://studio.apollographql.com",
         "http://localhost:5000",
+        "http://localhost:1420",
       ],
       credentials: true,
     })

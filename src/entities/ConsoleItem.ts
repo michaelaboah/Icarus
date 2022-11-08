@@ -10,6 +10,7 @@ export class ConsoleItem extends IGeneric {
   @Field(() => Int)
   @Property()
   totalInputs: number;
+  
 
   @Field(() => Int)
   @Property()

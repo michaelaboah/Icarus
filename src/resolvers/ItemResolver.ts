@@ -8,18 +8,29 @@ import { SubItems } from "../EntityAbstractions/Enums";
 
 @ObjectType()
 class ItemResponse {
-  @Field(() => [FieldError], { nullable: true })
+  @Field(() => [FieldError], {
+    nullable: true,
+    description:
+      "Potential list of errors that can be generated from a Query or Mutation",
+  })
   errors?: FieldError[];
 
-  @Field(() => Item, { nullable: true })
+  @Field(() => Item, {
+    nullable: true,
+    description:
+      "Potential Item that comes back as result of a successful Query or Mutation.",
+  })
   item?: Item;
 }
 
 export class ItemResolver {
   // Create
-  @Mutation(() => ItemResponse, { nullable: true })
+  @Mutation(() => ItemResponse, {
+    nullable: true,
+    description: "Create a new item with optional subfields.",
+  })
   async createItem(
-    @Arg("itemInput", () => ItemInput) input: ItemInput,
+    @Arg("itemInput", () => ItemInput, { description: "" }) input: ItemInput,
     @Ctx() { em }: MyContext
   ): Promise<ItemResponse | undefined> {
     if (input.processor) {
@@ -43,7 +54,9 @@ export class ItemResolver {
     };
   }
   // Read
-  @Query(() => ItemResponse)
+  @Query(() => ItemResponse, {
+    description: "Using the complete model name find one value.",
+  })
   async findItem(
     @Arg("model", () => String) model: string,
     @Ctx() { em }: MyContext
@@ -85,7 +98,10 @@ export class ItemResolver {
   }
   // Update
 
-  @Mutation(() => ItemResponse)
+  @Mutation(() => ItemResponse, {
+    description:
+      "Update an Item using the exact model name and edit all of the fields.",
+  })
   async updateItem(
     @Arg("model", () => String) model: string,
     @Arg("edits", () => ItemInput) edits: ItemInput,
