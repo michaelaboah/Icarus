@@ -1,6 +1,6 @@
 import { registerEnumType } from "type-graphql";
 
-export enum SubItems {
+export enum Categories {
   CONSOLE,
   PROCESSOR,
   MONITORING,
@@ -11,7 +11,13 @@ export enum SubItems {
   RADIO,
   MICROPHONES,
   SPK_HARDWARE,
+  GENERIC
 }
+
+registerEnumType(Categories, {
+  name: "Categories",
+  description: "Possible category that an Item can be apart of."
+})
 
 export enum SampleRate {
   SD = "44.1 kHz",
