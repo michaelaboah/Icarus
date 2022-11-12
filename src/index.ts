@@ -31,10 +31,11 @@ const main = async () => {
   app.use(
     cors({
       origin: [
-        "http://localhost:3000",
+        "http://localhost:1420",
         "https://studio.apollographql.com",
         "http://localhost:5000",
-        "http://localhost:1420",
+          // Dev Macbook Pro
+        "http://10.0.0.56:1420",
       ],
       credentials: true,
     })

@@ -29,6 +29,8 @@ export default {
     ProcessingItem,
   ],
   dbName: "athens-dev",
+  user: "pi",
+  password: "dev",
   type: "postgresql",
   debug: !__prod__,
 } as Parameters<typeof MikroORM.init>[0];
