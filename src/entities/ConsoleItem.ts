@@ -1,17 +1,20 @@
-import { Entity, Enum, Property } from "@mikro-orm/core";
+import { Entity, Enum, JsonType, PrimaryKey, Property } from "@mikro-orm/core";
 import { IElectrical } from "../EntityInterfaces/IElectrical";
-import { Field, Int, ObjectType } from "type-graphql";
+import { Field, ID, Int, ObjectType } from "type-graphql";
 import { MidiType, Protocol, SampleRate } from "../EntityAbstractions/Enums";
-import { IGeneric } from "../EntityInterfaces/IGeneric";
+
 
 @ObjectType()
 @Entity()
-export class ConsoleItem extends IGeneric {
+export class ConsoleItem {
+  @Field(() => ID)
+  @PrimaryKey()
+  id!: number;
+
   @Field(() => Int)
   @Property()
   totalInputs: number;
   
-
   @Field(() => Int)
   @Property()
   totalOutputs: number;
@@ -48,8 +51,8 @@ export class ConsoleItem extends IGeneric {
   @Property()
   motorized: boolean;
 
-  @Property({ nullable: true })
-  @Field((_type) => MidiType)
+  @Enum(() => MidiType)
+  @Field(() => MidiType)
   midi: MidiType;
 
   @Property({ nullable: true })
@@ -64,7 +67,7 @@ export class ConsoleItem extends IGeneric {
   @Field(() => Boolean)
   can_expand: boolean;
 
-  @Property({})
+  @Enum(() => SampleRate)
   @Field(() => SampleRate)
   max_sample_rate: SampleRate;
 
@@ -72,11 +75,7 @@ export class ConsoleItem extends IGeneric {
   @Field(() => [String])
   notes: string[];
 
-  @Field(() => String)
-  @Property({ type: "text", unique: true })
-  model!: string;
-
-  @Property({ nullable: true })
+  @Property({ nullable: true, type: JsonType })
   @Field(() => IElectrical)
   power: IElectrical;
 }

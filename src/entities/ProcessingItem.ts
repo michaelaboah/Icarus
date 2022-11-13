@@ -1,12 +1,16 @@
-import { Entity, Enum, JsonType, Property } from "@mikro-orm/core";
+import { Entity, Enum, JsonType, PrimaryKey, Property } from "@mikro-orm/core";
 import { IElectrical } from "../EntityInterfaces/IElectrical";
-import { Field, Int, ObjectType } from "type-graphql";
+import { Field, ID, Int, ObjectType } from "type-graphql";
 import { MidiType, Protocol, SampleRate } from "../EntityAbstractions/Enums";
-import { IGeneric, NetworkPort } from "../EntityInterfaces/IGeneric";
+import { NetworkPort } from "../EntityInterfaces/IGeneric";
 
 @ObjectType()
 @Entity()
-export class ProcessingItem extends IGeneric {
+export class ProcessingItem  {
+  @Field(() => ID)
+  @PrimaryKey()
+  id!: number;
+
   @Field(() => Int)
   @Property()
   totalInputs: number;
@@ -35,7 +39,7 @@ export class ProcessingItem extends IGeneric {
   @Field(() => Protocol)
   signalProtocol: Protocol;
 
-  @Property({})
+  @Enum(() => SampleRate)
   @Field(() => SampleRate)
   max_sample_rate: SampleRate;
 
