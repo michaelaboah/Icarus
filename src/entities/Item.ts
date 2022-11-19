@@ -6,6 +6,7 @@ import { IGeneric } from "../EntityInterfaces/IGeneric";
 import { Categories } from "../EntityAbstractions/Enums";
 import { AmplifierItem } from "./categories/AmplifierItem";
 import { ProcessingItem } from "./categories/ProcessingItem";
+import { ComputerItem } from "./categories/ComputerItem";
 
 @ObjectType({ implements: [IGeneric] })
 @Entity()
@@ -25,6 +26,10 @@ export class Item extends IGeneric {
   @Field(() => ConsoleItem, { nullable: true })
   @OneToOne({ nullable: true })
   console?: ConsoleItem;
+
+  @Field(() => ComputerItem, { nullable: true })
+  @OneToOne({ nullable: true })
+  computer?: ComputerItem;
 
   @Field(() => ProcessingItem, { nullable: true })
   @OneToOne({ nullable: true })

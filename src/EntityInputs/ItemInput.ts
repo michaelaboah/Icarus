@@ -7,6 +7,8 @@ import { Categories } from "../EntityAbstractions/Enums";
 import { AmplifierInput } from "./AmplifierInput";
 import { AmplifierItem } from "../entities/categories/AmplifierItem";
 import { ProcessingItem } from "../entities/categories/ProcessingItem";
+import { ComputerItem } from "../entities/categories/ComputerItem";
+import { ComputerInput } from "./ComputerInput";
 
 @InputType()
 export class ItemInput {
@@ -37,6 +39,9 @@ export class ItemInput {
   @Field(() => ConsoleInput, { nullable: true })
   console?: ConsoleItem;
 
+  @Field(() => ComputerInput, { nullable: true })
+  computer?: ComputerItem;
+
   @Field(() => ProcessorInput, { nullable: true })
   processor?: ProcessingItem;
 }
@@ -64,8 +69,14 @@ export class ItemInputEdit {
   @Field({ nullable: true })
   searchModel?: string;
 
+  @Field(() => AmplifierInput, { nullable: true })
+  amplifier?: AmplifierItem;
+
   @Field(() => ConsoleInput, { nullable: true })
   console?: ConsoleItem;
+
+  @Field(() => ComputerInput, { nullable: true })
+  computer?: ComputerItem;
 
   @Field(() => ProcessorInput, { nullable: true })
   processor?: ProcessingItem;

@@ -10,6 +10,7 @@ import { User } from "./entities/User";
 import { ConsoleItem } from "./entities/categories/ConsoleItem";
 import { AmplifierItem } from "./entities/categories/AmplifierItem";
 import { ProcessingItem } from "./entities/categories/ProcessingItem";
+import { ComputerItem } from "./entities/categories/ComputerItem";
 
 export default {
   migrations: {
@@ -26,6 +27,7 @@ export default {
     IEquipment,
     AmplifierItem,
     ConsoleItem,
+    ComputerItem,
     ProcessingItem,
   ],
   dbName: "athens-dev",

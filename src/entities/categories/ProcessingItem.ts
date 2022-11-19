@@ -27,8 +27,8 @@ export class ProcessingItem {
   @Property()
   physicalOutputs: number;
 
-  @Property({ nullable: true })
   @Field((_type) => MidiType)
+  @Enum({ items: () => MidiType, nullable: true })
   midi?: MidiType;
 
   @Property({ nullable: true })

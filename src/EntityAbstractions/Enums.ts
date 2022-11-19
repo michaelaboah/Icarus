@@ -215,3 +215,21 @@ registerEnumType(Protocol, {
     },
   },
 });
+
+export enum ComputerPorts {
+  USB_A,
+  USB_B,
+  USB_C,
+  HDMI,
+  MINI_HDMI,
+  DISPLAYPORT,
+  MINI_DISPLAYPORT,
+  MIRCO_B,
+  SD_CARD,
+  FIREWIRE,
+}
+
+registerEnumType(ComputerPorts, {
+  name: "Computer Ports",
+  description: "An array representation of the ports available on a computer.",
+});
