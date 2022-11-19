@@ -35,7 +35,7 @@ const main = async () => {
         "https://studio.apollographql.com",
         "http://localhost:5000",
           // Dev Macbook Pro
-        "http://10.0.0.56:1420",
+        "http://10.0.0.*",
       ],
       credentials: true,
     })

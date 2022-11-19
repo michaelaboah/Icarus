@@ -1,11 +1,22 @@
-import { Entity, Index, Property } from "@mikro-orm/core";
+import { Entity, Index, PrimaryKey, Property } from "@mikro-orm/core";
 import { FullTextType } from "@mikro-orm/postgresql";
-import { Field, ObjectType } from "type-graphql";
-import { IGeneric } from "../EntityInterfaces/IGeneric";
+import { Field, Int, ObjectType } from "type-graphql";
 
 @Entity()
-@ObjectType({ implements: IGeneric })
-export class Post extends IGeneric {
+@ObjectType()
+export class Post {
+  @Field(() => Int)
+  @PrimaryKey()
+  id!: number;
+
+  @Field(() => String, { description: "Store when item was created." })
+  @Property({ type: "date", default: "NOW()" })
+  createdAt? = new Date();
+
+  @Field(() => String, { description: "Store when item was last changed." })
+  @Property({ type: "date", onUpdate: () => new Date() })
+  updatedAt? = new Date();
+
   @Field(() => String)
   @Property()
   title!: string;

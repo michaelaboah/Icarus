@@ -15,11 +15,11 @@ export class IEquipment extends IGeneric {
 
   @Field(() => String, { nullable: true })
   @Property({ type: "text", nullable: true })
-  publicNotes?: string;
+  publicNotes: string;
 
   @Field(() => Number, { nullable: true })
   @Property({ type: "double", nullable: true })
-  cost?: number;
+  cost: number;
 
   @Field(() => Number, { nullable: true })
   @Property({ type: "double", nullable: true })

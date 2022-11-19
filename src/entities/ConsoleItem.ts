@@ -1,13 +1,13 @@
 import { Entity, Enum, JsonType, PrimaryKey, Property } from "@mikro-orm/core";
 import { IElectrical } from "../EntityInterfaces/IElectrical";
-import { Field, ID, Int, ObjectType } from "type-graphql";
+import { Field, Int, ObjectType } from "type-graphql";
 import { MidiType, Protocol, SampleRate } from "../EntityAbstractions/Enums";
 
 
 @ObjectType()
 @Entity()
 export class ConsoleItem {
-  @Field(() => ID)
+  @Field(() => Int)
   @PrimaryKey()
   id!: number;
 

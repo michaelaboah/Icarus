@@ -1,4 +1,4 @@
-import { Field, ID, InputType, InterfaceType, ObjectType } from "type-graphql";
+import { Field, InputType, Int, InterfaceType, ObjectType } from "type-graphql";
 import { JsonType, PrimaryKey, Property } from "@mikro-orm/core";
 import { Protocol } from "../EntityAbstractions/Enums";
 import { Dimension } from "../EntityAbstractions/FieldObjects";
@@ -33,7 +33,7 @@ export class NetworkPort {
 
 @InterfaceType()
 export abstract class IGeneric {
-  @Field(() => ID)
+  @Field(() => Int)
   @PrimaryKey()
   id!: number;
 
@@ -50,14 +50,14 @@ export abstract class IGeneric {
     description: "Global notes for current item.",
   })
   @Property({ type: "text", nullable: true })
-  publicNotes?: string;
+  publicNotes: string;
 
   @Field(() => Number, {
     nullable: true,
     description: "Monetary value of item (in $USD).",
   })
   @Property({ type: "double", nullable: true })
-  cost?: number;
+  cost: number;
 
   @Field(() => Number, {
     nullable: true,
