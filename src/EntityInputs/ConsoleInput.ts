@@ -1,6 +1,6 @@
 import { MidiType, Protocol, SampleRate } from "../EntityAbstractions/Enums";
 import { InputType, Field, Int } from "type-graphql";
-import { IElectrical } from "../EntityInterfaces/IElectrical";
+import { IElectrical } from "../EntityAbstractions/IElectrical";
 
 @InputType()
 export class ConsoleInput {

@@ -1,12 +1,12 @@
 import { Entity, Enum, JsonType, PrimaryKey, Property } from "@mikro-orm/core";
-import { IElectrical } from "../EntityInterfaces/IElectrical";
+import { IElectrical } from "../EntityAbstractions/IElectrical";
 import { Field, Int, ObjectType } from "type-graphql";
 import { MidiType, Protocol, SampleRate } from "../EntityAbstractions/Enums";
-import { NetworkPort } from "../EntityInterfaces/IGeneric";
+import { NetworkPort } from "../EntityAbstractions/FieldObjects";
 
 @ObjectType()
 @Entity()
-export class ProcessingItem  {
+export class ProcessingItem {
   @Field(() => Int)
   @PrimaryKey()
   id!: number;

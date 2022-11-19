@@ -1,4 +1,5 @@
-import { Field, Float, InputType, ObjectType } from "type-graphql";
+import { Field, Float, InputType, Int, ObjectType } from "type-graphql";
+import { Analog, Protocol } from "./Enums";
 
 @InputType("Dimensions", {
   description:
@@ -17,4 +18,39 @@ export class Dimension {
 
   @Field(() => Float)
   height: number;
+}
+
+@InputType("NetworkConnectivty", {
+  description:
+    "Addition of network ports. Various Protocols are handled via the: (Protocol Enummeration)",
+})
+@ObjectType({
+  description:
+    "Represents RJ45 or Ethernet ports for network capable equipment. Each object represents a singular port",
+})
+export class NetworkPort {
+  @Field(() => Protocol)
+  protocol: Protocol;
+
+  @Field(() => Boolean)
+  power_over_ethernet?: boolean;
+}
+
+@InputType("PhysicalConnectivty", {
+  description:
+    "Addition of physical ports. Various Protocols are handled via the: (Analog Enummeration)",
+})
+@ObjectType({
+  description:
+    "Represents Analog for capable equipment. Each object represents a singular port.",
+})
+export class PhysicalPort {
+  @Field(() => Analog)
+  connector_type: Analog;
+
+  @Field(() => Int)
+  signal_lines: number;
+
+  @Field(() => Boolean)
+  input: boolean;
 }

@@ -10,6 +10,7 @@ import { Post } from "./entities/Post";
 import { User } from "./entities/User";
 import { ConsoleItem } from "./entities/ConsoleItem";
 import { ProcessingItem } from "./entities/ProcessingItem";
+import { AmplifierItem } from "./entities/AmplifierItem";
 
 export default {
   migrations: {
@@ -25,12 +26,13 @@ export default {
     Category,
     IGeneric,
     IEquipment,
+    AmplifierItem,
     ConsoleItem,
     ProcessingItem,
   ],
   dbName: "athens-dev",
-  user: "pi",
-  password: "dev",
+  // user: "pi",
+  // password: "dev",
   type: "postgresql",
   debug: !__prod__,
 } as Parameters<typeof MikroORM.init>[0];

@@ -1,38 +1,33 @@
-import { Enum } from "@mikro-orm/core";
 import { MidiType, Protocol, SampleRate } from "../EntityAbstractions/Enums";
 import { InputType, Field, Int } from "type-graphql";
 import { IElectrical } from "../EntityAbstractions/IElectrical";
-import { NetworkPort } from "../EntityAbstractions/FieldObjects";
+import { PhysicalPort, NetworkPort } from "../EntityAbstractions/FieldObjects";
 
 @InputType()
-export class ProcessorInput {
+export class AmplifierInput {
   @Field(() => Int)
   totalInputs: number;
 
   @Field(() => Int)
   totalOutputs: number;
 
-  @Field(() => Int)
-  physicalInputs: number;
+  @Field(() => MidiType)
+  midi: MidiType;
 
-  @Field(() => Int)
-  physicalOutputs: number;
+  @Field(() => [PhysicalPort])
+  physical_connectivity: PhysicalPort[];
 
-  @Field((_type) => MidiType, { nullable: true })
-  midi?: MidiType;
+  @Field(() => [NetworkPort])
+  network_connectivity: NetworkPort[];
 
-  @Field(() => Int)
-  protocolInputs: number;
-
-  @Enum(() => Protocol)
   @Field(() => Protocol)
   signalProtocol: Protocol;
 
   @Field(() => SampleRate)
   max_sample_rate: SampleRate;
 
-  @Field(() => [NetworkPort])
-  network_connectivity: NetworkPort[];
+  @Field(() => [String])
+  notes: string[];
 
   @Field(() => IElectrical)
   power: IElectrical;

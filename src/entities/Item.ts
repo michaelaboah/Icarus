@@ -6,6 +6,7 @@ import { ConsoleItem } from "./ConsoleItem";
 import { IGeneric } from "../EntityInterfaces/IGeneric";
 import { ProcessingItem } from "./ProcessingItem";
 import { Categories } from "../EntityAbstractions/Enums";
+import { AmplifierItem } from "./AmplifierItem";
 
 @ObjectType({ implements: [IGeneric] })
 @Entity()
@@ -17,6 +18,10 @@ export class Item extends IGeneric {
   @Enum(() => Categories)
   @Field(() => Categories)
   category!: Categories;
+
+  @Field(() => AmplifierItem, { nullable: true })
+  @OneToOne({ nullable: true })
+  amplifier?: AmplifierItem;
 
   @Field(() => ConsoleItem, { nullable: true })
   @OneToOne({ nullable: true })

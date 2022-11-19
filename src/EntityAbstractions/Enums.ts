@@ -11,13 +11,13 @@ export enum Categories {
   RADIO,
   MICROPHONES,
   SPK_HARDWARE,
-  GENERIC
+  GENERIC,
 }
 
 registerEnumType(Categories, {
   name: "Categories",
-  description: "Possible category that an Item can be apart of."
-})
+  description: "Possible category that an Item can be apart of.",
+});
 
 export enum SampleRate {
   SD = "44.1 kHz",
@@ -70,6 +70,11 @@ export enum Analog {
   TS,
   TRS,
   TRRS,
+  TRI_PIN_PHOENIX,
+  DUAL_PIN_PHOENIX,
+  NL2,
+  NL4,
+  NL8,
 }
 
 registerEnumType(Analog, {

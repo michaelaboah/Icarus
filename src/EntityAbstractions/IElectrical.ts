@@ -1,4 +1,4 @@
-import { PowerConnector } from "../EntityAbstractions/Enums";
+import { PowerConnector } from "./Enums";
 import {
   Field,
   Float,

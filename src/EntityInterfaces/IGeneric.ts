@@ -1,6 +1,5 @@
-import { Field, InputType, Int, InterfaceType, ObjectType } from "type-graphql";
+import { Field, InputType, Int, InterfaceType } from "type-graphql";
 import { JsonType, PrimaryKey, Property } from "@mikro-orm/core";
-import { Protocol } from "../EntityAbstractions/Enums";
 import { Dimension } from "../EntityAbstractions/FieldObjects";
 
 @InputType()
@@ -13,22 +12,6 @@ export abstract class GenericInput {
 
   @Field()
   manufacturer: string;
-}
-
-@InputType("NetworkConnectivty", {
-  description:
-    "Addition of network ports. Various Protocols are handled via the: (Protocol Enummeration)",
-})
-@ObjectType({
-  description:
-    "Represents RJ45 or Ethernet ports for network capable equipment. Each object represents a singular port",
-})
-export class NetworkPort {
-  @Field(() => Protocol)
-  protocol: Protocol;
-
-  @Field(() => Boolean)
-  power_over_ethernet?: boolean;
 }
 
 @InterfaceType()

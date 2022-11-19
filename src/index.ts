@@ -1,3 +1,5 @@
+// Port 5432 is Postgres!!!
+
 import { MikroORM } from "@mikro-orm/core";
 import { __port__, __prod__, __sessionSecret__ } from "./constants";
 import { ApolloServer } from "apollo-server-express";
@@ -34,7 +36,7 @@ const main = async () => {
         "http://localhost:1420",
         "https://studio.apollographql.com",
         "http://localhost:5000",
-          // Dev Macbook Pro
+        // Dev Macbook Pro
         "http://10.0.0.*",
       ],
       credentials: true,

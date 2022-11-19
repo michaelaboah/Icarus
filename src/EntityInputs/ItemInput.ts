@@ -4,6 +4,8 @@ import { InputType, Field } from "type-graphql";
 import { ProcessorInput } from "./ProcessorInput";
 import { ConsoleInput } from "./ConsoleInput";
 import { Categories } from "../EntityAbstractions/Enums";
+import { AmplifierInput } from "./AmplifierInput";
+import { AmplifierItem } from "../entities/AmplifierItem";
 
 @InputType()
 export class ItemInput {
@@ -28,13 +30,15 @@ export class ItemInput {
   @Field({ nullable: true })
   searchModel?: string;
 
+  @Field(() => AmplifierInput, { nullable: true })
+  amplifier?: AmplifierItem;
+
   @Field(() => ConsoleInput, { nullable: true })
   console?: ConsoleItem;
 
   @Field(() => ProcessorInput, { nullable: true })
   processor?: ProcessingItem;
 }
-
 
 @InputType()
 export class ItemInputEdit {
