@@ -1,7 +1,7 @@
 import { MyContext } from "../@types/resolverTypes";
 import { Arg, Ctx, Field, Mutation, ObjectType, Query } from "type-graphql";
 import { FieldError } from "./EquipmentResolver";
-import { ConsoleItem } from "../entities/ConsoleItem";
+import { ConsoleItem } from "../entities/categories/ConsoleItem";
 import { ConsoleInput } from "../EntityInputs/ConsoleInput";
 
 @ObjectType()

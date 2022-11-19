@@ -1,8 +1,9 @@
 import { MyContext } from "../@types/resolverTypes";
 import { Arg, Ctx, Field, Mutation, ObjectType, Query } from "type-graphql";
 import { FieldError } from "./EquipmentResolver";
-import { ProcessingItem } from "../entities/ProcessingItem";
+
 import { ProcessorInput } from "../EntityInputs/ProcessorInput";
+import { ProcessingItem } from "../entities/categories/ProcessingItem";
 
 @ObjectType()
 class ProcessingResponse {

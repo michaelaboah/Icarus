@@ -1,11 +1,12 @@
-import { ConsoleItem } from "../entities/ConsoleItem";
-import { ProcessingItem } from "../entities/ProcessingItem";
 import { InputType, Field } from "type-graphql";
+import { ConsoleItem } from "../entities/categories/ConsoleItem";
+
 import { ProcessorInput } from "./ProcessorInput";
 import { ConsoleInput } from "./ConsoleInput";
 import { Categories } from "../EntityAbstractions/Enums";
 import { AmplifierInput } from "./AmplifierInput";
-import { AmplifierItem } from "../entities/AmplifierItem";
+import { AmplifierItem } from "../entities/categories/AmplifierItem";
+import { ProcessingItem } from "../entities/categories/ProcessingItem";
 
 @InputType()
 export class ItemInput {

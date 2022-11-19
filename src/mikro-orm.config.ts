@@ -1,16 +1,15 @@
 import { MikroORM } from "@mikro-orm/core";
 import path from "path";
 import { __prod__ } from "./constants";
-import { Category } from "./entities/Category";
 import { Item } from "./entities/Item";
 import { Equipment } from "./entities/Equipment";
 import { IEquipment } from "./EntityInterfaces/IEquipment";
 import { IGeneric } from "./EntityInterfaces/IGeneric";
 import { Post } from "./entities/Post";
 import { User } from "./entities/User";
-import { ConsoleItem } from "./entities/ConsoleItem";
-import { ProcessingItem } from "./entities/ProcessingItem";
-import { AmplifierItem } from "./entities/AmplifierItem";
+import { ConsoleItem } from "./entities/categories/ConsoleItem";
+import { AmplifierItem } from "./entities/categories/AmplifierItem";
+import { ProcessingItem } from "./entities/categories/ProcessingItem";
 
 export default {
   migrations: {
@@ -23,7 +22,6 @@ export default {
     Equipment,
     User,
     Item,
-    Category,
     IGeneric,
     IEquipment,
     AmplifierItem,

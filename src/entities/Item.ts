@@ -1,12 +1,11 @@
 import { Entity, Index, OneToOne, Property, Enum } from "@mikro-orm/core";
 import { FullTextType } from "@mikro-orm/postgresql";
 import { Field, ObjectType } from "type-graphql";
-
-import { ConsoleItem } from "./ConsoleItem";
+import { ConsoleItem } from "./categories/ConsoleItem";
 import { IGeneric } from "../EntityInterfaces/IGeneric";
-import { ProcessingItem } from "./ProcessingItem";
 import { Categories } from "../EntityAbstractions/Enums";
-import { AmplifierItem } from "./AmplifierItem";
+import { AmplifierItem } from "./categories/AmplifierItem";
+import { ProcessingItem } from "./categories/ProcessingItem";
 
 @ObjectType({ implements: [IGeneric] })
 @Entity()

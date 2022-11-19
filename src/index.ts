@@ -21,7 +21,6 @@ import {
 import { EquipmentResolver } from "./resolvers/EquipmentResolver";
 import { UserResolver } from "./resolvers/UserResolver";
 import { ConsoleResolver } from "./resolvers/ConsoleResolver";
-import { CategoryResolver } from "./resolvers/CategoryResolver";
 import { ItemResolver } from "./resolvers/ItemResolver";
 import { ProcessingResolver } from "./resolvers/ProcessingResolver";
 
@@ -88,7 +87,6 @@ const main = async () => {
         EquipmentResolver,
         UserResolver,
         ConsoleResolver,
-        CategoryResolver,
         ItemResolver,
         ProcessingResolver,
       ],
