@@ -20,9 +20,7 @@ import {
 } from "./utils/isAuth";
 import { EquipmentResolver } from "./resolvers/EquipmentResolver";
 import { UserResolver } from "./resolvers/UserResolver";
-import { ConsoleResolver } from "./resolvers/ConsoleResolver";
 import { ItemResolver } from "./resolvers/ItemResolver";
-import { ProcessingResolver } from "./resolvers/ProcessingResolver";
 
 const main = async () => {
   const orm = await MikroORM.init(mikroOrmConfig);
@@ -82,14 +80,7 @@ const main = async () => {
 
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
-      resolvers: [
-        PostResolver,
-        EquipmentResolver,
-        UserResolver,
-        ConsoleResolver,
-        ItemResolver,
-        ProcessingResolver,
-      ],
+      resolvers: [PostResolver, EquipmentResolver, UserResolver, ItemResolver],
       validate: false,
     }),
     context: ({ req, res }) => ({ em: orm.em, req, res }),
