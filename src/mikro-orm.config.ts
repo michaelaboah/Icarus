@@ -11,6 +11,7 @@ import { ConsoleItem } from "./entities/categories/ConsoleItem";
 import { AmplifierItem } from "./entities/categories/AmplifierItem";
 import { ProcessingItem } from "./entities/categories/ProcessingItem";
 import { ComputerItem } from "./entities/categories/ComputerItem";
+import NetworkItem from "./entities/categories/NetworkItem";
 
 export default {
   migrations: {
@@ -28,6 +29,7 @@ export default {
     AmplifierItem,
     ConsoleItem,
     ComputerItem,
+    NetworkItem,
     ProcessingItem,
   ],
   dbName: "athens-dev",

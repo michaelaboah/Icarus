@@ -7,6 +7,7 @@ import { Categories } from "../EntityAbstractions/Enums";
 import { AmplifierItem } from "./categories/AmplifierItem";
 import { ProcessingItem } from "./categories/ProcessingItem";
 import { ComputerItem } from "./categories/ComputerItem";
+import NetworkItem from "./categories/NetworkItem";
 
 @ObjectType({ implements: [IGeneric] })
 @Entity()
@@ -35,6 +36,10 @@ export class Item extends IGeneric {
   @OneToOne({ nullable: true })
   processor?: ProcessingItem;
 
+  @Field(() => NetworkItem, { nullable: true })
+  @OneToOne({ nullable: true })
+  network_item?: NetworkItem;
+
   @Index({ type: "fulltext" })
   @Property({
     type: FullTextType,
@@ -42,4 +47,8 @@ export class Item extends IGeneric {
     nullable: true,
   })
   searchableModel?: string;
+
+  @Field(() => [String], { nullable: true })
+  @Property({ nullable: true })
+  notes?: string[];
 }

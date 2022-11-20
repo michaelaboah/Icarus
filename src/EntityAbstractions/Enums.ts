@@ -233,3 +233,21 @@ registerEnumType(ComputerPorts, {
   name: "Computer Ports",
   description: "An array representation of the ports available on a computer.",
 });
+
+export enum NetworkType {
+  SWITCH_MANAGED,
+  SWITCH_UNMANAGED,
+  ROUTER,
+  ACCESS_POINT,
+  ROUTER_SW_AP,
+  INJECTOR,
+  MODEM,
+  NIC,
+  REPEATER,
+  NETWORK_BRIDGE,
+}
+
+registerEnumType(NetworkType, {
+  name: "NetworkType",
+  description: "Assignable types for various types of networking equipment",
+});

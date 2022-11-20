@@ -18,7 +18,7 @@ export class ComputerItem {
 
   @Field(() => String)
   @Property()
-  processor: string;
+  cpu_processor: string;
 
   @Field(() => Int)
   @Property()

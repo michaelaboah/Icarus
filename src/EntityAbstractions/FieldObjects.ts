@@ -18,6 +18,9 @@ export class Dimension {
 
   @Field(() => Float)
   height: number;
+
+  @Field(() => Number, { nullable: true })
+  rack_unit?: number;
 }
 
 @InputType("NetworkConnectivty", {
