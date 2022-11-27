@@ -12,6 +12,7 @@ import { AmplifierItem } from "./entities/categories/AmplifierItem";
 import { ProcessingItem } from "./entities/categories/ProcessingItem";
 import { ComputerItem } from "./entities/categories/ComputerItem";
 import NetworkItem from "./entities/categories/NetworkItem";
+import { MicrophoneItem } from "./entities/categories/MicrophoneItem";
 
 export default {
   migrations: {
@@ -31,6 +32,7 @@ export default {
     ComputerItem,
     NetworkItem,
     ProcessingItem,
+    MicrophoneItem,
   ],
   dbName: "athens-dev",
   // user: "pi",

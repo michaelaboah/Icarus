@@ -251,3 +251,40 @@ registerEnumType(NetworkType, {
   name: "NetworkType",
   description: "Assignable types for various types of networking equipment",
 });
+
+export enum MicrophoneType {
+  PRE_POLORAIZED_CONDENSOR,
+  CONDENSOR,
+  RIBBON,
+  DYNAMIC,
+}
+
+registerEnumType(MicrophoneType, {
+  name: "MicrophoneType",
+  description: "The type of micrphone source medium",
+});
+
+export enum PolarPattern {
+  SUPERCARDIOID,
+  CARDIOID,
+  OMNI,
+  HYPERCARDIOID,
+  FIGURE_8,
+}
+
+registerEnumType(PolarPattern, {
+  name: "PolarPattern",
+  description:
+    "The signal pickup pattern, multiple patterns can be assigned to multiple microphones",
+});
+
+export enum DiaphagmSize {
+  SMALL,
+  MED,
+  LARGE,
+}
+
+registerEnumType(DiaphagmSize, {
+  name: "DiaphagmSize",
+  description: "The size of the input medium",
+});

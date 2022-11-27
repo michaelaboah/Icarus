@@ -11,6 +11,8 @@ import { ComputerItem } from "../entities/categories/ComputerItem";
 import { ComputerInput } from "./ComputerInput";
 import NetworkInput from "./NetworkInput";
 import NetworkItem from "../entities/categories/NetworkItem";
+import { MicrophoneInput } from "./MicrophoneInput";
+import { MicrophoneItem } from "../entities/categories/MicrophoneItem";
 
 @InputType()
 export class ItemInput {
@@ -46,6 +48,12 @@ export class ItemInput {
 
   @Field(() => ProcessorInput, { nullable: true })
   processor?: ProcessingItem;
+
+  @Field(() => NetworkInput, { nullable: true })
+  network_item?: NetworkItem;
+
+  @Field(() => MicrophoneInput, { nullable: true })
+  microphone?: MicrophoneItem;
 }
 
 @InputType()

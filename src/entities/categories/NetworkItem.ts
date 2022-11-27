@@ -18,6 +18,10 @@ export default class NetworkItem {
   @Enum(() => NetworkType)
   network_type!: NetworkType;
 
+  @Field(() => Int)
+  @Property()
+  max_speed: number;
+
   @Field(() => Boolean)
   @Property({ nullable: true, type: Boolean })
   fiber?: boolean;

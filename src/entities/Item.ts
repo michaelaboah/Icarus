@@ -8,6 +8,7 @@ import { AmplifierItem } from "./categories/AmplifierItem";
 import { ProcessingItem } from "./categories/ProcessingItem";
 import { ComputerItem } from "./categories/ComputerItem";
 import NetworkItem from "./categories/NetworkItem";
+import { MicrophoneItem } from "./categories/MicrophoneItem";
 
 @ObjectType({ implements: [IGeneric] })
 @Entity()
@@ -39,6 +40,10 @@ export class Item extends IGeneric {
   @Field(() => NetworkItem, { nullable: true })
   @OneToOne({ nullable: true })
   network_item?: NetworkItem;
+
+  @Field(() => MicrophoneItem, { nullable: true })
+  @OneToOne({ nullable: true })
+  microphone?: MicrophoneItem;
 
   @Index({ type: "fulltext" })
   @Property({
