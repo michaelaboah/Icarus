@@ -1,5 +1,5 @@
 import { Field, InputType } from "type-graphql";
-import { Analog, MicrophoneType } from "../EntityAbstractions/Enums";
+import { Analog, MicrophoneType } from "../EntityAbstractions/ItemEnums";
 
 @InputType()
 export class MicrophoneInput {

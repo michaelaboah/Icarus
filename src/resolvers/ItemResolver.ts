@@ -4,7 +4,7 @@ import { Arg, Ctx, Field, Mutation, ObjectType, Query } from "type-graphql";
 import { FieldError } from "./EquipmentResolver";
 import { ItemInput, ItemInputEdit } from "../EntityInputs/ItemInput";
 import { wrap } from "@mikro-orm/core";
-import { Categories } from "../EntityAbstractions/Enums";
+import { Categories } from "../EntityAbstractions/ItemEnums";
 
 @ObjectType()
 class ItemResponse {
@@ -80,7 +80,7 @@ export class ItemResolver {
   @Query(() => [Item])
   async findAllItems(@Ctx() { em }: MyContext) {
     // console.log( await em.find(Item, {}, {populate: true}))
-    const allItems = await em.find(Item, {}, {populate: true})
+    const allItems = await em.find(Item, {}, { populate: true });
     return allItems;
   }
 

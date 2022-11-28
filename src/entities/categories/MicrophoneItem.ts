@@ -1,6 +1,6 @@
 import { Entity, Enum, PrimaryKey, Property } from "@mikro-orm/core";
 import { Field, Int, ObjectType } from "type-graphql";
-import { Analog, MicrophoneType } from "../../EntityAbstractions/Enums";
+import { Analog, MicrophoneType } from "../../EntityAbstractions/ItemEnums";
 
 @ObjectType()
 @Entity()

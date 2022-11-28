@@ -1,4 +1,4 @@
-import { PowerConnector } from "./Enums";
+import { PowerConnector } from "./ItemEnums";
 import {
   Field,
   Float,

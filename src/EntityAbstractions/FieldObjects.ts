@@ -1,5 +1,5 @@
 import { Field, Float, InputType, Int, ObjectType } from "type-graphql";
-import { Analog, Protocol } from "./Enums";
+import { Analog, Protocol, TransmitterConnector } from "./ItemEnums";
 
 @InputType("Dimensions", {
   description:
@@ -56,4 +56,24 @@ export class PhysicalPort {
 
   @Field(() => Boolean)
   input: boolean;
+}
+
+// InputType("TransmitterInput");
+ObjectType();
+export class Transmitter {
+  @Field(() => TransmitterConnector)
+  connector: TransmitterConnector;
+}
+
+ObjectType();
+// InputType("RecieverInput");
+export class Reciever {
+  @Field(() => [NetworkPort])
+  network_ports: NetworkPort[];
+
+  @Field(() => [PhysicalPort])
+  physical_ports: PhysicalPort[];
+
+  @Field(() => Boolean)
+  cascade_antenna: boolean;
 }

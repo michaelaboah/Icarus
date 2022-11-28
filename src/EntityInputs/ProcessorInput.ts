@@ -1,5 +1,9 @@
 import { Enum } from "@mikro-orm/core";
-import { MidiType, Protocol, SampleRate } from "../EntityAbstractions/Enums";
+import {
+  MidiType,
+  Protocol,
+  SampleRate,
+} from "../EntityAbstractions/ItemEnums";
 import { InputType, Field, Int } from "type-graphql";
 import { IElectrical } from "../EntityAbstractions/IElectrical";
 import { NetworkPort } from "../EntityAbstractions/FieldObjects";

@@ -1,5 +1,5 @@
 import { Field, InputType } from "type-graphql";
-import { NetworkType } from "../EntityAbstractions/Enums";
+import { NetworkType } from "../EntityAbstractions/ItemEnums";
 import { NetworkPort } from "../EntityAbstractions/FieldObjects";
 import { IElectrical } from "../EntityAbstractions/IElectrical";
 

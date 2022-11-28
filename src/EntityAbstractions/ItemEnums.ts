@@ -75,6 +75,7 @@ export enum Analog {
   NL2,
   NL4,
   NL8,
+  DC_12V,
 }
 
 registerEnumType(Analog, {
@@ -101,6 +102,10 @@ registerEnumType(Analog, {
     TRRS: {
       description:
         "Tip-Ring-Ring-Sleeve Connection. Commonly used for mobile audio connections. *Note: Sleeve is ground.",
+    },
+    DC_12V: {
+      description:
+        "Barrel Connector. Very basic found on lower power devices. Commonly used for recievers.",
     },
   },
 });
@@ -287,4 +292,29 @@ export enum DiaphagmSize {
 registerEnumType(DiaphagmSize, {
   name: "DiaphagmSize",
   description: "The size of the input medium",
+});
+
+export enum TransmitterConnector {
+  SHURE_TA4, //Shure
+  MICRODOT, //DPA
+  TRRS, //1/8
+  TRI_PIN, //sennheiser
+}
+
+registerEnumType(TransmitterConnector, {
+  name: "TransmitterConnector",
+  valuesConfig: {
+    SHURE_TA4: {
+      description: "Shure's proprietary connector",
+    },
+    MICRODOT: {
+      description: "DPA's proprietary connector",
+    },
+    TRRS: {
+      description: 'Basic 1/8" connector',
+    },
+    TRI_PIN: {
+      description: "Sennheiser's proprietary connector",
+    },
+  },
 });

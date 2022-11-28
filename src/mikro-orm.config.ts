@@ -13,6 +13,8 @@ import { ProcessingItem } from "./entities/categories/ProcessingItem";
 import { ComputerItem } from "./entities/categories/ComputerItem";
 import NetworkItem from "./entities/categories/NetworkItem";
 import { MicrophoneItem } from "./entities/categories/MicrophoneItem";
+import { RFBand } from "./entities/RFBand";
+import { RFItem } from "./entities/categories/RFItem";
 
 export default {
   migrations: {
@@ -25,6 +27,7 @@ export default {
     Equipment,
     User,
     Item,
+    RFBand,
     IGeneric,
     IEquipment,
     AmplifierItem,
@@ -33,6 +36,7 @@ export default {
     NetworkItem,
     ProcessingItem,
     MicrophoneItem,
+    RFItem,
   ],
   dbName: "athens-dev",
   // user: "pi",

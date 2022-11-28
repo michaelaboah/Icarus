@@ -1,6 +1,6 @@
 import { Entity, Enum, JsonType, PrimaryKey, Property } from "@mikro-orm/core";
 import { Field, Int, ObjectType } from "type-graphql";
-import { NetworkType } from "../../EntityAbstractions/Enums";
+import { NetworkType } from "../../EntityAbstractions/ItemEnums";
 import { NetworkPort } from "../../EntityAbstractions/FieldObjects";
 import { IElectrical } from "../../EntityAbstractions/IElectrical";
 

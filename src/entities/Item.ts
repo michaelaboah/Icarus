@@ -3,12 +3,13 @@ import { FullTextType } from "@mikro-orm/postgresql";
 import { Field, ObjectType } from "type-graphql";
 import { ConsoleItem } from "./categories/ConsoleItem";
 import { IGeneric } from "../EntityInterfaces/IGeneric";
-import { Categories } from "../EntityAbstractions/Enums";
+import { Categories } from "../EntityAbstractions/ItemEnums";
 import { AmplifierItem } from "./categories/AmplifierItem";
 import { ProcessingItem } from "./categories/ProcessingItem";
 import { ComputerItem } from "./categories/ComputerItem";
 import NetworkItem from "./categories/NetworkItem";
 import { MicrophoneItem } from "./categories/MicrophoneItem";
+import { RFItem } from "./categories/RFItem";
 
 @ObjectType({ implements: [IGeneric] })
 @Entity()
@@ -44,6 +45,10 @@ export class Item extends IGeneric {
   @Field(() => MicrophoneItem, { nullable: true })
   @OneToOne({ nullable: true })
   microphone?: MicrophoneItem;
+
+  @Field(() => RFItem, { nullable: true })
+  @OneToOne({ nullable: true })
+  radio_item?: RFItem;
 
   @Index({ type: "fulltext" })
   @Property({

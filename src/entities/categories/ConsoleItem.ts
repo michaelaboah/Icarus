@@ -1,7 +1,11 @@
 import { Entity, Enum, JsonType, PrimaryKey, Property } from "@mikro-orm/core";
 import { IElectrical } from "../../EntityAbstractions/IElectrical";
 import { Field, Int, ObjectType } from "type-graphql";
-import { MidiType, Protocol, SampleRate } from "../../EntityAbstractions/Enums";
+import {
+  MidiType,
+  Protocol,
+  SampleRate,
+} from "../../EntityAbstractions/ItemEnums";
 
 @ObjectType()
 @Entity()

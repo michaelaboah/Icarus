@@ -3,7 +3,7 @@ import { ConsoleItem } from "../entities/categories/ConsoleItem";
 
 import { ProcessorInput } from "./ProcessorInput";
 import { ConsoleInput } from "./ConsoleInput";
-import { Categories } from "../EntityAbstractions/Enums";
+import { Categories } from "../EntityAbstractions/ItemEnums";
 import { AmplifierInput } from "./AmplifierInput";
 import { AmplifierItem } from "../entities/categories/AmplifierItem";
 import { ProcessingItem } from "../entities/categories/ProcessingItem";
@@ -93,6 +93,9 @@ export class ItemInputEdit {
 
   @Field(() => NetworkInput, { nullable: true })
   network_item?: NetworkItem;
+
+  @Field(() => MicrophoneInput, { nullable: true })
+  microphone?: MicrophoneItem;
 
   @Field(() => [String], { nullable: true })
   notes?: string[];
