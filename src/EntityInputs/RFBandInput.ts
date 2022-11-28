@@ -1,12 +1,9 @@
 import { Index } from "@mikro-orm/core";
-import { Field, InputType, Int } from "type-graphql";
+import { Field, InputType } from "type-graphql";
 import { CountryCodes } from "../EntityAbstractions/RFEnums";
 
 @InputType()
 export class RFBandInput {
-  @Field(() => Int)
-  id!: number;
-
   @Field(() => String, { description: "The shorthand frequency band name." })
   band_name!: string;
 
@@ -17,10 +14,10 @@ export class RFBandInput {
   upper_frequency_range!: number;
 
   @Field(() => String)
-  nation_code!: string;
+  manufacturer!: string;
 
   @Field(() => CountryCodes)
-  manufacturer!: CountryCodes;
+  nation_code!: CountryCodes;
 
   @Field(() => Boolean)
   deprecated?: boolean;

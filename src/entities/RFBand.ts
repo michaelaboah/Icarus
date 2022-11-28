@@ -2,12 +2,12 @@ import {
   Entity,
   Enum,
   ManyToOne,
-  // Index,
+  Index,
   PrimaryKey,
   Property,
   SmallIntType,
 } from "@mikro-orm/core";
-// import { FullTextType } from "@mikro-orm/postgresql";
+import { FullTextType } from "@mikro-orm/postgresql";
 import { Field, Int, ObjectType } from "type-graphql";
 import { CountryCodes } from "../EntityAbstractions/RFEnums";
 import { RFItem } from "./categories/RFItem";
@@ -20,7 +20,7 @@ export class RFBand {
   id!: number;
 
   @Field(() => String, { description: "The shorthand frequency band name." })
-  @Property()
+  @Property({ unique: true })
   band_name!: string;
 
   @Field(() => Number, { description: "The lowest possible radio frequency." })
@@ -33,11 +33,11 @@ export class RFBand {
 
   @Field(() => String)
   @Property()
-  nation_code!: string;
+  manufacturer!: string;
 
   @Field(() => CountryCodes)
   @Enum(() => CountryCodes)
-  manufacturer!: CountryCodes;
+  nation_code!: CountryCodes;
 
   @Field(() => Boolean)
   @Property()
@@ -45,7 +45,8 @@ export class RFBand {
 
   @ManyToOne({ entity: () => RFItem })
   rf_item!: RFItem;
-  // @Index({ type: "fulltext" })
-  // @Property({ type: FullTextType, onUpdate: (rf: RFBand) => rf.band_name })
-  // searchableTitle?: string;
+
+  @Index({ type: "fulltext" })
+  @Property({ type: FullTextType, onUpdate: (rf: RFBand) => rf.band_name })
+  searchableTitle?: string;
 }

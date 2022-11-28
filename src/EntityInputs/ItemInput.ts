@@ -13,6 +13,8 @@ import NetworkInput from "./NetworkInput";
 import NetworkItem from "../entities/categories/NetworkItem";
 import { MicrophoneInput } from "./MicrophoneInput";
 import { MicrophoneItem } from "../entities/categories/MicrophoneItem";
+import { RFItemInput } from "./RFItemInput";
+import { RFItem } from "../entities/categories/RFItem";
 
 @InputType()
 export class ItemInput {
@@ -54,6 +56,9 @@ export class ItemInput {
 
   @Field(() => MicrophoneInput, { nullable: true })
   microphone?: MicrophoneItem;
+
+  @Field(() => RFItemInput, { nullable: true })
+  rf_item?: RFItem;
 }
 
 @InputType()
@@ -96,6 +101,9 @@ export class ItemInputEdit {
 
   @Field(() => MicrophoneInput, { nullable: true })
   microphone?: MicrophoneItem;
+
+  @Field(() => RFItemInput, { nullable: true })
+  rf_item?: RFItem;
 
   @Field(() => [String], { nullable: true })
   notes?: string[];

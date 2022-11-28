@@ -1,6 +1,7 @@
 import { Field, InputType, Int } from "type-graphql";
-import { Transmitter, Reciever } from "../entities/categories/RFItem";
+
 import { RFBand } from "../entities/RFBand";
+import { Transmitter, Reciever } from "../EntityAbstractions/RFObjects";
 import { RFBandInput } from "./RFBandInput";
 
 @InputType()
