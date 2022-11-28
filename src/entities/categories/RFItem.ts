@@ -1,14 +1,14 @@
 import {
   Collection,
   Entity,
-  // JsonType,
+  JsonType,
   OneToMany,
   PrimaryKey,
   Property,
   SmallIntType,
 } from "@mikro-orm/core";
 import { Field, Int, ObjectType } from "type-graphql";
-// import { Reciever } from "../../EntityAbstractions/FieldObjects";
+import { Transmitter, Reciever } from "../../EntityAbstractions/RFObjects";
 import { RFBand } from "../RFBand";
 
 @ObjectType({ description: "Items that have RF capabilities" })
@@ -37,11 +37,11 @@ export class RFItem {
   @OneToMany(() => RFBand, (band) => band.rf_item)
   possible_bands = new Collection<RFBand>(this);
 
-  // @Field(() => Transmitter)
-  // @Property({ type: JsonType, nullable: true })
-  // transmitter?: Transmitter;
+  @Field(() => Transmitter)
+  @Property({ type: JsonType, nullable: true })
+  transmitter?: Transmitter;
 
-  // @Field(() => Reciever)
-  // @Property({ type: JsonType, nullable: true })
-  // reciever?: Reciever;
+  @Field(() => Reciever)
+  @Property({ type: JsonType, nullable: true })
+  reciever?: Reciever;
 }
