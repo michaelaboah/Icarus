@@ -16,6 +16,8 @@ import { RFItemInput } from "./RFItemInput";
 import { RFItem } from "../entities/categories/RFItem";
 import { SpeakerInput } from "./SpeakerInput";
 import { SpeakerItem } from "../entities/categories/SpeakerItem";
+import MonitoringItem from "../entities/categories/MonitoringItem";
+import MonitoringInput from "./MonitoringInput";
 
 @InputType()
 export class ItemInput {
@@ -63,6 +65,9 @@ export class ItemInput {
 
   @Field(() => SpeakerInput, { nullable: true })
   speaker_item?: SpeakerItem;
+
+  @Field(() => MonitoringInput, { nullable: true })
+  monitoring_item?: MonitoringItem;
 }
 
 @InputType()
@@ -111,6 +116,9 @@ export class ItemInputEdit {
 
   @Field(() => SpeakerInput, { nullable: true })
   speaker_item?: SpeakerItem;
+
+  @Field(() => MonitoringInput, { nullable: true })
+  monitoring_item?: MonitoringItem;
 
   @Field(() => [String], { nullable: true })
   notes?: string[];

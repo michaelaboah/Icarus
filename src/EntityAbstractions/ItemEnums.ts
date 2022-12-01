@@ -123,6 +123,7 @@ export enum PowerConnector {
   L6_30,
   L6_50,
   L6_60,
+  POE,
 }
 
 registerEnumType(PowerConnector, {
@@ -172,6 +173,9 @@ registerEnumType(PowerConnector, {
     L6_60: {
       description:
         "High voltage locking connector, the 60 stands for 60 Amps. Max voltage: 250V. *Note: Also known as 3-Wire",
+    },
+    POE: {
+      description: "Power VIA an RJ45 connection, source must be POE capable",
     },
   },
 });

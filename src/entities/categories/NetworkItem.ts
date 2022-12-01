@@ -20,6 +20,10 @@ export default class NetworkItem {
 
   @Field(() => Int)
   @Property()
+  poe_ports: number;
+
+  @Field(() => Int)
+  @Property()
   max_speed: number;
 
   @Field(() => Boolean)
