@@ -46,10 +46,6 @@ export class AmplifierItem {
   @Field(() => SampleRate)
   max_sample_rate: SampleRate;
 
-  @Property({ nullable: true })
-  @Field(() => [String])
-  notes: string[];
-
   @Property({ nullable: true, type: JsonType })
   @Field(() => IElectrical)
   power: IElectrical;

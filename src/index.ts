@@ -94,5 +94,13 @@ const main = async () => {
 };
 
 main().catch((err) => {
-  console.error(err);
+  switch (err.code) {
+    case "ECONNREFUSED":
+      console.log("Postgres Database is not connected.\n\n");
+      // console.log(err);
+      break;
+    default:
+      console.error(err);
+      break;
+  }
 });
