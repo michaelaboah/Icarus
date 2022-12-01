@@ -1,6 +1,6 @@
 import { Field, InputType } from "type-graphql";
 import { NetworkPort, PhysicalPort } from "../EntityAbstractions/FieldObjects";
-import { IElectrical } from "../EntityAbstractions/IElectrical";
+import IElectrical from "../EntityAbstractions/IElectrical";
 
 @InputType()
 export default class MonitoringInput {

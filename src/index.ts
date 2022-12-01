@@ -5,22 +5,24 @@ import { __port__, __prod__, __sessionSecret__ } from "./constants";
 import { ApolloServer } from "apollo-server-express";
 import { buildSchema } from "type-graphql";
 import mikroOrmConfig from "./mikro-orm.config";
-import { PostResolver } from "./resolvers/PostResolver";
+
 import express from "express";
 import cors from "cors";
 import "dotenv/config";
 // import { MyContext } from "./@types/resolverTypes";
 import cookieParser from "cookie-parser";
 import { verify } from "jsonwebtoken";
-import { User } from "./entities/User";
+
 import {
   createRefreshToken,
   createAccessToken,
   sendRefreshToken,
 } from "./utils/isAuth";
+import User from "./entities/User";
 import { EquipmentResolver } from "./resolvers/EquipmentResolver";
+import ItemResolver from "./resolvers/ItemResolver";
+import PostResolver from "./resolvers/PostResolver";
 import { UserResolver } from "./resolvers/UserResolver";
-import { ItemResolver } from "./resolvers/ItemResolver";
 
 const main = async () => {
   const orm = await MikroORM.init(mikroOrmConfig);

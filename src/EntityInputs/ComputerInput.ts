@@ -1,9 +1,9 @@
 import { Field, InputType, Int } from "type-graphql";
 import { NetworkPort } from "../EntityAbstractions/FieldObjects";
-import { IElectrical } from "../EntityAbstractions/IElectrical";
+import IElectrical from "../EntityAbstractions/IElectrical";
 
 @InputType()
-export class ComputerInput {
+export default class ComputerInput {
   @Field(() => String)
   processor: string;
 

@@ -3,7 +3,7 @@ import { Field, InputType } from "type-graphql";
 import { CountryCodes } from "../EntityAbstractions/RFEnums";
 
 @InputType()
-export class RFBandInput {
+export default class RFBandInput {
   @Field(() => String, { description: "The shorthand frequency band name." })
   band_name!: string;
 

@@ -7,11 +7,11 @@ import {
 } from "@mikro-orm/core";
 import { Field, Int, ObjectType } from "type-graphql";
 import { NetworkPort } from "../../EntityAbstractions/FieldObjects";
-import { IElectrical } from "../../EntityAbstractions/IElectrical";
+import IElectrical from "../../EntityAbstractions/IElectrical";
 
 @ObjectType({ description: "Representation of any computer based items." })
 @Entity()
-export class ComputerItem {
+export default class ComputerItem {
   @Field(() => Int)
   @PrimaryKey()
   id!: number;

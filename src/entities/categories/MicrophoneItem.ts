@@ -4,7 +4,7 @@ import { Analog, MicrophoneType } from "../../EntityAbstractions/ItemEnums";
 
 @ObjectType()
 @Entity()
-export class MicrophoneItem {
+export default class MicrophoneItem {
   @Field(() => Int)
   @PrimaryKey()
   id!: number;

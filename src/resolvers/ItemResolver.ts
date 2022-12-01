@@ -1,10 +1,10 @@
 import { MyContext } from "../@types/resolverTypes";
-import { Item } from "../entities/Item";
 import { Arg, Ctx, Field, Mutation, ObjectType, Query } from "type-graphql";
 import { FieldError } from "./EquipmentResolver";
-import { ItemInput, ItemInputEdit } from "../EntityInputs/ItemInput";
 import { wrap } from "@mikro-orm/core";
 import { Categories } from "../EntityAbstractions/ItemEnums";
+import Item from "../entities/Item";
+import ItemInput, { ItemInputEdit } from "../EntityInputs/ItemInput";
 
 @ObjectType()
 class ItemResponse {
@@ -23,7 +23,7 @@ class ItemResponse {
   item?: Item;
 }
 
-export class ItemResolver {
+export default class ItemResolver {
   // Create
   @Mutation(() => ItemResponse, {
     nullable: true,

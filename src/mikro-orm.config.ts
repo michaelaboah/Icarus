@@ -1,22 +1,22 @@
 import { MikroORM } from "@mikro-orm/core";
 import path from "path";
 import { __prod__ } from "./constants";
-import { Item } from "./entities/Item";
-import { Equipment } from "./entities/Equipment";
+import AmplifierItem from "./entities/categories/AmplifierItem";
+import ComputerItem from "./entities/categories/ComputerItem";
+import ConsoleItem from "./entities/categories/ConsoleItem";
+import MicrophoneItem from "./entities/categories/MicrophoneItem";
+import MonitoringItem from "./entities/categories/MonitoringItem";
+import NetworkItem from "./entities/categories/NetworkItem";
+import ProcessingItem from "./entities/categories/ProcessingItem";
+import RFItem from "./entities/categories/RFItem";
+import { SpeakerItem } from "./entities/categories/SpeakerItem";
+import Equipment from "./entities/Equipment";
+import Item from "./entities/Item";
+import Post from "./entities/Post";
+import RFBand from "./entities/RFBand";
+import User from "./entities/User";
 import { IEquipment } from "./EntityInterfaces/IEquipment";
 import { IGeneric } from "./EntityInterfaces/IGeneric";
-import { Post } from "./entities/Post";
-import { User } from "./entities/User";
-import { ConsoleItem } from "./entities/categories/ConsoleItem";
-import { AmplifierItem } from "./entities/categories/AmplifierItem";
-import { ProcessingItem } from "./entities/categories/ProcessingItem";
-import { ComputerItem } from "./entities/categories/ComputerItem";
-import NetworkItem from "./entities/categories/NetworkItem";
-import { MicrophoneItem } from "./entities/categories/MicrophoneItem";
-import { RFBand } from "./entities/RFBand";
-import { RFItem } from "./entities/categories/RFItem";
-import { SpeakerItem } from "./entities/categories/SpeakerItem";
-import MonitoringItem from "./entities/categories/MonitoringItem";
 
 export default {
   migrations: {

@@ -10,11 +10,11 @@ import {
 import { FullTextType } from "@mikro-orm/postgresql";
 import { Field, Int, ObjectType } from "type-graphql";
 import { CountryCodes } from "../EntityAbstractions/RFEnums";
-import { RFItem } from "./categories/RFItem";
+import RFItem from "./categories/RFItem";
 
 @ObjectType()
 @Entity()
-export class RFBand {
+export default class RFBand {
   @Field(() => Int)
   @PrimaryKey()
   id!: number;

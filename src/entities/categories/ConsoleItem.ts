@@ -1,5 +1,5 @@
 import { Entity, Enum, JsonType, PrimaryKey, Property } from "@mikro-orm/core";
-import { IElectrical } from "../../EntityAbstractions/IElectrical";
+import IElectrical from "../../EntityAbstractions/IElectrical";
 import { Field, Int, ObjectType } from "type-graphql";
 import {
   MidiType,
@@ -9,7 +9,7 @@ import {
 
 @ObjectType()
 @Entity()
-export class ConsoleItem {
+export default class ConsoleItem {
   @Field(() => Int)
   @PrimaryKey()
   id!: number;

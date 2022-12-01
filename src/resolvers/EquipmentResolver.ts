@@ -1,5 +1,5 @@
 import { MyContext } from "../@types/resolverTypes";
-import { Equipment } from "../entities/Equipment";
+import Equipment from "../entities/Equipment";
 import {
   Arg,
   Ctx,

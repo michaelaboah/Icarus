@@ -4,7 +4,7 @@ import { Field, Int, ObjectType } from "type-graphql";
 @ObjectType({
   description: "A type for implementing qualities of a rackable item.",
 })
-export class IRackable {
+export default class IRackable {
   @Field(() => Int, {
     nullable: true,
     description:

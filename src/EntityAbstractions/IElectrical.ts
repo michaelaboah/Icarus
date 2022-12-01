@@ -16,7 +16,7 @@ import {
     "Input for the electrical properties of an Item, only available in select Item type. Ex: ProcessorItem or ConsoleItem",
 })
 // @InterfaceType()
-export class IElectrical {
+export default class IElectrical {
   @Field(() => Float, {
     description:
       "Electrical equipment tend to have a voltage range. Ex: 90V-260V.",

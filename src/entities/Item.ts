@@ -1,21 +1,21 @@
-import { Entity, Index, OneToOne, Property, Enum } from "@mikro-orm/core";
+import { Entity, Property, Enum, OneToOne, Index } from "@mikro-orm/core";
 import { FullTextType } from "@mikro-orm/postgresql";
-import { Field, ObjectType } from "type-graphql";
-import { ConsoleItem } from "./categories/ConsoleItem";
-import { IGeneric } from "../EntityInterfaces/IGeneric";
+import { ObjectType, Field } from "type-graphql";
 import { Categories } from "../EntityAbstractions/ItemEnums";
-import { AmplifierItem } from "./categories/AmplifierItem";
-import { ProcessingItem } from "./categories/ProcessingItem";
-import { ComputerItem } from "./categories/ComputerItem";
-import NetworkItem from "./categories/NetworkItem";
-import { MicrophoneItem } from "./categories/MicrophoneItem";
-import { RFItem } from "./categories/RFItem";
-import { SpeakerItem } from "./categories/SpeakerItem";
+import { IGeneric } from "../EntityInterfaces/IGeneric";
+import AmplifierItem from "./categories/AmplifierItem";
+import ComputerItem from "./categories/ComputerItem";
+import ConsoleItem from "./categories/ConsoleItem";
+import MicrophoneItem from "./categories/MicrophoneItem";
 import MonitoringItem from "./categories/MonitoringItem";
+import NetworkItem from "./categories/NetworkItem";
+import ProcessingItem from "./categories/ProcessingItem";
+import RFItem from "./categories/RFItem";
+import { SpeakerItem } from "./categories/SpeakerItem";
 
 @ObjectType({ implements: [IGeneric] })
 @Entity()
-export class Item extends IGeneric {
+export default class Item extends IGeneric {
   @Field(() => String)
   @Property({ type: "text", unique: true })
   model!: string;

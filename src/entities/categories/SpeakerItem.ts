@@ -11,7 +11,7 @@ import {
   NetworkPort,
   PhysicalPort,
 } from "../../EntityAbstractions/FieldObjects";
-import { IElectrical } from "../../EntityAbstractions/IElectrical";
+import IElectrical from "../../EntityAbstractions/IElectrical";
 
 export enum SpeakerDriver {
   TWEETER,

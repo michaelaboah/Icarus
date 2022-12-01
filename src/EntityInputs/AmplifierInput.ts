@@ -4,11 +4,11 @@ import {
   SampleRate,
 } from "../EntityAbstractions/ItemEnums";
 import { InputType, Field, Int } from "type-graphql";
-import { IElectrical } from "../EntityAbstractions/IElectrical";
+import IElectrical from "../EntityAbstractions/IElectrical";
 import { PhysicalPort, NetworkPort } from "../EntityAbstractions/FieldObjects";
 
 @InputType()
-export class AmplifierInput {
+export default class AmplifierInput {
   @Field(() => Int)
   totalInputs: number;
 

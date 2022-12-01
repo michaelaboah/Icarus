@@ -4,10 +4,10 @@ import {
   SampleRate,
 } from "../EntityAbstractions/ItemEnums";
 import { InputType, Field, Int } from "type-graphql";
-import { IElectrical } from "../EntityAbstractions/IElectrical";
+import IElectrical from "../EntityAbstractions/IElectrical";
 
 @InputType()
-export class ConsoleInput {
+export default class ConsoleInput {
   @Field(() => Int)
   totalInputs: number;
 

@@ -1,6 +1,6 @@
 import { ObjectType, InputType, Field } from "type-graphql";
 import { NetworkPort, PhysicalPort } from "./FieldObjects";
-import { IElectrical } from "./IElectrical";
+import IElectrical from "./IElectrical";
 import { TransmitterConnector } from "./ItemEnums";
 
 @ObjectType()

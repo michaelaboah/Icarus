@@ -9,11 +9,11 @@ import {
   PhysicalPort,
   NetworkPort,
 } from "../../EntityAbstractions/FieldObjects";
-import { IElectrical } from "../../EntityAbstractions/IElectrical";
+import IElectrical from "../../EntityAbstractions/IElectrical";
 
 @ObjectType()
 @Entity()
-export class AmplifierItem {
+export default class AmplifierItem {
   @Field(() => Int)
   @PrimaryKey()
   id!: number;

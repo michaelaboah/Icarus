@@ -9,11 +9,11 @@ import {
 } from "@mikro-orm/core";
 import { Field, Int, ObjectType } from "type-graphql";
 import { Transmitter, Reciever } from "../../EntityAbstractions/RFObjects";
-import { RFBand } from "../RFBand";
+import RFBand from "../RFBand";
 
 @ObjectType({ description: "Items that have RF capabilities" })
 @Entity()
-export class RFItem {
+export default class RFItem {
   @Field(() => Int)
   @PrimaryKey()
   id!: number;

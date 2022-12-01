@@ -2,10 +2,10 @@ import { Property, JsonType } from "@mikro-orm/core";
 import { Field, Float, InputType, Int } from "type-graphql";
 import { DriverArrangment } from "../entities/categories/SpeakerItem";
 import { PhysicalPort, NetworkPort } from "../EntityAbstractions/FieldObjects";
-import { IElectrical } from "../EntityAbstractions/IElectrical";
+import IElectrical from "../EntityAbstractions/IElectrical";
 
 @InputType()
-export class SpeakerInput {
+export default class SpeakerInput {
   @Property({ type: JsonType })
   driver: DriverArrangment;
 

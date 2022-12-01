@@ -1,11 +1,11 @@
 import { Field, InputType, Int } from "type-graphql";
+import RFBand from "../entities/RFBand";
 
-import { RFBand } from "../entities/RFBand";
 import { Transmitter, Reciever } from "../EntityAbstractions/RFObjects";
-import { RFBandInput } from "./RFBandInput";
+import RFBandInput from "./RFBandInput";
 
 @InputType()
-export class RFItemInput {
+export default class RFItemInput {
   @Field(() => Int, {
     description:
       "The possible distance a signal can be maintained up to. In feet and with Line-of-Site.",

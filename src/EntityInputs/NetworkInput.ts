@@ -1,7 +1,7 @@
 import { Field, InputType, Int } from "type-graphql";
 import { NetworkType } from "../EntityAbstractions/ItemEnums";
 import { NetworkPort } from "../EntityAbstractions/FieldObjects";
-import { IElectrical } from "../EntityAbstractions/IElectrical";
+import IElectrical from "../EntityAbstractions/IElectrical";
 
 @InputType()
 export default class NetworkInput {
