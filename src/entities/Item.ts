@@ -10,6 +10,7 @@ import { ComputerItem } from "./categories/ComputerItem";
 import NetworkItem from "./categories/NetworkItem";
 import { MicrophoneItem } from "./categories/MicrophoneItem";
 import { RFItem } from "./categories/RFItem";
+import { SpeakerItem } from "./categories/SpeakerItem";
 
 @ObjectType({ implements: [IGeneric] })
 @Entity()
@@ -49,6 +50,10 @@ export class Item extends IGeneric {
   @Field(() => RFItem, { nullable: true })
   @OneToOne({ nullable: true })
   radio_item?: RFItem;
+
+  @Field(() => SpeakerItem, { nullable: true })
+  @OneToOne({ nullable: true })
+  speaker_item?: SpeakerItem;
 
   @Index({ type: "fulltext" })
   @Property({

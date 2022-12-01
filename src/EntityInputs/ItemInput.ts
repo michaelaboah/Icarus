@@ -1,6 +1,5 @@
 import { InputType, Field } from "type-graphql";
 import { ConsoleItem } from "../entities/categories/ConsoleItem";
-
 import { ProcessorInput } from "./ProcessorInput";
 import { ConsoleInput } from "./ConsoleInput";
 import { Categories } from "../EntityAbstractions/ItemEnums";
@@ -15,6 +14,8 @@ import { MicrophoneInput } from "./MicrophoneInput";
 import { MicrophoneItem } from "../entities/categories/MicrophoneItem";
 import { RFItemInput } from "./RFItemInput";
 import { RFItem } from "../entities/categories/RFItem";
+import { SpeakerInput } from "./SpeakerInput";
+import { SpeakerItem } from "../entities/categories/SpeakerItem";
 
 @InputType()
 export class ItemInput {
@@ -59,6 +60,9 @@ export class ItemInput {
 
   @Field(() => RFItemInput, { nullable: true })
   rf_item?: RFItem;
+
+  @Field(() => SpeakerInput, { nullable: true })
+  speaker_item?: SpeakerItem;
 }
 
 @InputType()
@@ -104,6 +108,9 @@ export class ItemInputEdit {
 
   @Field(() => RFItemInput, { nullable: true })
   rf_item?: RFItem;
+
+  @Field(() => SpeakerInput, { nullable: true })
+  speaker_item?: SpeakerItem;
 
   @Field(() => [String], { nullable: true })
   notes?: string[];

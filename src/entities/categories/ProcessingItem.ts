@@ -5,7 +5,10 @@ import {
   Protocol,
   SampleRate,
 } from "../../EntityAbstractions/ItemEnums";
-import { NetworkPort } from "../../EntityAbstractions/FieldObjects";
+import {
+  NetworkPort,
+  PhysicalPort,
+} from "../../EntityAbstractions/FieldObjects";
 import { IElectrical } from "../../EntityAbstractions/IElectrical";
 
 @ObjectType()
@@ -50,6 +53,10 @@ export class ProcessingItem {
   @Property({ type: JsonType, nullable: true })
   @Field(() => [NetworkPort])
   network_connectivity: NetworkPort[];
+
+  @Field(() => [PhysicalPort])
+  @Property({ type: JsonType, nullable: true })
+  physical_connectivity: PhysicalPort[];
 
   @Field(() => IElectrical)
   @Property({ type: JsonType, nullable: true })
