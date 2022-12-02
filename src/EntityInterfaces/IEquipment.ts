@@ -1,5 +1,5 @@
-import { Index, Property } from "@mikro-orm/core";
-import { FullTextType } from "@mikro-orm/postgresql";
+import { Property } from "@mikro-orm/core";
+// import { FullTextType } from "@mikro-orm/postgresql";
 import { Field, InputType, InterfaceType, ObjectType } from "type-graphql";
 import { GenericInput, IGeneric } from "./IGeneric";
 
@@ -25,12 +25,12 @@ export class IEquipment extends IGeneric {
   @Property({ type: "double", nullable: true })
   weight?: number;
 
-  @Index({ type: "fulltext" })
-  @Property({
-    type: FullTextType,
-    onUpdate: (equipment: IEquipment) => equipment.model,
-  })
-  searchableModel?: string;
+  // @Index({ type: "fulltext" })
+  // @Property({
+  //   type: FullTextType,
+  //   onUpdate: (equipment: IEquipment) => equipment.model,
+  // })
+  // searchableModel?: string;
 }
 
 @ObjectType({ implements: GenericInput })

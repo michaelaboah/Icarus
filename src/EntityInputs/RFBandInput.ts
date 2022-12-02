@@ -1,4 +1,3 @@
-import { Index } from "@mikro-orm/core";
 import { Field, InputType } from "type-graphql";
 import { CountryCodes } from "../EntityAbstractions/RFEnums";
 
@@ -21,7 +20,4 @@ export default class RFBandInput {
 
   @Field(() => Boolean)
   deprecated?: boolean;
-
-  @Index({ type: "fulltext" })
-  searchableTitle?: string;
 }

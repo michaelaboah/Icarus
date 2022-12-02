@@ -49,7 +49,7 @@ export abstract class IGeneric {
   @Property({ type: "double", nullable: true })
   weight?: number;
 
-  @Field(() => Dimension, { nullable: true })
   @Property({ type: JsonType, nullable: true })
+  @Field(() => Dimension, { nullable: true })
   dimensions?: Dimension;
 }

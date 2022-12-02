@@ -1,5 +1,5 @@
-import { Entity, Index, PrimaryKey, Property } from "@mikro-orm/core";
-import { FullTextType } from "@mikro-orm/postgresql";
+import { Entity, PrimaryKey, Property } from "@mikro-orm/core";
+// import { FullTextType } from "@mikro-orm/postgresql";
 import { Field, Int, ObjectType } from "type-graphql";
 
 @Entity()
@@ -21,7 +21,7 @@ export default class Post {
   @Property()
   title!: string;
 
-  @Index({ type: "fulltext" })
-  @Property({ type: FullTextType, onUpdate: (post: Post) => post.title })
+  // @Index({ type: "fulltext" })
+  // @Property({ type: FullTextType, onUpdate: (post: Post) => post.title })
   searchableTitle?: string;
 }

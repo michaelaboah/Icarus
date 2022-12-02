@@ -1,5 +1,5 @@
-import { Entity, Index, PrimaryKey, Property } from "@mikro-orm/core";
-import { FullTextType } from "@mikro-orm/postgresql";
+import { Entity, PrimaryKey, Property } from "@mikro-orm/core";
+// import { FullTextType } from "@mikro-orm/postgresql";
 import { Field, Int, ObjectType } from "type-graphql";
 // import { IGeneric } from "./IGeneric";
 // import { Console } from "./Console";
@@ -63,10 +63,10 @@ export default class Equipment {
   @Property({ type: "text", nullable: true })
   frequencyRange?: string;
 
-  @Index({ type: "fulltext" })
-  @Property({
-    type: FullTextType,
-    onUpdate: (equipment: Equipment) => equipment.model,
-  })
-  searchableModel?: string;
+  // @Index({ type: "fulltext" })
+  // @Property({
+  //   type: FullTextType,
+  //   onUpdate: (equipment: Equipment) => equipment.model,
+  // })
+  // searchableModel?: string;
 }

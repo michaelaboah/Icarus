@@ -1,5 +1,5 @@
-import { Entity, Property, Enum, OneToOne, Index } from "@mikro-orm/core";
-import { FullTextType } from "@mikro-orm/postgresql";
+import { Entity, Property, Enum, OneToOne } from "@mikro-orm/core";
+// import { FullTextType } from "@mikro-orm/postgresql";
 import { ObjectType, Field } from "type-graphql";
 import { Categories } from "../EntityAbstractions/ItemEnums";
 import { IGeneric } from "../EntityInterfaces/IGeneric";
@@ -60,9 +60,9 @@ export default class Item extends IGeneric {
   @OneToOne({ nullable: true })
   monitoring_item?: MonitoringItem;
 
-  @Index({ type: "fulltext" })
+  // @Index({ type: "fulltext" })
   @Property({
-    type: FullTextType,
+    // type: FullTextType,
     onUpdate: (item: Item) => item.model,
     nullable: true,
   })

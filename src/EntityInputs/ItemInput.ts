@@ -8,6 +8,7 @@ import NetworkItem from "../entities/categories/NetworkItem";
 import ProcessingItem from "../entities/categories/ProcessingItem";
 import RFItem from "../entities/categories/RFItem";
 import { SpeakerItem } from "../entities/categories/SpeakerItem";
+import { Dimension } from "../EntityAbstractions/FieldObjects";
 import { Categories } from "../EntityAbstractions/ItemEnums";
 import AmplifierInput from "./AmplifierInput";
 import ComputerInput from "./ComputerInput";
@@ -68,6 +69,12 @@ export default class ItemInput {
 
   @Field(() => MonitoringInput, { nullable: true })
   monitoring_item?: MonitoringItem;
+
+  @Field(() => Dimension, { nullable: true })
+  dimensions?: Dimension;
+
+  @Field(() => [String], { nullable: true })
+  notes?: string[];
 }
 
 @InputType()
@@ -119,6 +126,9 @@ export class ItemInputEdit {
 
   @Field(() => MonitoringInput, { nullable: true })
   monitoring_item?: MonitoringItem;
+
+  @Field(() => Dimension, { nullable: true })
+  dimensions?: Dimension;
 
   @Field(() => [String], { nullable: true })
   notes?: string[];

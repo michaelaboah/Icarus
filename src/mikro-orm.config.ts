@@ -10,11 +10,11 @@ import NetworkItem from "./entities/categories/NetworkItem";
 import ProcessingItem from "./entities/categories/ProcessingItem";
 import RFItem from "./entities/categories/RFItem";
 import { SpeakerItem } from "./entities/categories/SpeakerItem";
-import Equipment from "./entities/Equipment";
 import Item from "./entities/Item";
-import Post from "./entities/Post";
+// import Equipment from "./entities/Equipment";
+// import Post from "./entities/Post";
+// import User from "./entities/User";
 import RFBand from "./entities/RFBand";
-import User from "./entities/User";
 import { IEquipment } from "./EntityInterfaces/IEquipment";
 import { IGeneric } from "./EntityInterfaces/IGeneric";
 
@@ -25,9 +25,9 @@ export default {
   },
   allowGlobalContext: true,
   entities: [
-    Post,
-    Equipment,
-    User,
+    // Post,
+    // Equipment,
+    // User,
     Item,
     RFBand,
     IGeneric,
@@ -42,9 +42,9 @@ export default {
     SpeakerItem,
     MonitoringItem,
   ],
-  dbName: "athens-dev",
+  dbName: "scaffold.db",
   // user: "pi",
   // password: "dev",
-  type: "postgresql",
-  debug: !__prod__,
+  type: "sqlite",
+  debug: true,
 } as Parameters<typeof MikroORM.init>[0];
