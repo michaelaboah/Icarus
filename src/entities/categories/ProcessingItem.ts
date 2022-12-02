@@ -1,5 +1,5 @@
 import { Entity, Enum, JsonType, PrimaryKey, Property } from "@mikro-orm/core";
-import { Field, Int, ObjectType } from "type-graphql";
+import { Field, InputType, Int, ObjectType } from "type-graphql";
 import {
   MidiType,
   Protocol,
@@ -12,10 +12,11 @@ import {
 import IElectrical from "../../EntityAbstractions/IElectrical";
 
 @ObjectType()
+@InputType("ProcessingItemTest")
 @Entity()
 export default class ProcessingItem {
-  @Field(() => Int)
-  @PrimaryKey()
+  @Field(() => Int, { nullable: true })
+  @PrimaryKey({ autoincrement: true })
   id!: number;
 
   @Field(() => Int)

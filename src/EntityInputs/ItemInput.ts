@@ -52,7 +52,7 @@ export default class ItemInput {
   @Field(() => ComputerInput, { nullable: true })
   computer?: ComputerItem;
 
-  @Field(() => ProcessorInput, { nullable: true })
+  @Field(() => ProcessingItem, { nullable: true })
   processor?: ProcessingItem;
 
   @Field(() => NetworkInput, { nullable: true })
