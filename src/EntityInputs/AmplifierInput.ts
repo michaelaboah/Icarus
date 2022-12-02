@@ -15,7 +15,7 @@ export default class AmplifierInput {
   @Field(() => Int)
   totalOutputs: number;
 
-  @Field(() => MidiType)
+  @Field(() => MidiType, { nullable: true })
   midi: MidiType;
 
   @Field(() => [PhysicalPort])

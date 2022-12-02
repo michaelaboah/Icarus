@@ -8,7 +8,7 @@ import { NetworkPort } from "./IGeneric";
 @Entity()
 export class ProcessingItem {
   @Field(() => ID)
-  @PrimaryKey()
+  @PrimaryKey({ autoincrement: true })
   id!: number;
 
   @Field(() => Int)

@@ -10,7 +10,7 @@ export default class Equipment {
   // -------------------- REQUIRED ------------------
 
   @Field(() => Int)
-  @PrimaryKey()
+  @PrimaryKey({ autoincrement: true })
   id!: number;
 
   @Field(() => String)

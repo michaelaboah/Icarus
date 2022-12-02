@@ -33,25 +33,196 @@ export default class ItemResolver {
     @Arg("itemInput", () => ItemInput, { description: "" }) input: ItemInput,
     @Ctx() { em }: MyContext
   ): Promise<ItemResponse | undefined> {
-    if (input.processor) {
-      const item = em.create(Item, { ...input });
-      await em.persistAndFlush(item);
+    switch (input.category) {
+      case Categories.AMPLIFIER: {
+        try {
+          const item = em.create(Item, { ...input });
+          em.persistAndFlush(item);
+          return { item };
+        } catch (error) {
+          return {
+            errors: [
+              {
+                field: "Item Error",
+                message: `Could not insert item because of: ${error} Item`,
+              },
+            ],
+          };
+        }
+      }
 
-      return { item };
-    } else if (input.console) {
-      const item = em.create(Item, { ...input });
-      await em.persistAndFlush(item);
-      return { item };
+      case Categories.COMPUTER: {
+        try {
+          const item = em.create(Item, { ...input });
+          em.persistAndFlush(item);
+          return { item };
+        } catch (error) {
+          return {
+            errors: [
+              {
+                field: "Item Error",
+                message: `Could not insert item because of: ${error} Item`,
+              },
+            ],
+          };
+        }
+      }
+
+      case Categories.CONSOLE: {
+        try {
+          const item = em.create(Item, { ...input });
+          em.persistAndFlush(item);
+          return { item };
+        } catch (error) {
+          return {
+            errors: [
+              {
+                field: "Item Error",
+                message: `Could not insert item because of: ${error} Item`,
+              },
+            ],
+          };
+        }
+      }
+
+      case Categories.MICROPHONES: {
+        try {
+          const item = em.create(Item, { ...input });
+          em.persistAndFlush(item);
+          return { item };
+        } catch (error) {
+          return {
+            errors: [
+              {
+                field: "Item Error",
+                message: `Could not insert item because of: ${error} Item`,
+              },
+            ],
+          };
+        }
+      }
+
+      case Categories.MONITORING: {
+        try {
+          const item = em.create(Item, { ...input });
+          em.persistAndFlush(item);
+          return { item };
+        } catch (error) {
+          return {
+            errors: [
+              {
+                field: "Item Error",
+                message: `Could not insert item because of: ${error} Item`,
+              },
+            ],
+          };
+        }
+      }
+
+      case Categories.NETWORK: {
+        try {
+          const item = em.create(Item, { ...input });
+          em.persistAndFlush(item);
+          return { item };
+        } catch (error) {
+          return {
+            errors: [
+              {
+                field: "Item Error",
+                message: `Could not insert item because of: ${error} Item`,
+              },
+            ],
+          };
+        }
+      }
+
+      case Categories.PROCESSOR: {
+        try {
+          const item = em.create(Item, { ...input });
+          em.persistAndFlush(item);
+          return { item };
+        } catch (error) {
+          return {
+            errors: [
+              {
+                field: "Item Error",
+                message: `Could not insert item because of: ${error} Item`,
+              },
+            ],
+          };
+        }
+      }
+
+      case Categories.RADIO: {
+        try {
+          const item = em.create(Item, { ...input });
+          em.persistAndFlush(item);
+          return { item };
+        } catch (error) {
+          return {
+            errors: [
+              {
+                field: "Item Error",
+                message: `Could not insert item because of: ${error} Item`,
+              },
+            ],
+          };
+        }
+      }
+
+      case Categories.SPEAKER: {
+        try {
+          const item = em.create(Item, { ...input });
+          em.persistAndFlush(item);
+          return { item };
+        } catch (error) {
+          return {
+            errors: [
+              {
+                field: "Item Error",
+                message: `Could not insert item because of: ${error} Item`,
+              },
+            ],
+          };
+        }
+      }
+
+      case Categories.SPK_HARDWARE: {
+        try {
+          const item = em.create(Item, { ...input });
+          em.persistAndFlush(item);
+          return { item };
+        } catch (error) {
+          return {
+            errors: [
+              {
+                field: "Item Error",
+                message: `Could not insert item because of: ${error} Item`,
+              },
+            ],
+          };
+        }
+      }
+
+      default:
+        return {
+          errors: [
+            {
+              field: "Console Error",
+              message: `Could not find entered: ${JSON.stringify(input)} Item`,
+            },
+          ],
+        };
     }
 
-    return {
-      errors: [
-        {
-          field: "Console Error",
-          message: `Could not find entered: ${JSON.stringify(input)} Item`,
-        },
-      ],
-    };
+    // return {
+    //   errors: [
+    //     {
+    //       field: "Console Error",
+    //       message: `Could not find entered: ${JSON.stringify(input)} Item`,
+    //     },
+    //   ],
+    // };
   }
   // Read
   @Query(() => ItemResponse, {

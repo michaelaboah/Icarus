@@ -6,7 +6,7 @@ import { Field, Int, ObjectType } from "type-graphql";
 @ObjectType()
 export default class Post {
   @Field(() => Int)
-  @PrimaryKey()
+  @PrimaryKey({ autoincrement: true })
   id!: number;
 
   @Field(() => String, { description: "Store when item was created." })

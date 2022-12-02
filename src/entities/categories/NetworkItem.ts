@@ -1,5 +1,5 @@
 import { Entity, Enum, JsonType, PrimaryKey, Property } from "@mikro-orm/core";
-import { Field, Int, ObjectType } from "type-graphql";
+import { Field, InputType, Int, ObjectType } from "type-graphql";
 import { NetworkType } from "../../EntityAbstractions/ItemEnums";
 import { NetworkPort } from "../../EntityAbstractions/FieldObjects";
 import IElectrical from "../../EntityAbstractions/IElectrical";
@@ -8,10 +8,11 @@ import IElectrical from "../../EntityAbstractions/IElectrical";
   description:
     "Network specific items, handling routing, switching and wireless functionality",
 })
+@InputType("NetworkInputTest")
 @Entity()
 export default class NetworkItem {
-  @Field(() => Int)
-  @PrimaryKey()
+  @Field(() => Int, { nullable: true })
+  @PrimaryKey({ autoincrement: true })
   id!: number;
 
   @Field(() => NetworkType)

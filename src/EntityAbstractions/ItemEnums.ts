@@ -225,7 +225,7 @@ registerEnumType(Protocol, {
   },
 });
 
-export enum ComputerPorts {
+export enum ComputerPortType {
   USB_A,
   USB_B,
   USB_C,
@@ -236,10 +236,11 @@ export enum ComputerPorts {
   MIRCO_B,
   SD_CARD,
   FIREWIRE,
+  USB_C_THUNDERBOLT,
 }
 
-registerEnumType(ComputerPorts, {
-  name: "Computer Ports",
+registerEnumType(ComputerPortType, {
+  name: "ComputerPortType",
   description: "An array representation of the ports available on a computer.",
 });
 
@@ -321,4 +322,14 @@ registerEnumType(TransmitterConnector, {
       description: "Sennheiser's proprietary connector",
     },
   },
+});
+
+export enum NetworkSpeeds {
+  SUPERSPEED = 100,
+  GIGABIT = 1000,
+  TEN_GIGABIT = 10000,
+}
+
+registerEnumType(NetworkSpeeds, {
+  name: "NetworkSpeeds",
 });

@@ -1,5 +1,5 @@
 import { Entity, Enum, JsonType, PrimaryKey, Property } from "@mikro-orm/core";
-import { Field, Int, ObjectType } from "type-graphql";
+import { Field, InputType, Int, ObjectType } from "type-graphql";
 import {
   MidiType,
   Protocol,
@@ -12,10 +12,11 @@ import {
 import IElectrical from "../../EntityAbstractions/IElectrical";
 
 @ObjectType()
+@InputType("AmplifierItemTest")
 @Entity()
 export default class AmplifierItem {
-  @Field(() => Int)
-  @PrimaryKey()
+  @Field(() => Int, { nullable: true })
+  @PrimaryKey({ autoincrement: true })
   id!: number;
 
   @Field(() => Int)
@@ -26,8 +27,8 @@ export default class AmplifierItem {
   @Property()
   totalOutputs: number;
 
+  @Field(() => MidiType, { nullable: true })
   @Enum(() => MidiType)
-  @Field(() => MidiType)
   midi: MidiType;
 
   @Field(() => [PhysicalPort])
@@ -42,11 +43,11 @@ export default class AmplifierItem {
   @Field(() => Protocol)
   signalProtocol: Protocol;
 
-  @Enum(() => SampleRate)
   @Field(() => SampleRate)
+  @Enum(() => SampleRate)
   max_sample_rate: SampleRate;
 
   @Property({ nullable: true, type: JsonType })
-  @Field(() => IElectrical)
+  @Field(() => IElectrical, { nullable: true })
   power: IElectrical;
 }

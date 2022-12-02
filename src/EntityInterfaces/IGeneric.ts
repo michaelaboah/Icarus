@@ -17,7 +17,7 @@ export abstract class GenericInput {
 @InterfaceType()
 export abstract class IGeneric {
   @Field(() => Int)
-  @PrimaryKey()
+  @PrimaryKey({ autoincrement: true })
   id!: number;
 
   @Field(() => String, { description: "Store when item was created." })

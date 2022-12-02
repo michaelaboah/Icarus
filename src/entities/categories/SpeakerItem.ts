@@ -6,7 +6,14 @@ import {
   JsonType,
   PrimaryKey,
 } from "@mikro-orm/core";
-import { Field, Float, Int, ObjectType, registerEnumType } from "type-graphql";
+import {
+  Field,
+  Float,
+  InputType,
+  Int,
+  ObjectType,
+  registerEnumType,
+} from "type-graphql";
 import {
   NetworkPort,
   PhysicalPort,
@@ -30,10 +37,11 @@ export class DriverArrangment {
 }
 
 @ObjectType()
+@InputType("SpeakerInputTest")
 @Entity()
 export class SpeakerItem {
-  @Field(() => Int)
-  @PrimaryKey()
+  @Field(() => Int, { nullable: true })
+  @PrimaryKey({ autoincrement: true })
   id!: number;
 
   @Property({ type: JsonType })

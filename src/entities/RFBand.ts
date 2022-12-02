@@ -8,7 +8,7 @@ import {
   SmallIntType,
 } from "@mikro-orm/core";
 // import { FullTextType } from "@mikro-orm/postgresql";
-import { Field, Int, ObjectType } from "type-graphql";
+import { Field, InputType, Int, ObjectType } from "type-graphql";
 import { CountryCodes } from "../EntityAbstractions/RFEnums";
 import RFItem from "./categories/RFItem";
 
@@ -16,10 +16,11 @@ import RFItem from "./categories/RFItem";
   description:
     "And updatable table for managing Radio Frequencies around the world",
 })
+@InputType("RFBandInputTest")
 @Entity()
 export default class RFBand {
   @Field(() => Int)
-  @PrimaryKey()
+  @PrimaryKey({ autoincrement: true })
   id!: number;
 
   @Field(() => String, { description: "The shorthand frequency band name." })

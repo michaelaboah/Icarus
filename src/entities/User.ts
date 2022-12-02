@@ -5,7 +5,7 @@ import { Field, Int, ObjectType } from "type-graphql";
 @Entity()
 export default class User {
   @Field(() => Int)
-  @PrimaryKey()
+  @PrimaryKey({ autoincrement: true })
   id!: number;
 
   @Field(() => String)
