@@ -187,6 +187,7 @@ export enum Protocol {
   AVB_MILAN,
   OPTOCORE,
   ULTRANET,
+  A_NET,
   IP,
 }
 
@@ -218,6 +219,11 @@ registerEnumType(Protocol, {
       description:
         "Audio over Ethernet. Streams 16 audio signals across connected devices with low latency. Compatible with selected gear from Music Tribe child companies. *Note: Proprietary by Music Tribe.",
     },
+    A_NET: {
+      description:
+        "Audio over Ethernet. Streams 64 audio signals across (up to 16 ) connected devices with low latency. Compatible with selected gear from Aviom companies. *Note: Proprietary by Aviom.",
+    },
+
     IP: {
       description:
         "Standard IP connection, for LAN or WAN connections. IPv4 is most commonly used for local networks and is the basis for other IP basesd protocols.",

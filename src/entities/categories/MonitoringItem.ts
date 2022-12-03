@@ -22,9 +22,9 @@ export default class MonitoringItem {
   @Property({ type: JsonType, nullable: true })
   network_connectivity: NetworkPort[];
 
-  @Field(() => [PhysicalPort])
+  @Field(() => [PhysicalPort], { nullable: true })
   @Property({ type: JsonType, nullable: true })
-  physical_connectivity: PhysicalPort[];
+  physical_connectivity?: PhysicalPort[];
 
   @Field(() => IElectrical)
   @Property({ type: JsonType, nullable: true })
