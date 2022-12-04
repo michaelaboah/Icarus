@@ -4,7 +4,6 @@ specifiers:
   '@mikro-orm/cli': ^5.5.0
   '@mikro-orm/core': 5.5.0
   '@mikro-orm/migrations': 5.5.0
-  '@mikro-orm/postgresql': ^5.5.0
   '@mikro-orm/sqlite': 5.5.0
   '@types/cookie-parser': ^1.4.3
   '@types/cors': ^2.8.12
@@ -21,18 +20,16 @@ specifiers:
   jsonwebtoken: ^8.5.1
   mikro-orm: ^5.5.3
   nodemon: ^2.0.20
-  pg: ^8.8.0
   sqlite3: ^5.1.2
   ts-node: ^10.9.1
   type-graphql: ^1.1.1
   typescript: ^4.8.4
 
 dependencies:
-  '@mikro-orm/cli': 5.5.0_kwx4vifz7sohqjw4zkswkr65fa
-  '@mikro-orm/core': 5.5.0_7vpwjpjxyetgyyhydd5al7zhbi
-  '@mikro-orm/migrations': 5.5.0_fehxpsngvheqn5p6tiobizpzkm
-  '@mikro-orm/postgresql': 5.5.0_blr5feqyr2nwti2dxb2mvpkr6m
-  '@mikro-orm/sqlite': 5.5.0_h53t5e3hrp6hrt3ozjxo7ik5l4
+  '@mikro-orm/cli': 5.5.0_xrkrc6scq6botq5j7tlujxqx4e
+  '@mikro-orm/core': 5.5.0_lxqjkaehbcnfb5jvtg6evme5wy
+  '@mikro-orm/migrations': 5.5.0_e4dbvyf2f2pspda27ixbrxy224
+  '@mikro-orm/sqlite': 5.5.0_xebhoxbu5ikq5zmo4t6tgyttq4
   '@types/cors': 2.8.12
   '@types/express': 4.17.14
   '@types/jsonwebtoken': 8.5.9
@@ -45,7 +42,6 @@ dependencies:
   graphql: 15.8.0
   jsonwebtoken: 8.5.1
   mikro-orm: 5.5.3
-  pg: 8.8.0
   sqlite3: 5.1.2
   type-graphql: 1.1.1_ifc3nizkqwm4mqy5kvby4x5mey
 
@@ -289,7 +285,7 @@ packages:
       - supports-color
     dev: false
 
-  /@mikro-orm/cli/5.5.0_kwx4vifz7sohqjw4zkswkr65fa:
+  /@mikro-orm/cli/5.5.0_xrkrc6scq6botq5j7tlujxqx4e:
     resolution: {integrity: sha512-IhRThD5ygBxv9BhGognFkhGR0gCBkMeht8SRd39v6fDd4Rp2m4CP+lklMXT7t56dokY3ZspXBVRyUEq5TNTNOA==}
     engines: {node: '>= 14.0.0'}
     hasBin: true
@@ -326,11 +322,10 @@ packages:
       '@mikro-orm/sqlite':
         optional: true
     dependencies:
-      '@mikro-orm/core': 5.5.0_7vpwjpjxyetgyyhydd5al7zhbi
-      '@mikro-orm/knex': 5.5.0_hix625baxolghbem3oegafg3n4
-      '@mikro-orm/migrations': 5.5.0_fehxpsngvheqn5p6tiobizpzkm
-      '@mikro-orm/postgresql': 5.5.0_blr5feqyr2nwti2dxb2mvpkr6m
-      '@mikro-orm/sqlite': 5.5.0_h53t5e3hrp6hrt3ozjxo7ik5l4
+      '@mikro-orm/core': 5.5.0_lxqjkaehbcnfb5jvtg6evme5wy
+      '@mikro-orm/knex': 5.5.0_blr5feqyr2nwti2dxb2mvpkr6m
+      '@mikro-orm/migrations': 5.5.0_e4dbvyf2f2pspda27ixbrxy224
+      '@mikro-orm/sqlite': 5.5.0_xebhoxbu5ikq5zmo4t6tgyttq4
       fs-extra: 10.1.0
       tsconfig-paths: 4.1.0
       yargonaut: 1.1.4
@@ -347,7 +342,7 @@ packages:
       - tedious
     dev: false
 
-  /@mikro-orm/core/5.5.0_7vpwjpjxyetgyyhydd5al7zhbi:
+  /@mikro-orm/core/5.5.0_lxqjkaehbcnfb5jvtg6evme5wy:
     resolution: {integrity: sha512-65mjIbdKgybRpzP9IsZTl+J0SaGIXfY7WCtneADE29Vo94Mo2y80g9Od7kjBAOCw392JBCOoFCZJxaeJHyIHPw==}
     engines: {node: '>= 14.0.0'}
     peerDependencies:
@@ -383,9 +378,8 @@ packages:
       '@mikro-orm/sqlite':
         optional: true
     dependencies:
-      '@mikro-orm/migrations': 5.5.0_fehxpsngvheqn5p6tiobizpzkm
-      '@mikro-orm/postgresql': 5.5.0_blr5feqyr2nwti2dxb2mvpkr6m
-      '@mikro-orm/sqlite': 5.5.0_h53t5e3hrp6hrt3ozjxo7ik5l4
+      '@mikro-orm/migrations': 5.5.0_e4dbvyf2f2pspda27ixbrxy224
+      '@mikro-orm/sqlite': 5.5.0_xebhoxbu5ikq5zmo4t6tgyttq4
       acorn-loose: 8.3.0
       acorn-walk: 8.2.0
       dotenv: 16.0.3
@@ -395,7 +389,7 @@ packages:
       reflect-metadata: 0.1.13
     dev: false
 
-  /@mikro-orm/knex/5.5.0_hix625baxolghbem3oegafg3n4:
+  /@mikro-orm/knex/5.5.0_blr5feqyr2nwti2dxb2mvpkr6m:
     resolution: {integrity: sha512-tsZ18f8o8CWMZk9OEacNUbmTXycCQsty+UKBtBtVwTJHB5h9gEbrHJCZNAJMxOlUuJOSiELL3yF+7vLZLwKImQ==}
     engines: {node: '>= 14.0.0'}
     peerDependencies:
@@ -426,11 +420,10 @@ packages:
       sqlite3:
         optional: true
     dependencies:
-      '@mikro-orm/core': 5.5.0_7vpwjpjxyetgyyhydd5al7zhbi
-      '@mikro-orm/migrations': 5.5.0_fehxpsngvheqn5p6tiobizpzkm
+      '@mikro-orm/core': 5.5.0_lxqjkaehbcnfb5jvtg6evme5wy
+      '@mikro-orm/migrations': 5.5.0_e4dbvyf2f2pspda27ixbrxy224
       fs-extra: 10.1.0
-      knex: 2.3.0_pg@8.8.0+sqlite3@5.1.2
-      pg: 8.8.0
+      knex: 2.3.0_sqlite3@5.1.2
       sqlite3: 5.1.2
       sqlstring: 2.3.3
     transitivePeerDependencies:
@@ -439,7 +432,7 @@ packages:
       - tedious
     dev: false
 
-  /@mikro-orm/knex/5.5.3_hix625baxolghbem3oegafg3n4:
+  /@mikro-orm/knex/5.5.3_blr5feqyr2nwti2dxb2mvpkr6m:
     resolution: {integrity: sha512-vimh9DLsXwauuQj7Lrr70RP9tESIm4LB1BpUwMsj/6qRBaEBefV/BVQzPFDKUOe3bghB4kTEHAdJ7qCnpg1Byw==}
     engines: {node: '>= 14.0.0'}
     peerDependencies:
@@ -470,11 +463,10 @@ packages:
       sqlite3:
         optional: true
     dependencies:
-      '@mikro-orm/core': 5.5.0_7vpwjpjxyetgyyhydd5al7zhbi
-      '@mikro-orm/migrations': 5.5.0_fehxpsngvheqn5p6tiobizpzkm
+      '@mikro-orm/core': 5.5.0_lxqjkaehbcnfb5jvtg6evme5wy
+      '@mikro-orm/migrations': 5.5.0_e4dbvyf2f2pspda27ixbrxy224
       fs-extra: 10.1.0
-      knex: 2.3.0_pg@8.8.0+sqlite3@5.1.2
-      pg: 8.8.0
+      knex: 2.3.0_sqlite3@5.1.2
       sqlite3: 5.1.2
       sqlstring: 2.3.3
     transitivePeerDependencies:
@@ -483,16 +475,16 @@ packages:
       - tedious
     dev: false
 
-  /@mikro-orm/migrations/5.5.0_fehxpsngvheqn5p6tiobizpzkm:
+  /@mikro-orm/migrations/5.5.0_e4dbvyf2f2pspda27ixbrxy224:
     resolution: {integrity: sha512-eMRWJEQYvvw8hAky/4J8h18HqstuEeXbBG9rlgxYGnsGSo5Dk3gcdsmO81amyh3iX2FkK0jz3o49EKMw0yRrtg==}
     engines: {node: '>= 14.0.0'}
     peerDependencies:
       '@mikro-orm/core': ^5.0.0
     dependencies:
-      '@mikro-orm/core': 5.5.0_7vpwjpjxyetgyyhydd5al7zhbi
-      '@mikro-orm/knex': 5.5.0_hix625baxolghbem3oegafg3n4
+      '@mikro-orm/core': 5.5.0_lxqjkaehbcnfb5jvtg6evme5wy
+      '@mikro-orm/knex': 5.5.3_blr5feqyr2nwti2dxb2mvpkr6m
       fs-extra: 10.1.0
-      knex: 2.3.0_pg@8.8.0+sqlite3@5.1.2
+      knex: 2.3.0_sqlite3@5.1.2
       umzug: 3.2.1
     transitivePeerDependencies:
       - '@mikro-orm/entity-generator'
@@ -507,38 +499,7 @@ packages:
       - tedious
     dev: false
 
-  /@mikro-orm/postgresql/5.5.0_blr5feqyr2nwti2dxb2mvpkr6m:
-    resolution: {integrity: sha512-lrCZxEw4YNd0HArtpvq3uFBqVBt9G0EA+o3khBzQJi+u+J43/9CUm5ezlhRRyQiZyIWWtO+hHvY40wiTrrIAoA==}
-    engines: {node: '>= 14.0.0'}
-    peerDependencies:
-      '@mikro-orm/core': ^5.0.0
-      '@mikro-orm/entity-generator': ^5.0.0
-      '@mikro-orm/migrations': ^5.0.0
-      '@mikro-orm/seeder': ^5.0.0
-    peerDependenciesMeta:
-      '@mikro-orm/entity-generator':
-        optional: true
-      '@mikro-orm/migrations':
-        optional: true
-      '@mikro-orm/seeder':
-        optional: true
-    dependencies:
-      '@mikro-orm/core': 5.5.0_7vpwjpjxyetgyyhydd5al7zhbi
-      '@mikro-orm/knex': 5.5.0_hix625baxolghbem3oegafg3n4
-      '@mikro-orm/migrations': 5.5.0_fehxpsngvheqn5p6tiobizpzkm
-      pg: 8.8.0
-    transitivePeerDependencies:
-      - better-sqlite3
-      - mssql
-      - mysql
-      - mysql2
-      - pg-native
-      - sqlite3
-      - supports-color
-      - tedious
-    dev: false
-
-  /@mikro-orm/sqlite/5.5.0_h53t5e3hrp6hrt3ozjxo7ik5l4:
+  /@mikro-orm/sqlite/5.5.0_xebhoxbu5ikq5zmo4t6tgyttq4:
     resolution: {integrity: sha512-4nS96NGXYXdLjNRlOg1+sy1cCHWlH/KsS04Pz4A9uXZGxCGSgbQFe9X1Fb9oYTjuqoLBuN6iitKyKvlTqJQ1Uw==}
     engines: {node: '>= 14.0.0'}
     peerDependencies:
@@ -554,9 +515,9 @@ packages:
       '@mikro-orm/seeder':
         optional: true
     dependencies:
-      '@mikro-orm/core': 5.5.0_7vpwjpjxyetgyyhydd5al7zhbi
-      '@mikro-orm/knex': 5.5.3_hix625baxolghbem3oegafg3n4
-      '@mikro-orm/migrations': 5.5.0_fehxpsngvheqn5p6tiobizpzkm
+      '@mikro-orm/core': 5.5.0_lxqjkaehbcnfb5jvtg6evme5wy
+      '@mikro-orm/knex': 5.5.3_blr5feqyr2nwti2dxb2mvpkr6m
+      '@mikro-orm/migrations': 5.5.0_e4dbvyf2f2pspda27ixbrxy224
       fs-extra: 10.1.0
       sqlite3: 5.1.2
       sqlstring-sqlite: 0.1.1
@@ -660,8 +621,8 @@ packages:
     resolution: {integrity: sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==}
     dev: false
 
-  /@rushstack/ts-command-line/4.13.0:
-    resolution: {integrity: sha512-crLT31kl+qilz0eBRjqqYO06CqwbElc0EvzS6jI69B9Ikt1SkkSzIZ2iDP7zt/rd1ZYipKIS9hf9CQR9swDIKg==}
+  /@rushstack/ts-command-line/4.13.1:
+    resolution: {integrity: sha512-UTQMRyy/jH1IS2U+6pyzyn9xQ2iMcoUKkTcZUzOP/aaMiKlWLwCTDiBVwhw/M1crDx6apF9CwyjuWO9r1SBdJQ==}
     dependencies:
       '@types/argparse': 1.0.38
       argparse: 1.0.10
@@ -1101,11 +1062,6 @@ packages:
 
   /buffer-equal-constant-time/1.0.1:
     resolution: {integrity: sha512-zRpUiDwd/xk6ADqPMATG8vc9VPrkck7T07OIx0gnjmJAnHnTVXNQG3vfvWNuiZIkwu9KrKdA1iJKfsfTVxE6NA==}
-    dev: false
-
-  /buffer-writer/2.0.0:
-    resolution: {integrity: sha512-a7ZpuTZU1TRtnwyCNW3I5dc0wWNC3VR9S++Ewyk2HHZdrO3CQJqSpd+95Us590V6AL7JqUAH2IwZ/398PmNFgw==}
-    engines: {node: '>=4'}
     dev: false
 
   /bytes/3.1.2:
@@ -1667,7 +1623,7 @@ packages:
       fs.realpath: 1.0.0
       inflight: 1.0.6
       inherits: 2.0.4
-      minimatch: 5.1.0
+      minimatch: 5.1.1
       once: 1.4.0
     dev: false
 
@@ -1956,7 +1912,7 @@ packages:
       safe-buffer: 5.2.1
     dev: false
 
-  /knex/2.3.0_pg@8.8.0+sqlite3@5.1.2:
+  /knex/2.3.0_sqlite3@5.1.2:
     resolution: {integrity: sha512-WMizPaq9wRMkfnwKXKXgBZeZFOSHGdtoSz5SaLAVNs3WRDfawt9O89T4XyH52PETxjV8/kRk0Yf+8WBEP/zbYw==}
     engines: {node: '>=12'}
     hasBin: true
@@ -1993,7 +1949,6 @@ packages:
       getopts: 2.3.0
       interpret: 2.2.0
       lodash: 4.17.21
-      pg: 8.8.0
       pg-connection-string: 2.5.0
       rechoir: 0.8.0
       resolve-from: 5.0.0
@@ -2164,8 +2119,8 @@ packages:
     dependencies:
       brace-expansion: 1.1.11
 
-  /minimatch/5.1.0:
-    resolution: {integrity: sha512-9TPBGGak4nHfGZsPBohm9AWg6NoT7QTCehS3BIJABslyZbzxfV78QM2Y6+i741OPZIafFAaiiEMh5OyIrJPgtg==}
+  /minimatch/5.1.1:
+    resolution: {integrity: sha512-362NP+zlprccbEt/SkxKfRMHnNY85V74mVnpUpNyr3F35covl09Kec7/sEFLt3RA4oXmewtoaanoIf67SE5Y5g==}
     engines: {node: '>=10'}
     dependencies:
       brace-expansion: 2.0.1
@@ -2404,10 +2359,6 @@ packages:
     engines: {node: '>=6'}
     dev: false
 
-  /packet-reader/1.0.0:
-    resolution: {integrity: sha512-HAKu/fG3HpHFO0AA8WE8q2g+gBJaZ9MG7fcKk+IJPLTGAD6Psw4443l+9DGRbOIh3/aXr7Phy0TjilYivJo5XQ==}
-    dev: false
-
   /parent-require/1.0.0:
     resolution: {integrity: sha512-2MXDNZC4aXdkkap+rBBMv0lUsfJqvX5/2FiYYnfCnorZt3Pk06/IOR5KeaoghgS2w07MLWgjbsnyaq6PdHn2LQ==}
     engines: {node: '>= 0.4.0'}
@@ -2445,87 +2396,13 @@ packages:
     resolution: {integrity: sha512-r5o/V/ORTA6TmUnyWZR9nCj1klXCO2CEKNRlVuJptZe85QuhFayC7WeMic7ndayT5IRIR0S0xFxFi2ousartlQ==}
     dev: false
 
-  /pg-int8/1.0.1:
-    resolution: {integrity: sha512-WCtabS6t3c8SkpDBUlb1kjOs7l66xsGdKpIPZsg4wR+B3+u9UAum2odSsF9tnvxg80h4ZxLWMy4pRjOsFIqQpw==}
-    engines: {node: '>=4.0.0'}
-    dev: false
-
-  /pg-pool/3.5.2_pg@8.8.0:
-    resolution: {integrity: sha512-His3Fh17Z4eg7oANLob6ZvH8xIVen3phEZh2QuyrIl4dQSDVEabNducv6ysROKpDNPSD+12tONZVWfSgMvDD9w==}
-    peerDependencies:
-      pg: '>=8.0'
-    dependencies:
-      pg: 8.8.0
-    dev: false
-
-  /pg-protocol/1.5.0:
-    resolution: {integrity: sha512-muRttij7H8TqRNu/DxrAJQITO4Ac7RmX3Klyr/9mJEOBeIpgnF8f9jAfRz5d3XwQZl5qBjF9gLsUtMPJE0vezQ==}
-    dev: false
-
-  /pg-types/2.2.0:
-    resolution: {integrity: sha512-qTAAlrEsl8s4OiEQY69wDvcMIdQN6wdz5ojQiOy6YRMuynxenON0O5oCpJI6lshc6scgAY8qvJ2On/p+CXY0GA==}
-    engines: {node: '>=4'}
-    dependencies:
-      pg-int8: 1.0.1
-      postgres-array: 2.0.0
-      postgres-bytea: 1.0.0
-      postgres-date: 1.0.7
-      postgres-interval: 1.2.0
-    dev: false
-
-  /pg/8.8.0:
-    resolution: {integrity: sha512-UXYN0ziKj+AeNNP7VDMwrehpACThH7LUl/p8TDFpEUuSejCUIwGSfxpHsPvtM6/WXFy6SU4E5RG4IJV/TZAGjw==}
-    engines: {node: '>= 8.0.0'}
-    peerDependencies:
-      pg-native: '>=3.0.1'
-    peerDependenciesMeta:
-      pg-native:
-        optional: true
-    dependencies:
-      buffer-writer: 2.0.0
-      packet-reader: 1.0.0
-      pg-connection-string: 2.5.0
-      pg-pool: 3.5.2_pg@8.8.0
-      pg-protocol: 1.5.0
-      pg-types: 2.2.0
-      pgpass: 1.0.5
-    dev: false
-
-  /pgpass/1.0.5:
-    resolution: {integrity: sha512-FdW9r/jQZhSeohs1Z3sI1yxFQNFvMcnmfuj4WBMUTxOrAyLMaTcE1aAMBiTlbMNaXvBCQuVi0R7hd8udDSP7ug==}
-    dependencies:
-      split2: 4.1.0
-    dev: false
-
   /picomatch/2.3.1:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
     engines: {node: '>=8.6'}
 
-  /pony-cause/2.1.4:
-    resolution: {integrity: sha512-6jNyaeEi1I4rGD338qmNmx2yLg8N/JZJZU8JCrqDtfxCEYZttfuN6AnKhBGfMyTydW4t2iBioxDzKeZJC2mJVw==}
+  /pony-cause/2.1.8:
+    resolution: {integrity: sha512-c4E5sVlX+npoRiKb72SkMOYMZ/c+jehaKAytybykhh49tEQYkjHxKSZ3YHUyH1v3oEL+wl3aXtkyYhJp+cNXDg==}
     engines: {node: '>=12.0.0'}
-    dev: false
-
-  /postgres-array/2.0.0:
-    resolution: {integrity: sha512-VpZrUqU5A69eQyW2c5CA1jtLecCsN2U/bD6VilrFDWq5+5UIEVO7nazS3TEcHf1zuPYO/sqGvUvW62g86RXZuA==}
-    engines: {node: '>=4'}
-    dev: false
-
-  /postgres-bytea/1.0.0:
-    resolution: {integrity: sha512-xy3pmLuQqRBZBXDULy7KbaitYqLcmxigw14Q5sj8QBVLqEwXfeybIKVWiqAXTlcvdvb0+xkOtDbfQMOf4lST1w==}
-    engines: {node: '>=0.10.0'}
-    dev: false
-
-  /postgres-date/1.0.7:
-    resolution: {integrity: sha512-suDmjLVQg78nMK2UZ454hAG+OAW+HQPZ6n++TNDUX+L0+uUlLywnoxJKDou51Zm+zTCjrCl0Nq6J9C5hP9vK/Q==}
-    engines: {node: '>=0.10.0'}
-    dev: false
-
-  /postgres-interval/1.2.0:
-    resolution: {integrity: sha512-9ZhXKM/rw350N1ovuWHbGxnGh/SNJ4cnxHiM0rxE4VN41wsg8P8zWn9hv/buK00RP4WvlOyr/RBDiptyxVbkZQ==}
-    engines: {node: '>=0.10.0'}
-    dependencies:
-      xtend: 4.0.2
     dev: false
 
   /promise-inflight/1.0.1:
@@ -2801,11 +2678,6 @@ packages:
     dev: false
     optional: true
 
-  /split2/4.1.0:
-    resolution: {integrity: sha512-VBiJxFkxiXRlUIeyMQi8s4hgvKCSjtknJv/LVYbrgALPwf5zSKmEwV9Lst25AkvMDnvxODugjdl6KZgwKM1WYQ==}
-    engines: {node: '>= 10.x'}
-    dev: false
-
   /sprintf-js/1.0.3:
     resolution: {integrity: sha512-D9cPgkvLlV3t3IzL0D0YLvGA9Ahk4PcvVwUbN0dSGr1aP0Nrt4AEnTUbuGvquEC0mA64Gqt1fzirlRs5ibXx8g==}
     dev: false
@@ -3038,11 +2910,11 @@ packages:
     resolution: {integrity: sha512-XyWQowvP9CKZycKc/Zg9SYWrAWX/gJCE799AUTFqk8yC3tp44K1xWr3LoFF0MNEjClKOo1suCr5ASnoy+KltdA==}
     engines: {node: '>=12'}
     dependencies:
-      '@rushstack/ts-command-line': 4.13.0
+      '@rushstack/ts-command-line': 4.13.1
       emittery: 0.12.1
       fs-jetpack: 4.3.1
       glob: 8.0.3
-      pony-cause: 2.1.4
+      pony-cause: 2.1.8
       type-fest: 2.19.0
     dev: false
 
@@ -3162,11 +3034,6 @@ packages:
     dependencies:
       commander: 2.20.3
       cssfilter: 0.0.10
-    dev: false
-
-  /xtend/4.0.2:
-    resolution: {integrity: sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==}
-    engines: {node: '>=0.4'}
     dev: false
 
   /y18n/4.0.3:
