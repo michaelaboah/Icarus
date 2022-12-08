@@ -33,25 +33,28 @@ export default class ItemResolver {
     @Arg("itemInput", () => ItemInput, { description: "" }) input: ItemInput,
     @Ctx() { em }: MyContext
   ): Promise<ItemResponse | undefined> {
-    if (input.processor) {
-      const item = em.create(Item, { ...input });
+    const item = em.create(Item, { ...input });
+    try {
       await em.persistAndFlush(item);
-
-      return { item };
-    } else if (input.console) {
-      const item = em.create(Item, { ...input });
-      await em.persistAndFlush(item);
-      return { item };
+    } catch (error) {
+      console.error(error);
+      if (error.code === "23505") {
+        return {
+          errors: [
+            {
+              field: "Duplication Error",
+              message: `Model: "${item.model}" already exists, cannot have duplicates.`,
+              details: error.name,
+            },
+          ],
+        };
+      } else {
+        return {
+          errors: [{ field: "Other", message: `${error}` }],
+        };
+      }
     }
-
-    return {
-      errors: [
-        {
-          field: "Console Error",
-          message: `Could not find entered: ${JSON.stringify(input)} Item`,
-        },
-      ],
-    };
+    return { item };
   }
   // Read
   @Query(() => ItemResponse, {

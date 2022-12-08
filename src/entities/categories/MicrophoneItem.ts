@@ -1,12 +1,13 @@
 import { Entity, Enum, PrimaryKey, Property } from "@mikro-orm/core";
-import { Field, Int, ObjectType } from "type-graphql";
+import { Field, InputType, Int, ObjectType } from "type-graphql";
 import { Analog, MicrophoneType } from "../../EntityAbstractions/ItemEnums";
 
 @ObjectType()
+@InputType("MicrophoneInputTest")
 @Entity()
 export default class MicrophoneItem {
-  @Field(() => Int)
-  @PrimaryKey()
+  @Field(() => Int, { nullable: true })
+  @PrimaryKey({ autoincrement: true })
   id!: number;
 
   @Field()
@@ -38,10 +39,10 @@ export default class MicrophoneItem {
   frequency_response: string;
 
   @Field(() => Analog, { nullable: true })
-  @Enum({ nullable: true })
+  @Enum(() => Analog)
   connector: Analog;
 
   @Field(() => [MicrophoneType], { nullable: true })
-  @Property({ nullable: true })
+  @Property()
   microphone_type: MicrophoneType[];
 }

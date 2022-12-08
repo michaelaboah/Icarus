@@ -1,5 +1,5 @@
 import { Entity, JsonType, PrimaryKey, Property } from "@mikro-orm/core";
-import { Field, Int, ObjectType } from "type-graphql";
+import { Field, InputType, Int, ObjectType } from "type-graphql";
 import {
   NetworkPort,
   PhysicalPort,
@@ -7,10 +7,11 @@ import {
 import IElectrical from "../../EntityAbstractions/IElectrical";
 
 @ObjectType()
+@InputType("MonitoringInputTest")
 @Entity()
 export default class MonitoringItem {
-  @Field(() => Int)
-  @PrimaryKey()
+  @Field(() => Int, { nullable: true })
+  @PrimaryKey({ autoincrement: true })
   id!: number;
 
   @Field(() => Boolean, { nullable: true })
@@ -21,9 +22,9 @@ export default class MonitoringItem {
   @Property({ type: JsonType, nullable: true })
   network_connectivity: NetworkPort[];
 
-  @Field(() => [PhysicalPort])
+  @Field(() => [PhysicalPort], { nullable: true })
   @Property({ type: JsonType, nullable: true })
-  physical_connectivity: PhysicalPort[];
+  physical_connectivity?: PhysicalPort[];
 
   @Field(() => IElectrical)
   @Property({ type: JsonType, nullable: true })

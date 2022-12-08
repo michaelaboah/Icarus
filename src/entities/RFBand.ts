@@ -43,7 +43,7 @@ export default class RFBand {
   @Property()
   deprecated?: boolean;
 
-  @ManyToOne({ entity: () => RFItem })
+  @ManyToOne(() => RFItem)
   rf_item!: RFItem;
 
   @Index({ type: "fulltext" })

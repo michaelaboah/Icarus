@@ -12,7 +12,7 @@ import {
 import IElectrical from "../../EntityAbstractions/IElectrical";
 
 @ObjectType()
-@InputType("ProcessingInputTest")
+@InputType("ProcessingItemTest")
 @Entity()
 export default class ProcessingItem {
   @Field(() => Int, { nullable: true })

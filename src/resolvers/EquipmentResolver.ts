@@ -72,6 +72,9 @@ export class FieldError {
 
   @Field()
   message: string;
+
+  @Field()
+  details?: string;
 }
 
 @Resolver()

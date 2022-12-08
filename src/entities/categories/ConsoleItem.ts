@@ -1,6 +1,6 @@
 import { Entity, Enum, JsonType, PrimaryKey, Property } from "@mikro-orm/core";
 import IElectrical from "../../EntityAbstractions/IElectrical";
-import { Field, Int, ObjectType } from "type-graphql";
+import { Field, InputType, Int, ObjectType } from "type-graphql";
 import {
   MidiType,
   Protocol,
@@ -8,10 +8,11 @@ import {
 } from "../../EntityAbstractions/ItemEnums";
 
 @ObjectType()
+@InputType("ConsoleInputTest")
 @Entity()
 export default class ConsoleItem {
-  @Field(() => Int)
-  @PrimaryKey()
+  @Field(() => Int, { nullable: true })
+  @PrimaryKey({ autoincrement: true })
   id!: number;
 
   @Field(() => Int)
@@ -54,8 +55,8 @@ export default class ConsoleItem {
   @Property()
   motorized: boolean;
 
+  @Field(() => MidiType, { nullable: true })
   @Enum(() => MidiType)
-  @Field(() => MidiType)
   midi: MidiType;
 
   @Property({ nullable: true })

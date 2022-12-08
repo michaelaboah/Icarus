@@ -1,21 +1,22 @@
 import {
-  Collection,
+  // Collection,
   Entity,
   JsonType,
-  OneToMany,
+  // OneToMany,
   PrimaryKey,
   Property,
   SmallIntType,
 } from "@mikro-orm/core";
-import { Field, Int, ObjectType } from "type-graphql";
+import { Field, InputType, Int, ObjectType } from "type-graphql";
 import { Transmitter, Reciever } from "../../EntityAbstractions/RFObjects";
-import RFBand from "../RFBand";
+// import RFBand from "../RFBand";
 
 @ObjectType({ description: "Items that have RF capabilities" })
+@InputType("RFInputTest")
 @Entity()
 export default class RFItem {
-  @Field(() => Int)
-  @PrimaryKey()
+  @Field(() => Int, { nullable: true })
+  @PrimaryKey({ autoincrement: true })
   id!: number;
 
   @Field(() => Int, {
@@ -33,9 +34,9 @@ export default class RFItem {
   @Property({ type: SmallIntType })
   upper_frequency_response: number;
 
-  @Field(() => [RFBand])
-  @OneToMany(() => RFBand, (band) => band.rf_item)
-  possible_bands = new Collection<RFBand>(this);
+  // @Field(() => RFBand)
+  // @OneToMany(() => RFBand, (band) => band.rf_item)
+  // possible_bands = new Collection<RFBand>(this);
 
   @Field(() => Transmitter)
   @Property({ type: JsonType, nullable: true })

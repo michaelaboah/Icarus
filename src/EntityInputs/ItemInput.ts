@@ -8,9 +8,10 @@ import NetworkItem from "../entities/categories/NetworkItem";
 import ProcessingItem from "../entities/categories/ProcessingItem";
 import RFItem from "../entities/categories/RFItem";
 import { SpeakerItem } from "../entities/categories/SpeakerItem";
+import { Dimension } from "../EntityAbstractions/FieldObjects";
 import { Categories } from "../EntityAbstractions/ItemEnums";
 import AmplifierInput from "./AmplifierInput";
-import ComputerInput from "./ComputerInput";
+// import ComputerInput from "./ComputerInput";
 import ConsoleInput from "./ConsoleInput";
 import MicrophoneInput from "./MicrophoneInput";
 import MonitoringInput from "./MonitoringInput";
@@ -42,32 +43,38 @@ export default class ItemInput {
   @Field({ nullable: true })
   searchModel?: string;
 
-  @Field(() => AmplifierInput, { nullable: true })
+  @Field(() => AmplifierItem, { nullable: true })
   amplifier?: AmplifierItem;
 
-  @Field(() => ConsoleInput, { nullable: true })
+  @Field(() => ConsoleItem, { nullable: true })
   console?: ConsoleItem;
 
-  @Field(() => ComputerInput, { nullable: true })
+  @Field(() => ComputerItem, { nullable: true })
   computer?: ComputerItem;
 
   @Field(() => ProcessingItem, { nullable: true })
   processor?: ProcessingItem;
 
-  @Field(() => NetworkInput, { nullable: true })
+  @Field(() => NetworkItem, { nullable: true })
   network_item?: NetworkItem;
 
-  @Field(() => MicrophoneInput, { nullable: true })
+  @Field(() => MicrophoneItem, { nullable: true })
   microphone?: MicrophoneItem;
 
-  @Field(() => RFItemInput, { nullable: true })
+  @Field(() => RFItem, { nullable: true })
   rf_item?: RFItem;
 
-  @Field(() => SpeakerInput, { nullable: true })
+  @Field(() => SpeakerItem, { nullable: true })
   speaker_item?: SpeakerItem;
 
-  @Field(() => MonitoringInput, { nullable: true })
+  @Field(() => MonitoringItem, { nullable: true })
   monitoring_item?: MonitoringItem;
+
+  @Field(() => Dimension, { nullable: true })
+  dimensions?: Dimension;
+
+  @Field(() => [String], { nullable: true })
+  notes?: string[];
 }
 
 @InputType()
@@ -99,7 +106,7 @@ export class ItemInputEdit {
   @Field(() => ConsoleInput, { nullable: true })
   console?: ConsoleItem;
 
-  @Field(() => ComputerInput, { nullable: true })
+  @Field(() => ComputerItem, { nullable: true })
   computer?: ComputerItem;
 
   @Field(() => ProcessorInput, { nullable: true })
@@ -119,6 +126,9 @@ export class ItemInputEdit {
 
   @Field(() => MonitoringInput, { nullable: true })
   monitoring_item?: MonitoringItem;
+
+  @Field(() => Dimension, { nullable: true })
+  dimensions?: Dimension;
 
   @Field(() => [String], { nullable: true })
   notes?: string[];
