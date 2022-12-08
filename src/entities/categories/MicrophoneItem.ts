@@ -39,10 +39,10 @@ export default class MicrophoneItem {
   frequency_response: string;
 
   @Field(() => Analog, { nullable: true })
-  @Enum()
+  @Enum(() => Analog)
   connector: Analog;
 
   @Field(() => [MicrophoneType], { nullable: true })
-  @Property({ nullable: true })
+  @Property()
   microphone_type: MicrophoneType[];
 }

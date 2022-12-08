@@ -16,7 +16,7 @@ export abstract class GenericInput {
 
 @InterfaceType()
 export abstract class IGeneric {
-  @Field(() => Int)
+  @Field(() => Int, { nullable: true })
   @PrimaryKey({ autoincrement: true })
   id!: number;
 

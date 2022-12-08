@@ -37,7 +37,8 @@ export default class ItemResolver {
     try {
       await em.persistAndFlush(item);
     } catch (error) {
-      if (error.code) {
+      console.error(error);
+      if (error.code === "23505") {
         return {
           errors: [
             {
@@ -46,6 +47,10 @@ export default class ItemResolver {
               details: error.name,
             },
           ],
+        };
+      } else {
+        return {
+          errors: [{ field: "Other", message: `${error}` }],
         };
       }
     }
