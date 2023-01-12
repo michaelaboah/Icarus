@@ -4,7 +4,7 @@ import {
   NetworkPort,
   PhysicalPort,
 } from "../../EntityAbstractions/FieldObjects";
-import IElectrical from "../../EntityAbstractions/IElectrical";
+import Power from "../../EntityAbstractions/Power";
 
 @ObjectType()
 @InputType("MonitoringInputTest")
@@ -14,9 +14,9 @@ export default class MonitoringItem {
   @PrimaryKey({ autoincrement: true })
   id!: number;
 
-  @Field(() => Boolean, { nullable: true })
-  @Property({ nullable: true })
-  distro?: boolean;
+  @Field(() => Boolean, { defaultValue: false })
+  @Property({ default: false })
+  distro: boolean;
 
   @Field(() => [NetworkPort])
   @Property({ type: JsonType, nullable: true })
@@ -26,7 +26,7 @@ export default class MonitoringItem {
   @Property({ type: JsonType, nullable: true })
   physical_connectivity?: PhysicalPort[];
 
-  @Field(() => IElectrical)
+  @Field(() => Power)
   @Property({ type: JsonType, nullable: true })
-  power: IElectrical;
+  power: Power;
 }

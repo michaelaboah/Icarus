@@ -11,11 +11,11 @@ export default class Post {
 
   @Field(() => String, { description: "Store when item was created." })
   @Property({ type: "date", default: "NOW()" })
-  createdAt? = new Date();
+  created_at? = new Date();
 
   @Field(() => String, { description: "Store when item was last changed." })
   @Property({ type: "date", onUpdate: () => new Date() })
-  updatedAt? = new Date();
+  updated_at? = new Date();
 
   @Field(() => String)
   @Property()

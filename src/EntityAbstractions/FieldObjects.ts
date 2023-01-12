@@ -78,8 +78,8 @@ export class ComputerPort {
   @Field(() => Int)
   number_of_ports: number;
 
-  @Field(() => Boolean, { nullable: true })
-  front_port?: boolean;
+  @Field(() => Boolean, { defaultValue: false })
+  front_port: boolean;
 
   @Field(() => String, { nullable: true })
   version?: string;

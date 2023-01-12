@@ -1,7 +1,7 @@
 import { Field, InputType, Int } from "type-graphql";
 import { NetworkType } from "../EntityAbstractions/ItemEnums";
 import { NetworkPort } from "../EntityAbstractions/FieldObjects";
-import IElectrical from "../EntityAbstractions/IElectrical";
+import Power from "../EntityAbstractions/Power";
 
 @InputType()
 export default class NetworkInput {
@@ -15,11 +15,11 @@ export default class NetworkInput {
   max_speed: number;
 
   @Field(() => Boolean)
-  fiber?: boolean;
+  fiber: boolean;
 
   @Field(() => [NetworkPort])
   network_connectivity?: NetworkPort[];
 
-  @Field(() => IElectrical)
-  power?: IElectrical;
+  @Field(() => Power)
+  power?: Power;
 }

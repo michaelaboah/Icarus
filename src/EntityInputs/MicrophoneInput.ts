@@ -6,14 +6,14 @@ export default class MicrophoneInput {
   @Field()
   max_spl: number;
 
-  @Field(() => Boolean, { nullable: true })
-  phantom?: boolean;
+  @Field(() => Boolean, { defaultValue: false })
+  phantom: boolean;
 
-  @Field(() => Boolean, { nullable: true })
-  low_cut?: boolean;
+  @Field(() => Boolean, { defaultValue: false })
+  low_cut: boolean;
 
-  @Field(() => Boolean, { nullable: true })
-  pad?: boolean;
+  @Field(() => Boolean, { defaultValue: false })
+  pad: boolean;
 
   @Field({ nullable: true })
   diaphragm_size?: number;

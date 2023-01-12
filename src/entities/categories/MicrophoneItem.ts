@@ -14,17 +14,17 @@ export default class MicrophoneItem {
   @Property()
   max_spl: number;
 
-  @Field(() => Boolean, { nullable: true })
-  @Property({ nullable: true })
-  phantom?: boolean;
+  @Field(() => Boolean, { defaultValue: false })
+  @Property({ default: false })
+  phantom: boolean;
 
-  @Field(() => Boolean, { nullable: true })
-  @Property({ nullable: true })
-  low_cut?: boolean;
+  @Field(() => Boolean, { defaultValue: false })
+  @Property({ default: false })
+  low_cut: boolean;
 
-  @Field(() => Boolean, { nullable: true })
-  @Property({ nullable: true })
-  pad?: boolean;
+  @Field(() => Boolean, { defaultValue: false })
+  @Property({ default: false })
+  pad: boolean;
 
   @Field({ nullable: true })
   @Property({ nullable: true })

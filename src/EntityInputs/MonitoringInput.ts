@@ -1,11 +1,11 @@
 import { Field, InputType } from "type-graphql";
 import { NetworkPort, PhysicalPort } from "../EntityAbstractions/FieldObjects";
-import IElectrical from "../EntityAbstractions/IElectrical";
+import Power from "../EntityAbstractions/Power";
 
 @InputType()
 export default class MonitoringInput {
-  @Field(() => Boolean, { nullable: true })
-  distro?: boolean;
+  @Field(() => Boolean, { defaultValue: false })
+  distro: boolean;
 
   @Field(() => [NetworkPort])
   network_connectivity: NetworkPort[];
@@ -13,6 +13,6 @@ export default class MonitoringInput {
   @Field(() => [PhysicalPort])
   physical_connectivity: PhysicalPort[];
 
-  @Field(() => IElectrical)
-  power: IElectrical;
+  @Field(() => Power)
+  power: Power;
 }

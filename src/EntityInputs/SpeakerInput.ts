@@ -2,7 +2,7 @@ import { Property, JsonType } from "@mikro-orm/core";
 import { Field, Float, InputType, Int } from "type-graphql";
 import { DriverArrangment } from "../entities/categories/SpeakerItem";
 import { PhysicalPort, NetworkPort } from "../EntityAbstractions/FieldObjects";
-import IElectrical from "../EntityAbstractions/IElectrical";
+import Power from "../EntityAbstractions/Power";
 
 @InputType()
 export default class SpeakerInput {
@@ -18,8 +18,8 @@ export default class SpeakerInput {
   @Field(() => Float, { description: "Maximum SPL of the speaker." })
   max_spl: number;
 
-  @Field(() => IElectrical)
-  power: IElectrical;
+  @Field(() => Power)
+  power: Power;
 
   @Field(() => Int)
   lower_frequency_response: number;

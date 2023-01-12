@@ -18,7 +18,7 @@ import {
   NetworkPort,
   PhysicalPort,
 } from "../../EntityAbstractions/FieldObjects";
-import IElectrical from "../../EntityAbstractions/IElectrical";
+import Power from "../../EntityAbstractions/Power";
 
 export enum SpeakerDriver {
   TWEETER,
@@ -28,6 +28,7 @@ export enum SpeakerDriver {
 
 registerEnumType(SpeakerDriver, { name: "SpeakerDriver" });
 @ObjectType()
+@InputType("DriverArrangmentTest")
 export class DriverArrangment {
   @Enum(() => SpeakerDriver)
   driver: SpeakerDriver;
@@ -44,6 +45,7 @@ export class SpeakerItem {
   @PrimaryKey({ autoincrement: true })
   id!: number;
 
+  @Field(() => DriverArrangment)
   @Property({ type: JsonType })
   driver: DriverArrangment;
 
@@ -59,9 +61,9 @@ export class SpeakerItem {
   @Property()
   max_spl: number;
 
-  @Field(() => IElectrical)
+  @Field(() => Power)
   @Property({ type: JsonType })
-  power: IElectrical;
+  power: Power;
 
   @Field(() => Int)
   @Property({ type: SmallIntType })

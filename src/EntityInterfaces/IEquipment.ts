@@ -15,7 +15,7 @@ export class IEquipment extends IGeneric {
 
   @Field(() => String, { nullable: true })
   @Property({ type: "text", nullable: true })
-  publicNotes: string;
+  public_notes: string;
 
   @Field(() => Number, { nullable: true })
   @Property({ type: "double", nullable: true })
@@ -46,7 +46,7 @@ export class IEquipmentInput extends GenericInput {
   weight?: number;
 
   @Field({ nullable: true })
-  publicNotes?: string;
+  public_notes?: string;
 
   @Field({ nullable: true })
   searchModel: string;

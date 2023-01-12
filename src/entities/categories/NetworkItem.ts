@@ -2,7 +2,7 @@ import { Entity, Enum, JsonType, PrimaryKey, Property } from "@mikro-orm/core";
 import { Field, InputType, Int, ObjectType } from "type-graphql";
 import { NetworkType } from "../../EntityAbstractions/ItemEnums";
 import { NetworkPort } from "../../EntityAbstractions/FieldObjects";
-import IElectrical from "../../EntityAbstractions/IElectrical";
+import Power from "../../EntityAbstractions/Power";
 
 @ObjectType({
   description:
@@ -28,14 +28,14 @@ export default class NetworkItem {
   max_speed: number;
 
   @Field(() => Boolean)
-  @Property({ nullable: true, type: Boolean })
-  fiber?: boolean;
+  @Property({ default: false, type: Boolean })
+  fiber: boolean;
 
   @Field(() => [NetworkPort])
   @Property({ type: JsonType, nullable: true })
   network_connectivity?: NetworkPort[];
 
-  @Field(() => IElectrical)
+  @Field(() => Power)
   @Property({ type: JsonType, nullable: true })
-  power?: IElectrical;
+  power?: Power;
 }

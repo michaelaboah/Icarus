@@ -16,24 +16,24 @@ export abstract class GenericInput {
 
 @InterfaceType()
 export abstract class IGeneric {
-  @Field(() => Int)
+  @Field(() => Int, { nullable: true })
   @PrimaryKey()
   id!: number;
 
   @Field(() => String, { description: "Store when item was created." })
   @Property({ type: "date", default: "NOW()" })
-  createdAt? = new Date();
+  created_at? = new Date();
 
   @Field(() => String, { description: "Store when item was last changed." })
   @Property({ type: "date", onUpdate: () => new Date() })
-  updatedAt? = new Date();
+  updated_at? = new Date();
 
   @Field(() => String, {
     nullable: true,
     description: "Global notes for current item.",
   })
   @Property({ type: "text", nullable: true })
-  publicNotes: string;
+  public_notes: string;
 
   @Field(() => Number, {
     nullable: true,

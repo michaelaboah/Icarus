@@ -16,7 +16,7 @@ import {
     "Input for the electrical properties of an Item, only available in select Item type. Ex: ProcessorItem or ConsoleItem",
 })
 // @InterfaceType()
-export default class IElectrical {
+export default class Power {
   @Field(() => Float, {
     description:
       "Electrical equipment tend to have a voltage range. Ex: 90V-260V.",
@@ -41,10 +41,10 @@ export default class IElectrical {
   max_wattage: number;
 
   @Field(() => Boolean, {
-    nullable: true,
+    defaultValue: false,
     description: "Electrical may have redundant power built in.",
   })
-  redundant?: boolean;
+  redundant: boolean;
 
   @Field(() => PowerConnector, {
     description: "Electrical connector used as power input. EX: Powercon Blue",

@@ -9,7 +9,7 @@ import {
   NetworkPort,
   PhysicalPort,
 } from "../../EntityAbstractions/FieldObjects";
-import IElectrical from "../../EntityAbstractions/IElectrical";
+import Power from "../../EntityAbstractions/Power";
 
 @ObjectType()
 @InputType("ProcessingItemTest")
@@ -21,19 +21,19 @@ export default class ProcessingItem {
 
   @Field(() => Int)
   @Property()
-  totalInputs: number;
+  total_inputs: number;
 
   @Field(() => Int)
   @Property()
-  totalOutputs: number;
+  total_outputs: number;
 
   @Field(() => Int)
   @Property()
-  physicalInputs: number;
+  physical_inputs: number;
 
   @Field(() => Int)
   @Property()
-  physicalOutputs: number;
+  physical_outputs: number;
 
   @Field((_type) => MidiType)
   @Enum({ items: () => MidiType, nullable: true })
@@ -41,11 +41,11 @@ export default class ProcessingItem {
 
   @Property({ nullable: true })
   @Field(() => Int)
-  protocolInputs: number;
+  protocol_inputs: number;
 
   @Enum(() => Protocol)
   @Field(() => Protocol)
-  signalProtocol: Protocol;
+  signal_protocol: Protocol;
 
   @Enum(() => SampleRate)
   @Field(() => SampleRate)
@@ -59,7 +59,7 @@ export default class ProcessingItem {
   @Property({ type: JsonType, nullable: true })
   physical_connectivity: PhysicalPort[];
 
-  @Field(() => IElectrical)
+  @Field(() => Power)
   @Property({ type: JsonType, nullable: true })
-  power: IElectrical;
+  power: Power;
 }

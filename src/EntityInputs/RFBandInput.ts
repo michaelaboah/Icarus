@@ -19,8 +19,8 @@ export default class RFBandInput {
   @Field(() => CountryCodes)
   nation_code!: CountryCodes;
 
-  @Field(() => Boolean)
-  deprecated?: boolean;
+  @Field(() => Boolean, { defaultValue: false })
+  deprecated: boolean;
 
   @Index({ type: "fulltext" })
   searchableTitle?: string;

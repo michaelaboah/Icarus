@@ -9,7 +9,7 @@ import {
   PhysicalPort,
   NetworkPort,
 } from "../../EntityAbstractions/FieldObjects";
-import IElectrical from "../../EntityAbstractions/IElectrical";
+import Power from "../../EntityAbstractions/Power";
 
 @ObjectType()
 @InputType("AmplifierItemTest")
@@ -21,11 +21,11 @@ export default class AmplifierItem {
 
   @Field(() => Int)
   @Property()
-  totalInputs: number;
+  total_inputs: number;
 
   @Field(() => Int)
   @Property()
-  totalOutputs: number;
+  total_outputs: number;
 
   @Field(() => MidiType, { nullable: true })
   @Enum(() => MidiType)
@@ -41,13 +41,13 @@ export default class AmplifierItem {
 
   @Enum(() => Protocol)
   @Field(() => Protocol)
-  signalProtocol: Protocol;
+  signal_protocol: Protocol;
 
   @Field(() => SampleRate)
   @Enum(() => SampleRate)
   max_sample_rate: SampleRate;
 
   @Property({ nullable: true, type: JsonType })
-  @Field(() => IElectrical, { nullable: true })
-  power: IElectrical;
+  @Field(() => Power, { nullable: true })
+  power: Power;
 }

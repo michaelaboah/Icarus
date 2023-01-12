@@ -1,5 +1,5 @@
 import { Entity, Enum, JsonType, PrimaryKey, Property } from "@mikro-orm/core";
-import IElectrical from "../../EntityAbstractions/IElectrical";
+import Power from "../../EntityAbstractions/Power";
 import { Field, InputType, Int, ObjectType } from "type-graphql";
 import {
   MidiType,
@@ -17,35 +17,35 @@ export default class ConsoleItem {
 
   @Field(() => Int)
   @Property()
-  totalInputs: number;
+  total_inputs: number;
 
   @Field(() => Int)
   @Property()
-  totalOutputs: number;
+  total_outputs: number;
 
   @Field(() => Int)
   @Property()
-  totalBusses: number;
+  total_busses: number;
 
   @Field(() => Int)
   @Property()
-  physicalInputs: number;
+  physical_inputs: number;
 
   @Field(() => Int)
   @Property()
-  physicalOutputs: number;
+  physical_outputs: number;
 
   @Field(() => Int)
   @Property()
-  auxInputs: number;
+  aux_inputs: number;
 
   @Field(() => Int)
   @Property()
-  physicalAuxInputs: number;
+  physical_aux_inputs: number;
 
   @Field(() => Int)
   @Property()
-  phantomPowerInputs: number;
+  phantom_power_inputs: number;
 
   @Field(() => Int)
   @Property()
@@ -61,13 +61,13 @@ export default class ConsoleItem {
 
   @Property({ nullable: true })
   @Field(() => Int)
-  protocolInputs: number;
+  protocol_inputs: number;
 
   @Enum(() => Protocol)
   @Field(() => Protocol)
-  signalProtocol: Protocol;
+  signal_protocol: Protocol;
 
-  @Property({ nullable: true, default: null })
+  @Property({ default: false })
   @Field(() => Boolean)
   can_expand: boolean;
 
@@ -76,6 +76,6 @@ export default class ConsoleItem {
   max_sample_rate: SampleRate;
 
   @Property({ nullable: true, type: JsonType })
-  @Field(() => IElectrical)
-  power: IElectrical;
+  @Field(() => Power)
+  power: Power;
 }

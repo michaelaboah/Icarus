@@ -4,7 +4,7 @@ import {
   ComputerPort,
   NetworkPort,
 } from "../../EntityAbstractions/FieldObjects";
-import IElectrical from "../../EntityAbstractions/IElectrical";
+import Power from "../../EntityAbstractions/Power";
 
 @ObjectType({ description: "Representation of any computer based items." })
 @InputType("ComputerInputTest")
@@ -46,7 +46,7 @@ export default class ComputerItem {
   @Property({ type: JsonType, nullable: true })
   computer_ports?: ComputerPort[];
 
-  @Field(() => IElectrical)
+  @Field(() => Power)
   @Property({ type: JsonType, nullable: true })
-  power?: IElectrical;
+  power?: Power;
 }

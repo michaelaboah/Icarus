@@ -32,7 +32,7 @@ export default class ItemInput {
   manufacturer: string;
 
   @Field(() => String)
-  publicNotes: string;
+  public_notes: string;
 
   @Field(() => Number)
   cost: number;
@@ -89,7 +89,7 @@ export class ItemInputEdit {
   manufacturer?: string;
 
   @Field(() => String)
-  publicNotes?: string;
+  public_notes?: string;
 
   @Field(() => Number)
   cost?: number;

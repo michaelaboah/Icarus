@@ -4,33 +4,33 @@ import {
   SampleRate,
 } from "../EntityAbstractions/ItemEnums";
 import { InputType, Field, Int } from "type-graphql";
-import IElectrical from "../EntityAbstractions/IElectrical";
+import Power from "../EntityAbstractions/Power";
 
 @InputType()
 export default class ConsoleInput {
   @Field(() => Int)
-  totalInputs: number;
+  total_inputs: number;
 
   @Field(() => Int)
-  totalOutputs: number;
+  total_outputs: number;
 
   @Field(() => Int)
-  totalBusses: number;
+  total_busses: number;
 
   @Field(() => Int)
-  physicalInputs: number;
+  physical_inputs: number;
 
   @Field(() => Int)
-  physicalOutputs: number;
+  physical_outputs: number;
 
   @Field(() => Int)
-  auxInputs: number;
+  aux_inputs: number;
 
   @Field(() => Int)
-  physicalAuxInputs: number;
+  physical_aux_inputs: number;
 
   @Field(() => Int)
-  phantomPowerInputs: number;
+  phantom_power_inputs: number;
 
   @Field(() => Int)
   faders: number;
@@ -42,10 +42,10 @@ export default class ConsoleInput {
   midi: MidiType;
 
   @Field(() => Int)
-  protocolInputs: number;
+  protocol_inputs: number;
 
   @Field(() => Protocol)
-  signalProtocol: Protocol;
+  signal_protocol: Protocol;
 
   @Field(() => Boolean)
   can_expand: boolean;
@@ -62,6 +62,6 @@ export default class ConsoleInput {
   @Field({ nullable: true })
   searchModel: string;
 
-  @Field(() => IElectrical)
-  power: IElectrical;
+  @Field(() => Power)
+  power: Power;
 }
