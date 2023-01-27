@@ -1,15 +1,19 @@
-import { MidiType, Protocol, SampleRate } from "../EntityAbstractions/Enums";
+import {
+  MidiType,
+  Protocol,
+  SampleRate,
+} from "../EntityAbstractions/ItemEnums";
 import { InputType, Field, Int } from "type-graphql";
-import { IElectrical } from "../EntityAbstractions/IElectrical";
+import Power from "../EntityAbstractions/Power";
 import { PhysicalPort, NetworkPort } from "../EntityAbstractions/FieldObjects";
 
 @InputType()
-export class AmplifierInput {
+export default class AmplifierInput {
   @Field(() => Int)
-  totalInputs: number;
+  total_inputs: number;
 
   @Field(() => Int)
-  totalOutputs: number;
+  total_outputs: number;
 
   @Field(() => MidiType)
   midi: MidiType;
@@ -21,7 +25,7 @@ export class AmplifierInput {
   network_connectivity: NetworkPort[];
 
   @Field(() => Protocol)
-  signalProtocol: Protocol;
+  signal_protocol: Protocol;
 
   @Field(() => SampleRate)
   max_sample_rate: SampleRate;
@@ -29,6 +33,6 @@ export class AmplifierInput {
   @Field(() => [String])
   notes: string[];
 
-  @Field(() => IElectrical)
-  power: IElectrical;
+  @Field(() => Power)
+  power: Power;
 }

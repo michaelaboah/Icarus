@@ -1,10 +1,10 @@
 import { MyContext } from "../@types/resolverTypes";
-import { Item } from "../entities/Item";
 import { Arg, Ctx, Field, Mutation, ObjectType, Query } from "type-graphql";
 import { FieldError } from "./EquipmentResolver";
-import { ItemInput, ItemInputEdit } from "../EntityInputs/ItemInput";
 import { wrap } from "@mikro-orm/core";
-import { Categories } from "../EntityAbstractions/Enums";
+import { Categories } from "../EntityAbstractions/ItemEnums";
+import Item from "../entities/Item";
+import ItemInput, { ItemInputEdit } from "../EntityInputs/ItemInput";
 
 @ObjectType()
 class ItemResponse {
@@ -23,7 +23,7 @@ class ItemResponse {
   item?: Item;
 }
 
-export class ItemResolver {
+export default class ItemResolver {
   // Create
   @Mutation(() => ItemResponse, {
     nullable: true,
@@ -33,25 +33,28 @@ export class ItemResolver {
     @Arg("itemInput", () => ItemInput, { description: "" }) input: ItemInput,
     @Ctx() { em }: MyContext
   ): Promise<ItemResponse | undefined> {
-    if (input.processor) {
-      const item = em.create(Item, { ...input });
+    const item = em.create(Item, { ...input });
+    try {
       await em.persistAndFlush(item);
-
-      return { item };
-    } else if (input.console) {
-      const item = em.create(Item, { ...input });
-      await em.persistAndFlush(item);
-      return { item };
+    } catch (error) {
+      console.error(error);
+      if (error.code === "23505") {
+        return {
+          errors: [
+            {
+              field: "Duplication Error",
+              message: `Model: "${item.model}" already exists, cannot have duplicates.`,
+              details: error.name,
+            },
+          ],
+        };
+      } else {
+        return {
+          errors: [{ field: "Other", message: `${error}` }],
+        };
+      }
     }
-
-    return {
-      errors: [
-        {
-          field: "Console Error",
-          message: `Could not find entered: ${JSON.stringify(input)} Item`,
-        },
-      ],
-    };
+    return { item };
   }
   // Read
   @Query(() => ItemResponse, {
@@ -80,7 +83,7 @@ export class ItemResolver {
   @Query(() => [Item])
   async findAllItems(@Ctx() { em }: MyContext) {
     // console.log( await em.find(Item, {}, {populate: true}))
-    const allItems = await em.find(Item, {}, {populate: true})
+    const allItems = await em.find(Item, {}, { populate: true });
     return allItems;
   }
 

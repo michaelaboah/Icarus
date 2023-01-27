@@ -2,7 +2,7 @@ import { MyContext } from "../@types/resolverTypes";
 import { MiddlewareFn } from "type-graphql";
 import { verify } from "jsonwebtoken";
 import { sign } from "jsonwebtoken";
-import { User } from "../entities/User";
+import User from "../entities/User";
 import { Response } from "express";
 export const isAuth: MiddlewareFn<MyContext> = ({ context }, next) => {
   const authorization = context.req.headers["authorization"];

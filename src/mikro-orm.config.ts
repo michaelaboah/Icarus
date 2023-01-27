@@ -1,16 +1,22 @@
 import { MikroORM } from "@mikro-orm/core";
 import path from "path";
 import { __prod__ } from "./constants";
-import { Category } from "./entities/Category";
-import { Item } from "./entities/Item";
-import { Equipment } from "./entities/Equipment";
+import AmplifierItem from "./entities/categories/AmplifierItem";
+import ComputerItem from "./entities/categories/ComputerItem";
+import ConsoleItem from "./entities/categories/ConsoleItem";
+import MicrophoneItem from "./entities/categories/MicrophoneItem";
+import MonitoringItem from "./entities/categories/MonitoringItem";
+import NetworkItem from "./entities/categories/NetworkItem";
+import ProcessingItem from "./entities/categories/ProcessingItem";
+import RFItem from "./entities/categories/RFItem";
+import { SpeakerItem } from "./entities/categories/SpeakerItem";
+import Equipment from "./entities/Equipment";
+import Item from "./entities/Item";
+import Post from "./entities/Post";
+import RFBand from "./entities/RFBand";
+import User from "./entities/User";
 import { IEquipment } from "./EntityInterfaces/IEquipment";
 import { IGeneric } from "./EntityInterfaces/IGeneric";
-import { Post } from "./entities/Post";
-import { User } from "./entities/User";
-import { ConsoleItem } from "./entities/ConsoleItem";
-import { ProcessingItem } from "./entities/ProcessingItem";
-import { AmplifierItem } from "./entities/AmplifierItem";
 
 export default {
   migrations: {
@@ -23,16 +29,25 @@ export default {
     Equipment,
     User,
     Item,
-    Category,
+    RFBand,
     IGeneric,
     IEquipment,
     AmplifierItem,
     ConsoleItem,
+    ComputerItem,
+    NetworkItem,
     ProcessingItem,
+    MicrophoneItem,
+    RFItem,
+    SpeakerItem,
+    MonitoringItem,
   ],
-  dbName: "athens-dev",
+  // dbName: "athens-dev",
   // user: "pi",
-  // password: "dev",
+  password: process.env.MIKRO_ORM_PASSWORD,
+  clientUrl: process.env.MIKRO_ORM_CLIENT_URL as string,
+  // ? process.env.POSTGRES_URL
+  // : "postgresql://postgres@127.0.0.1:5432/athens-dev",
   type: "postgresql",
   debug: !__prod__,
 } as Parameters<typeof MikroORM.init>[0];

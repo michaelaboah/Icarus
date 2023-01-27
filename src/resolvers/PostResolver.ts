@@ -1,5 +1,5 @@
 import { MyContext } from "../@types/resolverTypes";
-import { Post } from "../entities/Post";
+import Post from "../entities/Post";
 import {
   Arg,
   Ctx,
@@ -12,7 +12,7 @@ import {
 // import { isAuth } from "../utils/isAuth";
 
 @Resolver()
-export class PostResolver {
+export default class PostResolver {
   @Query(() => [Post])
   posts(@Ctx() { em }: MyContext): Promise<Post[]> {
     return em.find(Post, {});

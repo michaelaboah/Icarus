@@ -1,34 +1,34 @@
 // Port 5432 is Postgres!!!
 
 import { MikroORM } from "@mikro-orm/core";
-import { __port__, __prod__, __sessionSecret__ } from "./constants";
+import { __prod__, __sessionSecret__ } from "./constants";
 import { ApolloServer } from "apollo-server-express";
 import { buildSchema } from "type-graphql";
 import mikroOrmConfig from "./mikro-orm.config";
-import { PostResolver } from "./resolvers/PostResolver";
+
 import express from "express";
 import cors from "cors";
 import "dotenv/config";
 // import { MyContext } from "./@types/resolverTypes";
 import cookieParser from "cookie-parser";
 import { verify } from "jsonwebtoken";
-import { User } from "./entities/User";
+
 import {
   createRefreshToken,
   createAccessToken,
   sendRefreshToken,
 } from "./utils/isAuth";
+import User from "./entities/User";
 import { EquipmentResolver } from "./resolvers/EquipmentResolver";
+import ItemResolver from "./resolvers/ItemResolver";
+import PostResolver from "./resolvers/PostResolver";
 import { UserResolver } from "./resolvers/UserResolver";
-import { ConsoleResolver } from "./resolvers/ConsoleResolver";
-import { CategoryResolver } from "./resolvers/CategoryResolver";
-import { ItemResolver } from "./resolvers/ItemResolver";
-import { ProcessingResolver } from "./resolvers/ProcessingResolver";
+
+const port = process.env.PORT || 8080;
 
 const main = async () => {
   const orm = await MikroORM.init(mikroOrmConfig);
   orm.getMigrator().up();
-
   const app = express();
   app.use(
     cors({
@@ -77,21 +77,13 @@ const main = async () => {
     return res.send({ ok: true, accessToken: createAccessToken(user) });
   });
 
-  app.listen(__port__, () => {
-    console.log(`Server listening on Port: ${__port__}`);
+  app.listen(port, () => {
+    console.log(`Server listening on Port: ${port}`);
   });
 
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
-      resolvers: [
-        PostResolver,
-        EquipmentResolver,
-        UserResolver,
-        ConsoleResolver,
-        CategoryResolver,
-        ItemResolver,
-        ProcessingResolver,
-      ],
+      resolvers: [PostResolver, EquipmentResolver, UserResolver, ItemResolver],
       validate: false,
     }),
     context: ({ req, res }) => ({ em: orm.em, req, res }),
@@ -105,5 +97,13 @@ const main = async () => {
 };
 
 main().catch((err) => {
-  console.error(err);
+  switch (err.code) {
+    case "ECONNREFUSED":
+      console.log("Postgres Database is not connected.\n\n");
+      // console.log(err);
+      break;
+    default:
+      console.error(err);
+      break;
+  }
 });

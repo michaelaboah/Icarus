@@ -1,5 +1,5 @@
 import { MyContext } from "../@types/resolverTypes";
-import { Equipment } from "../entities/Equipment";
+import Equipment from "../entities/Equipment";
 import {
   Arg,
   Ctx,
@@ -47,7 +47,7 @@ export class EquipmentInput {
   frequencyRange?: string;
 
   @Field({ nullable: true })
-  publicNotes?: string;
+  public_notes?: string;
 
   @Field({ nullable: true })
   searchModel: string;
@@ -72,6 +72,9 @@ export class FieldError {
 
   @Field()
   message: string;
+
+  @Field({ nullable: true })
+  details?: string;
 }
 
 @Resolver()
@@ -87,7 +90,7 @@ export class EquipmentResolver {
       model: inputOptions.model,
       manufacturer: inputOptions.manufacturer,
       cost: inputOptions.cost,
-      publicNotes: inputOptions.publicNotes,
+      public_notes: inputOptions.public_notes,
       powerDraw: inputOptions.powerDraw,
       weight: inputOptions.weight,
       rackUnit: inputOptions.rackUnit,

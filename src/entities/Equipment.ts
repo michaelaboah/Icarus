@@ -6,7 +6,7 @@ import { Field, Int, ObjectType } from "type-graphql";
 
 @ObjectType()
 @Entity()
-export class Equipment {
+export default class Equipment {
   // -------------------- REQUIRED ------------------
 
   @Field(() => Int)
@@ -15,11 +15,11 @@ export class Equipment {
 
   @Field(() => String)
   @Property({ type: "date", default: "NOW()" })
-  createdAt? = new Date();
+  created_at? = new Date();
 
   @Field(() => String)
   @Property({ type: "date", onUpdate: () => new Date() })
-  updatedAt? = new Date();
+  updated_at? = new Date();
 
   @Field(() => String)
   @Property()
@@ -37,7 +37,7 @@ export class Equipment {
 
   @Field(() => String, { nullable: true })
   @Property({ type: "text", nullable: true })
-  publicNotes?: string;
+  public_notes?: string;
 
   @Field(() => Number, { nullable: true })
   @Property({ type: "double", nullable: true })

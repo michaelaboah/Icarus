@@ -118,6 +118,8 @@ export enum PowerConnector {
   L6_30,
   L6_50,
   L6_60,
+  POE,
+  DC_12V,
 }
 
 registerEnumType(PowerConnector, {
@@ -168,6 +170,13 @@ registerEnumType(PowerConnector, {
       description:
         "High voltage locking connector, the 60 stands for 60 Amps. Max voltage: 250V. *Note: Also known as 3-Wire",
     },
+    POE: {
+      description: "Power VIA an RJ45 connection, source must be POE capable",
+    },
+    DC_12V: {
+      description:
+        "Barrel Connector. Very basic found on lower power devices. Commonly used for recievers.",
+    },
   },
 });
 
@@ -178,6 +187,7 @@ export enum Protocol {
   AVB_MILAN,
   OPTOCORE,
   ULTRANET,
+  A_NET,
   IP,
 }
 
@@ -209,9 +219,123 @@ registerEnumType(Protocol, {
       description:
         "Audio over Ethernet. Streams 16 audio signals across connected devices with low latency. Compatible with selected gear from Music Tribe child companies. *Note: Proprietary by Music Tribe.",
     },
+    A_NET: {
+      description:
+        "Audio over Ethernet. Streams 64 audio signals across (up to 16 ) connected devices with low latency. Compatible with selected gear from Aviom companies. *Note: Proprietary by Aviom.",
+    },
+
     IP: {
       description:
         "Standard IP connection, for LAN or WAN connections. IPv4 is most commonly used for local networks and is the basis for other IP basesd protocols.",
     },
   },
+});
+
+export enum ComputerPortType {
+  USB_A,
+  USB_B,
+  USB_C,
+  HDMI,
+  MINI_HDMI,
+  DISPLAYPORT,
+  MINI_DISPLAYPORT,
+  MIRCO_B,
+  SD_CARD,
+  FIREWIRE,
+  USB_C_THUNDERBOLT,
+}
+
+registerEnumType(ComputerPortType, {
+  name: "ComputerPortType",
+  description: "An array representation of the ports available on a computer.",
+});
+
+export enum NetworkType {
+  SWITCH_MANAGED,
+  SWITCH_UNMANAGED,
+  ROUTER,
+  ACCESS_POINT,
+  ROUTER_SW_AP,
+  INJECTOR,
+  MODEM,
+  NIC,
+  REPEATER,
+  NETWORK_BRIDGE,
+}
+
+registerEnumType(NetworkType, {
+  name: "NetworkType",
+  description: "Assignable types for various types of networking equipment",
+});
+
+export enum MicrophoneType {
+  PRE_POLORAIZED_CONDENSOR,
+  CONDENSOR,
+  RIBBON,
+  DYNAMIC,
+}
+
+registerEnumType(MicrophoneType, {
+  name: "MicrophoneType",
+  description: "The type of micrphone source medium",
+});
+
+export enum PolarPattern {
+  SUPERCARDIOID,
+  CARDIOID,
+  OMNI,
+  HYPERCARDIOID,
+  FIGURE_8,
+}
+
+registerEnumType(PolarPattern, {
+  name: "PolarPattern",
+  description:
+    "The signal pickup pattern, multiple patterns can be assigned to multiple microphones",
+});
+
+export enum DiaphagmSize {
+  SMALL,
+  MED,
+  LARGE,
+}
+
+registerEnumType(DiaphagmSize, {
+  name: "DiaphagmSize",
+  description: "The size of the input medium",
+});
+
+export enum TransmitterConnector {
+  SHURE_TA4, //Shure
+  MICRODOT, //DPA
+  TRRS, //1/8
+  TRI_PIN, //sennheiser
+}
+
+registerEnumType(TransmitterConnector, {
+  name: "TransmitterConnector",
+  valuesConfig: {
+    SHURE_TA4: {
+      description: "Shure's proprietary connector",
+    },
+    MICRODOT: {
+      description: "DPA's proprietary connector",
+    },
+    TRRS: {
+      description: 'Basic 1/8" connector',
+    },
+    TRI_PIN: {
+      description: "Sennheiser's proprietary connector",
+    },
+  },
+});
+
+export enum NetworkSpeeds {
+  SUPERSPEED = 100,
+  GIGABIT = 1000,
+  TEN_GIGABIT = 10000,
+}
+
+registerEnumType(NetworkSpeeds, {
+  name: "NetworkSpeeds",
 });

@@ -1,46 +1,51 @@
 import { Entity, Enum, JsonType, PrimaryKey, Property } from "@mikro-orm/core";
-import { IElectrical } from "../EntityAbstractions/IElectrical";
-import { Field, Int, ObjectType } from "type-graphql";
-import { MidiType, Protocol, SampleRate } from "../EntityAbstractions/Enums";
+import Power from "../../EntityAbstractions/Power";
+import { Field, InputType, Int, ObjectType } from "type-graphql";
+import {
+  MidiType,
+  Protocol,
+  SampleRate,
+} from "../../EntityAbstractions/ItemEnums";
 
 @ObjectType()
+@InputType("ConsoleInputTest")
 @Entity()
-export class ConsoleItem {
-  @Field(() => Int)
-  @PrimaryKey()
+export default class ConsoleItem {
+  @Field(() => Int, { nullable: true })
+  @PrimaryKey({ autoincrement: true })
   id!: number;
 
   @Field(() => Int)
   @Property()
-  totalInputs: number;
+  total_inputs: number;
 
   @Field(() => Int)
   @Property()
-  totalOutputs: number;
+  total_outputs: number;
 
   @Field(() => Int)
   @Property()
-  totalBusses: number;
+  total_busses: number;
 
   @Field(() => Int)
   @Property()
-  physicalInputs: number;
+  physical_inputs: number;
 
   @Field(() => Int)
   @Property()
-  physicalOutputs: number;
+  physical_outputs: number;
 
   @Field(() => Int)
   @Property()
-  auxInputs: number;
+  aux_inputs: number;
 
   @Field(() => Int)
   @Property()
-  physicalAuxInputs: number;
+  physical_aux_inputs: number;
 
   @Field(() => Int)
   @Property()
-  phantomPowerInputs: number;
+  phantom_power_inputs: number;
 
   @Field(() => Int)
   @Property()
@@ -50,19 +55,19 @@ export class ConsoleItem {
   @Property()
   motorized: boolean;
 
+  @Field(() => MidiType, { nullable: true })
   @Enum(() => MidiType)
-  @Field(() => MidiType)
   midi: MidiType;
 
   @Property({ nullable: true })
   @Field(() => Int)
-  protocolInputs: number;
+  protocol_inputs: number;
 
   @Enum(() => Protocol)
   @Field(() => Protocol)
-  signalProtocol: Protocol;
+  signal_protocol: Protocol;
 
-  @Property({ nullable: true, default: null })
+  @Property({ default: false })
   @Field(() => Boolean)
   can_expand: boolean;
 
@@ -70,11 +75,7 @@ export class ConsoleItem {
   @Field(() => SampleRate)
   max_sample_rate: SampleRate;
 
-  @Property({ nullable: true })
-  @Field(() => [String])
-  notes: string[];
-
   @Property({ nullable: true, type: JsonType })
-  @Field(() => IElectrical)
-  power: IElectrical;
+  @Field(() => Power)
+  power: Power;
 }

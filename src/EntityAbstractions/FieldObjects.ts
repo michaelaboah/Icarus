@@ -1,5 +1,5 @@
 import { Field, Float, InputType, Int, ObjectType } from "type-graphql";
-import { Analog, Protocol } from "./Enums";
+import { Analog, ComputerPortType, NetworkSpeeds, Protocol } from "./ItemEnums";
 
 @InputType("Dimensions", {
   description:
@@ -18,6 +18,9 @@ export class Dimension {
 
   @Field(() => Float)
   height: number;
+
+  @Field(() => Number, { nullable: true })
+  rack_unit?: number;
 }
 
 @InputType("NetworkConnectivty", {
@@ -29,6 +32,12 @@ export class Dimension {
     "Represents RJ45 or Ethernet ports for network capable equipment. Each object represents a singular port",
 })
 export class NetworkPort {
+  @Field(() => String, { nullable: true })
+  port_identifier: string;
+
+  @Field(() => NetworkSpeeds)
+  max_connection_speed: NetworkSpeeds;
+
   @Field(() => Protocol)
   protocol: Protocol;
 
@@ -45,6 +54,9 @@ export class NetworkPort {
     "Represents Analog for capable equipment. Each object represents a singular port.",
 })
 export class PhysicalPort {
+  @Field(() => String, { nullable: true })
+  port_identifier: string;
+
   @Field(() => Analog)
   connector_type: Analog;
 
@@ -53,4 +65,22 @@ export class PhysicalPort {
 
   @Field(() => Boolean)
   input: boolean;
+}
+
+@InputType("ComputerConnectivity", {
+  description: "Addition of computer ports, ",
+})
+@ObjectType()
+export class ComputerPort {
+  @Field(() => ComputerPortType)
+  port_type: ComputerPortType;
+
+  @Field(() => Int)
+  number_of_ports: number;
+
+  @Field(() => Boolean, { defaultValue: false })
+  front_port: boolean;
+
+  @Field(() => String, { nullable: true })
+  version?: string;
 }
