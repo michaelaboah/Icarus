@@ -42,9 +42,12 @@ export default {
     SpeakerItem,
     MonitoringItem,
   ],
-  dbName: "athens-dev",
+  // dbName: "athens-dev",
   // user: "pi",
-  // password: "dev",
+  password: process.env.MIKRO_ORM_PASSWORD,
+  clientUrl: process.env.MIKRO_ORM_CLIENT_URL as string,
+  // ? process.env.POSTGRES_URL
+  // : "postgresql://postgres@127.0.0.1:5432/athens-dev",
   type: "postgresql",
   debug: !__prod__,
 } as Parameters<typeof MikroORM.init>[0];

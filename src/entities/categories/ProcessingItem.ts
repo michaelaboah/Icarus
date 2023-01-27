@@ -17,7 +17,7 @@ import Power from "../../EntityAbstractions/Power";
 export default class ProcessingItem {
   @Field(() => Int, { nullable: true })
   @PrimaryKey({ autoincrement: true })
-  id!: number;
+  processor_id!: number;
 
   @Field(() => Int)
   @Property()

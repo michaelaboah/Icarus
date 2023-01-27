@@ -75,7 +75,6 @@ export enum Analog {
   NL2,
   NL4,
   NL8,
-  DC_12V,
 }
 
 registerEnumType(Analog, {
@@ -103,10 +102,6 @@ registerEnumType(Analog, {
       description:
         "Tip-Ring-Ring-Sleeve Connection. Commonly used for mobile audio connections. *Note: Sleeve is ground.",
     },
-    DC_12V: {
-      description:
-        "Barrel Connector. Very basic found on lower power devices. Commonly used for recievers.",
-    },
   },
 });
 
@@ -124,6 +119,7 @@ export enum PowerConnector {
   L6_50,
   L6_60,
   POE,
+  DC_12V,
 }
 
 registerEnumType(PowerConnector, {
@@ -176,6 +172,10 @@ registerEnumType(PowerConnector, {
     },
     POE: {
       description: "Power VIA an RJ45 connection, source must be POE capable",
+    },
+    DC_12V: {
+      description:
+        "Barrel Connector. Very basic found on lower power devices. Commonly used for recievers.",
     },
   },
 });

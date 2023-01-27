@@ -1,7 +1,7 @@
 // Port 5432 is Postgres!!!
 
 import { MikroORM } from "@mikro-orm/core";
-import { __port__, __prod__, __sessionSecret__ } from "./constants";
+import { __prod__, __sessionSecret__ } from "./constants";
 import { ApolloServer } from "apollo-server-express";
 import { buildSchema } from "type-graphql";
 import mikroOrmConfig from "./mikro-orm.config";
@@ -24,10 +24,11 @@ import ItemResolver from "./resolvers/ItemResolver";
 import PostResolver from "./resolvers/PostResolver";
 import { UserResolver } from "./resolvers/UserResolver";
 
+const port = process.env.PORT || 8080;
+
 const main = async () => {
   const orm = await MikroORM.init(mikroOrmConfig);
   orm.getMigrator().up();
-
   const app = express();
   app.use(
     cors({
@@ -76,8 +77,8 @@ const main = async () => {
     return res.send({ ok: true, accessToken: createAccessToken(user) });
   });
 
-  app.listen(__port__, () => {
-    console.log(`Server listening on Port: ${__port__}`);
+  app.listen(port, () => {
+    console.log(`Server listening on Port: ${port}`);
   });
 
   const apolloServer = new ApolloServer({

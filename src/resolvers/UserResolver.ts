@@ -39,7 +39,7 @@ class UserResponse {
   @Field(() => User, { nullable: true })
   user?: User;
 
-  @Field(() => String)
+  @Field(() => String, { nullable: true })
   accessToken?: string;
 }
 
@@ -51,7 +51,7 @@ export class UserResolver {
     @Arg("inputOptions", () => UserInput) inputOptions: UserInput,
     @Ctx() { em }: MyContext
   ): Promise<UserResponse> {
-    if (inputOptions.email.length < 5) {
+    if (inputOptions.email.length < 3) {
       return {
         errors: [
           {
@@ -61,7 +61,7 @@ export class UserResolver {
         ],
       };
     }
-    if (inputOptions.password.length < 5) {
+    if (inputOptions.password.length < 3) {
       return {
         errors: [
           {
@@ -71,6 +71,7 @@ export class UserResolver {
         ],
       };
     }
+
     const hashedPassword = await argon2.hash(inputOptions.password);
     const user = em.create(User, {
       email: inputOptions.email,
@@ -87,7 +88,7 @@ export class UserResolver {
         };
       }
     }
-    return { user };
+    return { user, accessToken: createAccessToken(user) };
   }
 
   @Mutation(() => UserResponse)

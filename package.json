@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "watch": "tsc -w",
-    "start": "node dist/index.js",
+    "watch:build": "tsc -w",
+    "start": "node dist/index.js --parallel watch:build",
     "build": "ts-node src/index.ts",
     "dev": "nodemon --exec ts-node src/index.ts",
     "migrate": "npx mikro-orm migration:create"
@@ -18,13 +18,13 @@
     "@types/node": "^18.11.4",
     "nodemon": "^2.0.20",
     "ts-node": "^10.9.1",
-    "typescript": "^4.8.4"
+    "typescript": "^4.8.4",
+    "@mikro-orm/cli": "5.5.0"
   },
   "dependencies": {
-    "@mikro-orm/cli": "^5.5.0",
     "@mikro-orm/core": "5.5.0",
     "@mikro-orm/migrations": "5.5.0",
-    "@mikro-orm/postgresql": "^5.5.0",
+    "@mikro-orm/postgresql": "5.5.0",
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.14",
     "@types/jsonwebtoken": "^8.5.9",
