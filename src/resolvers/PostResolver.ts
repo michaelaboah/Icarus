@@ -7,8 +7,10 @@ import {
   Mutation,
   Query,
   Resolver,
+  UseMiddleware,
   // UseMiddleware,
 } from "type-graphql";
+import { isAuth } from "../utils/isAuth";
 // import { isAuth } from "../utils/isAuth";
 
 @Resolver()
@@ -27,7 +29,7 @@ export default class PostResolver {
   }
 
   @Mutation(() => Post)
-  // @UseMiddleware(isAuth)
+  @UseMiddleware(isAuth)
   async createPost(
     @Arg("title", () => String) title: string,
     @Ctx() { em }: MyContext
