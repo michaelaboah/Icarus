@@ -48,11 +48,13 @@ const main = async () => {
   });
 
   app.post("/refresh_token", async (req, res) => {
-    const token = req.cookies.PLEX;
+    const token = req.cookies.PLEX as string;
     if (!token) {
       return res.send({ ok: false, accessToken: "" });
     }
+
     let payload: any = null;
+
     try {
       payload = verify(token, process.env.REFRESH_TOKEN_SECRET!);
     } catch (error) {

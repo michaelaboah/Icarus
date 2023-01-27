@@ -10,7 +10,9 @@ export const isAuth: MiddlewareFn<MyContext> = ({ context }, next) => {
   if (!authorization) {
     throw new Error("Not Authenticated");
   }
+
   try {
+    //used when there is a pre-fix
     const token = authorization?.split(" ")[1];
     const payload = verify(token, process.env.ACCESS_TOKEN_SECRET!);
     context.payload = payload as any;
@@ -41,5 +43,6 @@ export const sendRefreshToken = (res: Response, token: string) => {
   res.cookie("PLEX", token, {
     httpOnly: true,
     path: "/refresh_token",
+    sameSite: "strict",
   });
 };
