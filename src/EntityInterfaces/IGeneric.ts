@@ -44,10 +44,17 @@ export abstract class IGeneric {
 
   @Field(() => Number, {
     nullable: true,
-    description: "Storing the wieght of an Item (in lbs)",
+    description: "Storing the weight of an Item (in lbs)",
   })
   @Property({ type: "double", nullable: true })
   weight?: number;
+
+  @Field(() => String, {
+    nullable: false,
+    description: "The manufacturer of this item.",
+  })
+  @Property({ type: "text", nullable: false })
+  manufactuere: string;
 
   @Field(() => Dimension, { nullable: true })
   @Property({ type: JsonType, nullable: true })
