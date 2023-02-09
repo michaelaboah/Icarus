@@ -54,7 +54,7 @@ export abstract class IGeneric {
     description: "The manufacturer of this item.",
   })
   @Property({ type: "text", nullable: false })
-  manufactuere: string;
+  manufacturer: string;
 
   @Field(() => Dimension, { nullable: true })
   @Property({ type: JsonType, nullable: true })
